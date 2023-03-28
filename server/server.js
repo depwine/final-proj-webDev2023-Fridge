@@ -3,7 +3,11 @@
 // import the needed node_modules.
 const express = require("express");
 const morgan = require("morgan");
-const port = 8888;
+const cors = require("cors");
+
+const { getAllIngredients } = require("./handlers/getAllIngredients")
+
+const port = 4000;
 
 express()
     // Below are methods that are included in express(). We chain them for convenience.
@@ -16,14 +20,30 @@ express()
     // Any requests for static files will go into the public folder
     .use(express.static("public"))
 
+      /// ????? ///
+    .use(cors())
+
     // Nothing to modify above or below this line
-    // ---------------------------------
+    // --------------------------------
+
     
-    .get("/test", (req, res) => {
+//-----------------------------------------------------GETs---------------------------
 
-        res.status(200).json({itWorked: "success"})
+    //  GET all ingredients for initial page-load fetch
+        //  this will be used to auto-complete the ingredient search
 
+    .get("/test", (req,res) => {
+        res
+            .status(200)
+            .json({
+                itWorked: "it worked",
+            })
+            
     })
+
+    .get("/api/ingredients", getAllIngredients)
+
+
 
     // ---------------------------------
     // Nothing to modify above or below this line
