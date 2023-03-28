@@ -4,7 +4,7 @@ export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
   const [ingredientsMaster, setIngredientsMaster] = useState();
-  const [ingredients, setIngredients] = useState()
+  const [oneIngredient, setOneIngredient] = useState()
 
   // fetch all ingredients
   // assign to context so that user has an auto-complete
@@ -14,11 +14,14 @@ export const UserProvider = ({ children }) => {
 
 
     if (!ingredientsMaster) {
+
       fetch("http://localhost:4000/api/ingredients")
 
       .then((res) => res.json())
       .then((data) => {
+
         setIngredientsMaster(data.data)
+
       })
       .catch((err) => {
         console.log("Error, ", err);
@@ -28,18 +31,9 @@ export const UserProvider = ({ children }) => {
 
   }, []);
 
-  if (ingredientsMaster && !ingredients) {
-
-    const tempArray = ingredientsMaster.map((ingredient) => {
-      return (ingredient.ingredient)
-    })
-
-    setIngredients(tempArray)
-
-  }
 
   return (
-    <UserContext.Provider value={{ ingredients }}>
+    <UserContext.Provider value={{ ingredientsMaster, oneIngredient, setOneIngredient}}>
       {children}
     </UserContext.Provider>
   );

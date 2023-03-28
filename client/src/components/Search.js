@@ -6,11 +6,20 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 const Search = () => {
 
-    //grab all the ingredient names from Context
-  const { ingredientsMaster,  ingredients } = useContext(UserContext);
+  // THIS FUNCTIONALITY IS BASED ON REACT - SEARCH - AUTOCOMPLET
+     // ALL CODE WAS FROM THE PROVIDED NPM
+       // SEARCH RESULTS ARE GENERATED USING TOP 1000 INGREDIENTS - KEPT IN CONTEXT FROM THE INITIAL PAGE LOAD
 
-  // note: the id field is mandatory
-  const items = ingredientsMaster;
+    //grab all the ingredient names from Context
+    const { ingredientsMaster, setOneIngredient , oneIngredient} = useContext(UserContext);
+    //oneIngredient, setOneIngredient
+
+    let items;
+
+    // set items to ingredients 
+  if (ingredientsMaster) {
+    items = ingredientsMaster;
+  }
 
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
@@ -26,6 +35,8 @@ const Search = () => {
   const handleOnSelect = (item) => {
     // the item selected
     console.log(item)
+    setOneIngredient(item)
+    console.log(oneIngredient)
   }
 
   const handleOnFocus = () => {
@@ -35,11 +46,11 @@ const Search = () => {
   const formatResult = (item) => {
     return (
       <>
-        <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span>
-        <span style={{ display: 'block', textAlign: 'left' }}>name: {item.name}</span>
+        <span style={{ display: 'block', textAlign: 'left' }}>{item.name}</span>
       </>
     )
   }
+
 
   return (
     <div className="App">

@@ -1,4 +1,5 @@
-const ingredients = require("./data/ingredient-data.json");
+const ingredients = require("./data/name-id-ingredient.json")
+
 
 const { MongoClient } = require("mongodb");
 
