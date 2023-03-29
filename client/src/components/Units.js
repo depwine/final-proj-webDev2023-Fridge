@@ -6,8 +6,6 @@ const Units = ({ ingredient }) => {
   const { ingredientSearchQuery } = useContext(UserContext);
   const [ unit, setUnit ] = useState()
 
-  console.log(ingredientSearchQuery)
-  console.log(ingredient)
 
   useEffect(() => {
 

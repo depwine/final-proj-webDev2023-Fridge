@@ -1,54 +1,54 @@
 import styled from "styled-components";
-import { useContext, useEffect } from "react";
+import { useContext, useState} from "react";
 import { UserContext } from "./UserContext";
 
 const Dropdown = ({ ingredient }) => {
+  const {  ingredientSearchQuery, setIngredientSearchQuery } =
+    useContext(UserContext);
 
-const { oneIngredient, ingredientSearchQuery, setIngredientSearchQuery } = useContext(UserContext);
-
+    const [value, setValue] = useState ("...")
 
   const dropDownUnitOptions = [
-    {name: "(g) Grams",
-     value: "g"},
-     {name: "(kg) Kilograms",
-     value: "kg"},
-     {name: "(mL) Milliliters",
-     value: "mL"},
-     {name: "(L) Liters",
-     value: "L"},
-  ]
+    { name: "(g) Grams", value: "g" },
+    { name: "(kg) Kilograms", value: "kg" },
+    { name: "(mL) Milliliters", value: "mL" },
+    { name: "(L) Liters", value: "L" },
+    { name: "Whole Units", value: "pcs" },
+  ];
 
   //set to category onChange
   const handleChange = (e) => {
 
+    console.log(e.target.value)
+    setValue(e.target.value)
+
+
     // change the unit type to whatever is selected in dropdown
-    const unitType = e.target.value;
     let placeholderArr = ingredientSearchQuery;
-    placeholderArr[ingredientSearchQuery.indexOf(ingredient)].unit_type = e.target.value;
+    placeholderArr[ingredientSearchQuery.indexOf(ingredient)].unit_type =
+      e.target.value;
 
-    setIngredientSearchQuery(placeholderArr)
+    setIngredientSearchQuery(placeholderArr);
+
+    // ******** this forces a re-render (because the above tempArr isnt seen as a valid state change): ****************
+    setIngredientSearchQuery([...ingredientSearchQuery]);
+
   };
-
-  useEffect(() => {
-
-    console.log(ingredientSearchQuery)
-
-  }, [ingredientSearchQuery])
-
-
   return (
+
+
     <>
       <Select onChange={handleChange}>
-
-        <option value="">...</option>
+        <option value={value}>{value}</option>
 
         {!dropDownUnitOptions ? (
           <div> Loading ... </div>
         ) : (
-            dropDownUnitOptions.map((unit) => {
-                const randomID = Math.floor(Math.random() * 100000)
+          dropDownUnitOptions.map((unit) => {
+
+            const randomID = Math.floor(Math.random() * 100000);
             return (
-              <option key={randomID} value={unit.value}>
+              <option key={randomID} value={unit.value} >
                 {unit.name}
               </option>
             );

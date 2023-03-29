@@ -11,7 +11,11 @@ function Homepage() {
 
             // search for recipes once 3 or more items have proper values 
       // (name, unit, quantity)
-  const handleSearch = () => {};
+  const handleSearch = () => {
+
+    console.log(ingredientSearchQuery)
+
+  };
 
 
   return (
@@ -31,13 +35,18 @@ function Homepage() {
         </Div>
       )}
 
-      {ingredientSearchQuery.length < 3 ? (
+      {
+                <Button onClick={handleSearch}>Search for Recipes</Button>
+
+      }
+
+      {/* {ingredientSearchQuery.length < 3 ? (
         <Div>
           Please select more ingredients (minimum of 3) Before Searching{" "}
         </Div>
       ) : (
         <Button onClick={handleSearch}>Search for Recipes</Button>
-      )}
+      )} */}
     </>
   );
 }
