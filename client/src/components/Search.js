@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
 import styled from "styled-components";
 
@@ -11,8 +11,7 @@ const Search = () => {
        // SEARCH RESULTS ARE GENERATED USING TOP 1000 INGREDIENTS - KEPT IN CONTEXT FROM THE INITIAL PAGE LOAD
 
     //grab all the ingredient names from Context
-    const { ingredientsMaster, setOneIngredient , oneIngredient} = useContext(UserContext);
-    //oneIngredient, setOneIngredient
+    const { ingredientsMaster, setOneIngredient , setIngredientSearchQuery, ingredientSearchQuery, oneIngredient} = useContext(UserContext);
 
     let items;
 
@@ -24,23 +23,36 @@ const Search = () => {
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
-    console.log(string, results)
+    // console.log(string, results)
   }
 
   const handleOnHover = (result) => {
     // the item hovered
-    console.log(result)
+    // console.log(result)
   }
 
   const handleOnSelect = (item) => {
+
     // the item selected
-    console.log(item)
-    setOneIngredient(item)
-    console.log(oneIngredient)
+    let itemWithAmount = {
+      _id: item._id,
+      name: item.name,
+      id: item.id,
+      amount: 0,
+      unit_type: null
+    }
+
+    setOneIngredient(itemWithAmount)
+
+    let tempArr = []
+    tempArr.push(itemWithAmount)
+    setIngredientSearchQuery([...ingredientSearchQuery, tempArr[0]])
+
   }
 
+
   const handleOnFocus = () => {
-    console.log('Focused')
+    //console.log('Focused')
   }
 
   const formatResult = (item) => {
