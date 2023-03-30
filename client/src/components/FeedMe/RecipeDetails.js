@@ -25,7 +25,6 @@ const RecipeDetails = () => {
     return (
         <>
         <Wrapper>
-            <Button onClick = {handleHome}> Home </Button>
         <Div>
             <h1>  {recipeInfo.title}  </h1>
             <Img src = {recipeInfo.image} />
@@ -57,8 +56,8 @@ export default RecipeDetails
 
 const Wrapper = styled.div`
   /* border: 1px solid blue; */
-  width: 88vw;
-  height: 88.4vh;
+    height: 100%;
+    width: 100%;
 `;
 
 const Aisle = styled.span`
