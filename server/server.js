@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const { getAllIngredients } = require("./handlers/getAllIngredients")
+const { getRecipes } = require ("./handlers/getRecipes")
 
 const port = 4000;
 
@@ -42,6 +43,7 @@ express()
     })
 
     .get("/api/ingredients", getAllIngredients)
+    .get("/api/recipes", getRecipes)
 
 
 

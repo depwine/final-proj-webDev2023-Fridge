@@ -7,47 +7,84 @@ import Recipe from "./Recipe";
 
 const FeedMe = () => {
   // oneIngredient, setOneIngredient
-  const { oneIngredient, ingredientSearchQuery } = useContext(UserContext);
+  const { oneIngredient, ingredientSearchQuery, setIngredientSearchQuery, setOneIngredient} = useContext(UserContext);
 
   const [ingError, setIngError] = useState();
   const [allValuesFilled, setAllValuesFilled] = useState(true);
+  const [isDuplicate, setIsDuplicate] = useState (false)
+
   const [recipes, setRecipes] = useState()
   
+  
+  /// ---------------------------------------------FETCH RECIPE------------------------------------------ ///
 
   // search for recipes once 3 or more items have proper values
   // (name, unit, quantity)
 
-  const fetchRecipe = () => {
 
-    let ingredientNames = ingredientSearchQuery.map((e) => {
-        return e.name
-    })
+                  // BELOW THIS IS THE SPOON FETCH
 
-    let url = "https://api.spoonacular.com/recipes/findByIngredients"
-    let API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
-    let query = ingredientNames
-    let number = 2;
+  // const fetchRecipe = () => {
 
-    let searchConcact = `${url}?apiKey=${API.apiKey}&ingredients=${query}&number=${number}`
+  //   let ingredientNames = ingredientSearchQuery.map((e) => {
+  //       return e.name
+  //   })
 
-        //test concact above (works)
-    // console.log(searchConcact)
+  //   let url = "https://api.spoonacular.com/recipes/findByIngredients"
+  //   let API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
+  //   let query = ingredientNames
+  //   let number = 2;
 
-    fetch (`${searchConcact}`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-            setRecipes(data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+  //   let searchConcact = `${url}?apiKey=${API.apiKey}&ingredients=${query}&number=${number}`
+
+  //       //test concact above (works)
+  //   // console.log(searchConcact)
+
+  //   fetch (`${searchConcact}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //           console.log(data)
+  //           setRecipes(data)
+  //       })
+  //       .catch((err) => {
+  //           console.log(err)
+  //       })
 
             
+  // }
+
+                              // BELOW THIS IS THE MOCK FETCH ////
+
+  const fetchRecipe = () => {
+
+    setRecipes(null)
+
+    // set previous recipe to blank
+
+
+      //test concact above (works)
+  // console.log(searchConcact)
+
+  fetch (`http://localhost:4000/api/recipes`)
+      .then((res) => res.json())
+      .then((data) => {
+          console.log(data)
+          setRecipes(data.data)
+      })
+      .catch((err) => {
+          console.log(err)
+      })
+
   }
+
+
+  /// ---------------------------------------------HANDLE SEARCH---------------------------------- ///
 
   const handleSearch = () => {
     console.log(ingredientSearchQuery);
+
+    //check array for duplicates (line 109) -- if yes, set error
+    let alreadySeen = {};
 
     if (!oneIngredient) {
       return setIngError(
@@ -55,18 +92,47 @@ const FeedMe = () => {
       );
     } else {
 
-            //check that all fields are properly filled
+                //check that all fields are properly filled
             ingredientSearchQuery.forEach((e) => {
-                if (e.amount < 0.0001 || e.unit_type === null) {
-                setAllValuesFilled(false);
-                } else {
-                setAllValuesFilled(true);
-                }
-                console.log(e.amount, e.unit_type);
-            });
+
+                      //check that all values are properly filled
+                  if (e.amount < 0.0001 || e.unit_type === null) {
+                  setAllValuesFilled(false);
+                  } else {
+                  setAllValuesFilled(true);
+                  }
 
 
-            // if the an ingredient has been chosed, check all fields
+                    //check for duplicates
+                  if (alreadySeen[e.name]){
+                      // if there's a duplicate, set value to false
+                    alreadySeen[e.name] = false
+                  } else {
+                      // if no duplicate, set value to true
+                    alreadySeen[e.name] = true
+                  }
+              });
+
+                //if dupe is found
+              if (Object.values(alreadySeen).includes(false)){
+                  console.log("DUPLICATE FOUND!!!")
+                setIsDuplicate(true)
+              } else {
+                setIsDuplicate(false)
+              }
+
+
+            if (isDuplicate) {
+              console.log("DUPLICATE FOUND!!!")
+              return setIngError(
+                "One or more of your ingridients is a duplicate, please make sure all are unique!"
+              );
+            }  else {
+              setIngError("")
+            }
+
+
+            // if all above IFs are good AND all values are filled, search 
             if (allValuesFilled) {
                 console.log("all values filled");
 
@@ -81,6 +147,7 @@ const FeedMe = () => {
                 console.log("Searching for recipes!")
                 fetchRecipe()
 
+                // else, throw error until fixed.
             } else {
                 console.log("value issue");
                 setIngError(
@@ -89,22 +156,35 @@ const FeedMe = () => {
             }
     }
   };
-  
+
+  const handeClearRecipes = () => {
+    setRecipes()
+    setIngredientSearchQuery([])
+    setOneIngredient()
+    setIngError("")
+  }  
 
   return (
     <>
       <Search />
       {
-      !oneIngredient 
-      ? (<Div>Search for your first ingredient ... </Div>) 
+      ! oneIngredient 
+      ? (<Div> Search for your first ingredient ... </Div>) 
       : ( <IngredientContainer />)
       }
 
 
 
-      { ingredientSearchQuery.length < 3
+      {  ingredientSearchQuery.length < 3
         ? <span>Please look up at least 3 unique ingredients to Search Recipes</span>
-        : <Button onClick={handleSearch}>Search for Recipes</Button>
+        : 
+        (
+          <>
+            <Button onClick={handleSearch}>Search for Recipes</Button>
+            <Button onClick ={ handeClearRecipes }>Clear Recipes</Button>
+          </>
+        )
+
       }
 
       {!ingError ? <div>{null}</div> : <div>{ingError}</div>}
@@ -112,8 +192,10 @@ const FeedMe = () => {
       {
         ! recipes
         ? <span></span>
-        : <Recipe recipes={recipes}/>
+        : <Recipe recipes={ recipes }/>
       }
+
+
     </>
   );
 };

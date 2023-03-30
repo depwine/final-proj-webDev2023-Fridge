@@ -6,6 +6,8 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 const Search = () => {
 
+  const[value, setValue] = useState("")
+
   // THIS FUNCTIONALITY IS BASED ON REACT - SEARCH - AUTOCOMPLET
      // ALL CODE WAS FROM THE PROVIDED NPM
        // SEARCH RESULTS ARE GENERATED USING TOP 1000 INGREDIENTS - KEPT IN CONTEXT FROM THE INITIAL PAGE LOAD
@@ -48,6 +50,8 @@ const Search = () => {
     tempArr.push(itemWithAmount)
     setIngredientSearchQuery([...ingredientSearchQuery, tempArr[0]])
 
+
+    setValue("")
   }
 
 
@@ -75,6 +79,8 @@ const Search = () => {
             onSelect={handleOnSelect}
             onFocus={handleOnFocus}
             autoFocus
+            placeholder = {"Search ... "}
+            
             formatResult={formatResult}
           />
         </div>
