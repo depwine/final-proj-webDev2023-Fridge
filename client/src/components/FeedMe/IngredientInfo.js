@@ -1,12 +1,11 @@
 import Dropdown from "./Dropdown";
-import Units from "./Units";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "./UserContext";
+import { useContext, useState } from "react";
+import { UserContext } from "../Backbone/UserContext";
 import styled from "styled-components";
 
 const IngredientInfo = ({ingredient}) => {
 
-    const { oneIngredient, ingredientSearchQuery, setIngredientSearchQuery } =
+    const { ingredientSearchQuery, setIngredientSearchQuery } =
     useContext(UserContext);
 
     const [quantity, setQuantity] = useState(0)
@@ -40,12 +39,21 @@ const IngredientInfo = ({ingredient}) => {
   };
 
 
-    // for testing search query
-  useEffect(() => {
-    console.log(ingredientSearchQuery)
-  }, [ingredientSearchQuery])
 
-  const handleSubmit = (e) => {
+                // for testing search query
+            // useEffect(() => {
+            //     console.log(ingredientSearchQuery)
+            // }, [ingredientSearchQuery])
+
+
+
+    // when the user hits "refresh" on
+    // the Quantity of items
+    // it pushes the entire object to the master query
+                            // ex, {_id: '642360cb9c61cf5a7ec0e066', name: 'almonds', id: 12061, amount: '12', unit_type: 'g'}
+
+            // handleSubmit does all that ^ 
+  const handleRefresh = (e) => {
 
     //stop reload
     e.preventDefault()
@@ -60,8 +68,6 @@ const IngredientInfo = ({ingredient}) => {
         }
             // update display # at the bottom of the Component
         setShowAmount(Object.values(quantity))
-
-                                    /// everything above here works ! ^^ ///
     
                 // change the unit type to whatever is selected in dropdown
     let placeholderArr = ingredientSearchQuery;
@@ -83,7 +89,7 @@ const IngredientInfo = ({ingredient}) => {
       <Div key={ingredient._id + ingredient.name}>
         <span>Item : {ingredient.name} </span>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleRefresh}>
           <label htmlFor="Quantity">Quantity : </label>
           <input
             type="number"

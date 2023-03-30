@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useContext, useState} from "react";
-import { UserContext } from "./UserContext";
+import { UserContext } from "../Backbone/UserContext";
 
 const Dropdown = ({ ingredient }) => {
   const {  ingredientSearchQuery, setIngredientSearchQuery } =
@@ -13,6 +13,7 @@ const Dropdown = ({ ingredient }) => {
     { name: "(kg) Kilograms", value: "kg" },
     { name: "(mL) Milliliters", value: "mL" },
     { name: "(L) Liters", value: "L" },
+    { name: "Cup", value: "cup" },
     { name: "Whole Units", value: "pcs" },
   ];
 
@@ -25,6 +26,7 @@ const Dropdown = ({ ingredient }) => {
 
     // change the unit type to whatever is selected in dropdown
     let placeholderArr = ingredientSearchQuery;
+
     placeholderArr[ingredientSearchQuery.indexOf(ingredient)].unit_type =
       e.target.value;
 

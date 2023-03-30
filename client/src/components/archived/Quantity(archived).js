@@ -1,16 +1,20 @@
-import { UserContext } from "./UserContext";
+import { UserContext } from "../Backbone/UserContext";
 import { useContext, useEffect, useState} from "react";
 
-const Units = ({ ingredient }) => {
+const Quantity = ({ ingredient }) => {
 
   const { ingredientSearchQuery } = useContext(UserContext);
   const [ unit, setUnit ] = useState()
 
+  console.log(ingredientSearchQuery)
+  console.log(ingredient)
 
   useEffect(() => {
 
+
     if (ingredientSearchQuery[ingredientSearchQuery.indexOf(ingredient)].unit_type){
         setUnit (ingredientSearchQuery[ingredientSearchQuery.indexOf(ingredient)].unit_type)
+        console.log("??????????? quantity . js")
     }    
 
   }, [ingredientSearchQuery])
@@ -27,4 +31,4 @@ const Units = ({ ingredient }) => {
   );
 };
 
-export default Units;
+export default Quantity;

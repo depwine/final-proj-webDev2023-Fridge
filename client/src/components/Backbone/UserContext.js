@@ -15,14 +15,11 @@ export const UserProvider = ({ children }) => {
 
 
     if (!ingredientsMaster) {
-
       fetch("http://localhost:4000/api/ingredients")
 
       .then((res) => res.json())
       .then((data) => {
-
         setIngredientsMaster(data.data)
-
       })
       .catch((err) => {
         console.log("Error, ", err);
