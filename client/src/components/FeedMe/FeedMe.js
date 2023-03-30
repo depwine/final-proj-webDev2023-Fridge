@@ -222,7 +222,10 @@ const Wrapper = styled.div`
 
 const Left = styled.div`
   /* outline: 2px solid red; */
-  width: 44vw;
+  width: 50%;
+  height: 100%;
+  height: 100.7%;
+
 `;
 
 const Right = styled.div`
@@ -234,7 +237,9 @@ const Right = styled.div`
   align-content: flex-start;
   align-items: center;
   /* outline: 2px solid green; */
-  width: 44vw;`;
+  width: 50%;
+  height: 100.7%;
+  `;
 
 const SearchDiv = styled.div`
   display: flex;

@@ -15,7 +15,14 @@ function App() {
           // set margin and padding to zero across site
         }
 
-      <style jsx global> {` body {margin: 0px; padding: 0px;} `} </style>
+      <style jsx global> {
+      ` 
+        body {
+          margin: 0px; padding: 0px;
+          height: 100%;
+        } 
+      `
+      } </style>
 
       <Container>
         <Header />
@@ -40,11 +47,13 @@ const Container = styled.div`
   /* background-color: red; */
   display: flex;
   flex-direction: column;
-
+  height: 100vh;
+  width: 100vw;
 `;
 
 const Content = styled.div`
   /* background-color: blue; */
+  height: 100%;
   display: flex;
   flex-direction: row;
 `;

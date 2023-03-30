@@ -11,15 +11,21 @@ const Homepage = () => {
   }
 
   return (
-    <>
+
+      <Wrapper>
       Hi!
       <div></div>
       <Button onClick={handleFeedMe}>FeedMe</Button>
-    </>
+      </Wrapper>
+
   );
 }
 
 export default Homepage;
+
+const Wrapper = styled.div`
+  height: 100%
+`;
 
 const Button = styled.button`
 `;
