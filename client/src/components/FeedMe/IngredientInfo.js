@@ -12,6 +12,7 @@ const IngredientInfo = ({ingredient}) => {
     const [showAmount, setShowAmount] = useState (0)
 
   const handleRemoveOneItem = (ingredient) => {
+
     // if there's only 1 search item, do this:
     if (ingredientSearchQuery.length < 2) {
       let emptyArr = [];
@@ -40,10 +41,10 @@ const IngredientInfo = ({ingredient}) => {
 
 
 
-                // for testing search query
-            // useEffect(() => {
-            //     console.log(ingredientSearchQuery)
-            // }, [ingredientSearchQuery])
+  // for testing search query
+// useEffect(() => {
+//     console.log(ingredientSearchQuery)
+// }, [ingredientSearchQuery])
 
 
 
@@ -87,25 +88,40 @@ const IngredientInfo = ({ingredient}) => {
   return (
     <>
       <Div key={ingredient._id + ingredient.name}>
-        <span>Item : {ingredient.name} </span>
 
-        <form onSubmit={handleRefresh}>
-          <label htmlFor="Quantity">Quantity : </label>
-          <input
-            type="number"
-            id="quantity"
-            onChange={(e) => handleChange(e.target.id, e.target.value)}
-          />
-          <Button type="submit" value="Refresh">Refresh </Button>
-        </form>
+        <Item> 
+          <span>Item:</span> 
+          <ItemName>{ingredient.name}</ItemName> 
+        </Item>
 
-        <span>
-          Select Unit Type : <Dropdown ingredient={ingredient} />{" "}
-        </span>
+        <Form onSubmit={handleRefresh}>
+          <Level>
 
-        <div> {} {ingredient.name} - {showAmount} ({ingredient.unit_type})</div>
-        <Button onClick={() => {handleRemoveOneItem(ingredient)}}>  Remove Item </Button>
+            <Label htmlFor="Quantity">Quantity : </Label>
+            <Input
+              type="number"
+              id="quantity"
+              onChange={(e) => handleChange(e.target.id, e.target.value)}
+            />        
 
+          </Level>
+
+
+
+
+        <Units>
+          <span>Units :</span>
+          <Dropdown ingredient={ingredient} />{" "}
+        </Units>
+
+        <ItemSummary> 
+          <span>{ingredient.name}</span>
+          <span>{showAmount} ({ingredient.unit_type})</span>
+        </ItemSummary>
+
+        <Remove onClick={() => {handleRemoveOneItem(ingredient)}}>  Remove Item </Remove>
+        <Button type="submit" value="Refresh">Update</Button>
+        </Form>
       </Div>
     </>
   );
@@ -114,10 +130,131 @@ const IngredientInfo = ({ingredient}) => {
 
 export default IngredientInfo;
 
-const Div = styled.div`
-  font-size: 30px;
-  margin: 50px;
+const ItemSummary = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+  width: 150px;
+  height: 50px;
+  margin: 0 -20px 0 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  font-weight: bold;
+  text-transform: capitalize;
 `;
 
-const Button = styled.button``;
+const Div = styled.div`
+
+
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 770px;
+  border: 1px solid grey;
+  box-shadow: 3px 3px 3px lightgrey;
+  font-size: 18px;
+  margin: 5px 0 15px 0;
+  justify-content: left;
+  align-items: center;
+
+  &:hover{
+    box-shadow: 3px 3px 3px grey;
+  }
+  
+`;
+
+const Remove = styled.button`
+  height: 51px;
+  border-radius: 15px;
+  border: none;
+  background-color: #c4c4c4;
+  color: white;
+  font-size: 15px;
+
+  &:hover{
+    cursor: pointer;
+
+    background-color: darkgray;
+  }
+
+`
+
+const Label = styled.label`
+  font-size: 18px;
+`;
+
+const Level = styled.span``;
+
+const ItemName = styled.span`
+  font-weight: bold;
+  padding: 0 0 0 10px;
+  text-transform: capitalize;
+  
+`;
+
+const Units = styled.div`
+  display: flex;
+
+  flex-direction: column;
+  row-gap: 3px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 10px 0 10px;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: row;
+  margin: 0 20px 0 41px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Input = styled.input`
+  width: 40px;
+  margin: 0 0 0 10px;
+  text-align: center;
+
+  border: 1px solid lightgrey;
+  border-radius: 15px;
+`;
+
+const Item = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  row-gap: 20px;
+  width: 150px;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  height: 50px;
+  padding: 0px 0 0 10px;
+
+
+`;
+
+const Button = styled.button`
+  margin: 0 -21px 0px 10px;
+  border-radius: 15px;
+  width: 65px;
+  background-color: grey;
+  color: white;
+  border: none;
+  font-size: 15px;
+  height: 50px;
+
+  &:hover{
+    cursor: pointer;
+    background-color: darkgray;
+    color: white;
+  }
+
+
+`;
 

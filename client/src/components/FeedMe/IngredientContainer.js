@@ -9,15 +9,25 @@ const IngredientContainer = () => {
   return (
     <>
       <Div>
-        Selected Ingredient(s): (Search to add more!)
-        {ingredientSearchQuery.map((ingredient) => {
-          return (
-            <IngredientInfo
-              map={ingredient._id + 11110}
-              ingredient={ingredient}
-            />
-          );
-        })}
+        {
+          ! ingredientSearchQuery.length
+          ? (<NoSearch> Search for your first ingredient ... </NoSearch>) 
+          : (
+            <>
+              Selected Ingredient(s): (Search to add more!)
+
+              {ingredientSearchQuery.map((ingredient) => {
+                return (
+                <IngredientInfo
+                map={ingredient._id + 11110}
+                ingredient={ingredient}
+                />
+                );
+              })}
+            </>
+          )
+        }
+
       </Div>
     </>
   );
@@ -25,4 +35,12 @@ const IngredientContainer = () => {
 
 export default IngredientContainer;
 
-const Div = styled.div``;
+const Div = styled.div`
+  padding: 20px;
+  margin: 0 0 20px 0;
+`;
+
+const NoSearch = styled.div`
+  font-size: 30px;
+  margin: 20px;
+`;

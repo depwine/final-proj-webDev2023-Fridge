@@ -6,7 +6,7 @@ const Dropdown = ({ ingredient }) => {
   const {  ingredientSearchQuery, setIngredientSearchQuery } =
     useContext(UserContext);
 
-    const [value, setValue] = useState ("...")
+    const [value, setValue] = useState ("Select ...")
 
   const dropDownUnitOptions = [
     { name: "(g) Grams", value: "g" },
@@ -41,7 +41,7 @@ const Dropdown = ({ ingredient }) => {
 
     <>
       <Select onChange={handleChange}>
-        <option value={value}>{value}</option>
+        <Option value={value}>{value}</Option>
 
         {!dropDownUnitOptions ? (
           <div> Loading ... </div>
@@ -50,9 +50,9 @@ const Dropdown = ({ ingredient }) => {
 
             const randomID = Math.floor(Math.random() * 100000);
             return (
-              <option key={randomID} value={unit.value} >
+              <Option key={randomID} value={unit.value} >
                 {unit.name}
-              </option>
+              </Option>
             );
           })
         )}
@@ -63,13 +63,16 @@ const Dropdown = ({ ingredient }) => {
 
 export default Dropdown;
 
+const Option = styled.option`
+  font-size: 15px;
+  font-weight: normal;
+`;
+
 const Select = styled.select`
-  padding: 5px 25px 5px 5px;
-  margin-left: 25px;
-  margin-top: 10px;
-  border-radius: 3px;
-  font-size: 18px;
-  font-family: var(--font-heading);
-  font-weight: bold;
-  border: solid 3px black;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  font-size: 15px;
+  width: 120px;
+  height: 20px;
+  text-align: center;
 `;

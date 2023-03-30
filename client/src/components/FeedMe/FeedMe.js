@@ -165,46 +165,127 @@ const FeedMe = () => {
   }  
 
   return (
-    <>
-      <Search />
-      {
-      ! oneIngredient 
-      ? (<Div> Search for your first ingredient ... </Div>) 
-      : ( <IngredientContainer />)
-      }
+    <Wrapper>
+      <Left>
+      <SearchDiv>
+         <Search />
+      </SearchDiv>
+
+      <SearchResultsDiv>
+
+            {
+            ! oneIngredient 
+            ? (<Div> Search for your first ingredient ... </Div>) 
+            : ( <IngredientContainer />)
+            }
 
 
 
-      {  ingredientSearchQuery.length < 3
-        ? <span>Please look up at least 3 unique ingredients to Search Recipes</span>
-        : 
-        (
-          <>
-            <Button onClick={handleSearch}>Search for Recipes</Button>
-            <Button onClick ={ handeClearRecipes }>Clear Recipes</Button>
-          </>
-        )
+            {  ingredientSearchQuery.length < 3
+              ? <LookForThree>Please look up at least 3 unique ingredients to Search Recipes</LookForThree>
+              : 
+              (
+                <>
+                  <Buttons>
+                    <Button onClick ={ handeClearRecipes }>Clear Recipes</Button>
+                    <Button onClick={ handleSearch }>Search for Recipes</Button>
+                  </Buttons>
+                </>
+              )
 
-      }
+            }
+
+      </SearchResultsDiv>
 
       {!ingError ? <div>{null}</div> : <div>{ingError}</div>}
-
+      </Left>
+      <Right>
       {
         ! recipes
         ? <span></span>
         : <Recipe recipes={ recipes }/>
       }
+      </Right>
+</Wrapper>
 
-
-    </>
   );
 };
 
 export default FeedMe;
 
-const Div = styled.div`
-  font-size: 40px;
-  margin: 50px;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 91.35vw;
+  height: 88.45vh;
 `;
 
-const Button = styled.button``;
+const Left = styled.div`
+  /* outline: 2px solid red; */
+  width: 44vw;
+`;
+
+const Right = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: center;
+  /* outline: 2px solid green; */
+  width: 44vw;`;
+
+const SearchDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+`;
+
+const SearchResultsDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+`;
+
+
+const LookForThree = styled.span`
+  padding: 20px;
+`;
+
+const Div = styled.div`
+  font-size: 30px;
+  margin: 20px;
+`;
+
+const Button = styled.button`
+  height: 50px;
+  margin: 0 0 0 10px;
+  border-radius: 15px;
+  width: 150px;
+  background-color: grey;
+  color: white;
+  border: none;
+  font-size: 18px;
+
+  box-shadow: 3px 3px 3px lightgrey;
+
+  &:hover{
+    cursor: pointer;
+    background-color: darkgray;
+  }
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+`;
+
+
+

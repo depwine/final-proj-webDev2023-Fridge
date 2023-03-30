@@ -11,34 +11,45 @@ function App() {
   return (
     <BrowserRouter>
 
-      <Header />
-      <Container>
-      <Sidebar />
-      <Content >
-        <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/FeedMe" element={<FeedMe />} />
-            <Route path="/recipe-details" element={<RecipeDetails />} />
-          </Routes>
-      </ Content>
+        {
+          // set margin and padding to zero across site
+        }
 
-      </Container>
+      <style jsx global> {` body {margin: 0px; padding: 0px;} `} </style>
+
+      <Container>
+        <Header />
+
+        <Content >
+          <Sidebar />
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/FeedMe" element={<FeedMe />} />
+                <Route path="/recipe-details" element={<RecipeDetails />} />
+              </Routes>
+        </ Content>
+        </Container>
     </BrowserRouter>
   );
 }
 
 export default App;
 
-const Container = styled.div`
 
+const Container = styled.div`
+  /* background-color: red; */
   display: flex;
-  flex-direction: row
+  flex-direction: column;
 
 `;
 
 const Content = styled.div`
-
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: row;
 `;
+
+
 
 
 

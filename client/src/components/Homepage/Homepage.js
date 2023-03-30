@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-function Homepage() {
+const Homepage = () => {
 
   const nav = useNavigate()
 

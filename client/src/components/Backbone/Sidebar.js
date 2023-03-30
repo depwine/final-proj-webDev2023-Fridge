@@ -18,7 +18,7 @@ font-size: 45px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 88.5vh;
+    height: auto;
     width: 200px;
     background-color: #8a8a8a;
 
