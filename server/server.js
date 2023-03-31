@@ -21,7 +21,6 @@ express()
     // Any requests for static files will go into the public folder
     .use(express.static("public"))
 
-      /// ????? ///
     .use(cors())
 
     // Nothing to modify above or below this line
@@ -44,6 +43,8 @@ express()
 
     .get("/api/ingredients", getAllIngredients)
     .get("/api/recipes", getRecipes)
+
+
 
 
 

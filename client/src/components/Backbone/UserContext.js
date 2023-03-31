@@ -6,6 +6,8 @@ export const UserProvider = ({ children }) => {
   const [ ingredientsMaster, setIngredientsMaster] = useState();
   const [ ingredientSearchQuery, setIngredientSearchQuery] = useState([])
   const [ oneIngredient, setOneIngredient] = useState()
+  
+  const [recipes, setRecipes] = useState()
 
   // fetch all ingredients
   // assign to context so that user has an auto-complete
@@ -31,7 +33,7 @@ export const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{setIngredientSearchQuery, ingredientSearchQuery, ingredientsMaster, oneIngredient, setOneIngredient}}>
+    <UserContext.Provider value={{recipes, setRecipes, setIngredientSearchQuery, ingredientSearchQuery, ingredientsMaster, oneIngredient, setOneIngredient}}>
       {children}
     </UserContext.Provider>
   );

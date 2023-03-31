@@ -7,14 +7,11 @@ import Recipe from "./Recipe";
 
 const FeedMe = () => {
   // oneIngredient, setOneIngredient
-  const { oneIngredient, ingredientSearchQuery, setIngredientSearchQuery, setOneIngredient} = useContext(UserContext);
+  const { oneIngredient, ingredientSearchQuery, setIngredientSearchQuery, setOneIngredient, recipes, setRecipes} = useContext(UserContext);
 
   const [ingError, setIngError] = useState();
   const [allValuesFilled, setAllValuesFilled] = useState(true);
-  const [isDuplicate, setIsDuplicate] = useState (false)
-
-  const [recipes, setRecipes] = useState()
-  
+  const [isDuplicate, setIsDuplicate] = useState (false)  
   
   /// ---------------------------------------------FETCH RECIPE------------------------------------------ ///
 
@@ -92,14 +89,21 @@ const FeedMe = () => {
       );
     } else {
 
+            let valueFlag = true;
+
                 //check that all fields are properly filled
             ingredientSearchQuery.forEach((e) => {
 
                       //check that all values are properly filled
                   if (e.amount < 0.0001 || e.unit_type === null) {
+
+                    console.log(e.amount, e.unit_type)
                   setAllValuesFilled(false);
+                  valueFlag = false;
+
                   } else {
                   setAllValuesFilled(true);
+                  valueFlag = true;
                   }
 
 
@@ -133,7 +137,7 @@ const FeedMe = () => {
 
 
             // if all above IFs are good AND all values are filled, search 
-            if (allValuesFilled) {
+            if (valueFlag) {
                 console.log("all values filled");
 
                 // flicker a Searching for a few seconds to clear error but also show
@@ -151,7 +155,7 @@ const FeedMe = () => {
             } else {
                 console.log("value issue");
                 setIngError(
-                "There is an issue with your fields, please set quanity and unit for each ingredient!"
+                "There is an issue with your fields, please set POSITIVE (>1) quantity and unit for each ingredient!"
                 );
             }
     }
@@ -197,7 +201,11 @@ const FeedMe = () => {
 
       </SearchResultsDiv>
 
-      {!ingError ? <div>{null}</div> : <div>{ingError}</div>}
+      {
+      !ingError 
+      ? <div>{null}</div> 
+      : <Error>{ingError}</Error>
+      }
       </Left>
       <Right>
       {
@@ -212,6 +220,14 @@ const FeedMe = () => {
 };
 
 export default FeedMe;
+
+const Error = styled.div`
+
+  font-size: 20px;
+  margin: 20px;
+  text-align: center;
+  font-style: italic;
+`;
 
 const Wrapper = styled.div`
   display: flex;

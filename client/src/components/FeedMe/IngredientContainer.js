@@ -37,7 +37,6 @@ export default IngredientContainer;
 
 const Div = styled.div`
   padding: 20px;
-  margin: 0 0 20px 0;
 `;
 
 const NoSearch = styled.div`

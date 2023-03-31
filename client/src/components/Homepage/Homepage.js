@@ -24,8 +24,11 @@ const Homepage = () => {
 export default Homepage;
 
 const Wrapper = styled.div`
-  height: 100%
+  height: 100%;
+  width: 91.35vw;
 `;
+
+
 
 const Button = styled.button`
 `;
