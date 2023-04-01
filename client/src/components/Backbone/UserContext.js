@@ -6,6 +6,7 @@ export const UserProvider = ({ children }) => {
   const [ ingredientsMaster, setIngredientsMaster] = useState();
   const [ ingredientSearchQuery, setIngredientSearchQuery] = useState([])
   const [ oneIngredient, setOneIngredient] = useState()
+  const [favRecipes, setFavRecipes] = useState()
   
   const [recipes, setRecipes] = useState()
 
@@ -33,7 +34,7 @@ export const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{recipes, setRecipes, setIngredientSearchQuery, ingredientSearchQuery, ingredientsMaster, oneIngredient, setOneIngredient}}>
+    <UserContext.Provider value={{favRecipes, setFavRecipes, recipes, setRecipes, setIngredientSearchQuery, ingredientSearchQuery, ingredientsMaster, oneIngredient, setOneIngredient}}>
       {children}
     </UserContext.Provider>
   );

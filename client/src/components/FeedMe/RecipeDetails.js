@@ -2,10 +2,12 @@ import { useLocation, useNavigate } from "react-router-dom"
 import styled from "styled-components";
 import { useContext } from "react";
 import { UserContext } from "../Backbone/UserContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const RecipeDetails = () => {
 
     const { setOneIngredient, setIngredientSearchQuery } = useContext(UserContext);
+    const { user, isAuthenticated } = useAuth0();
 
     const nav = useNavigate()
 
@@ -21,6 +23,8 @@ const RecipeDetails = () => {
     }
 
     console.log(recipeInfo)
+
+    
 
     return (
         <>

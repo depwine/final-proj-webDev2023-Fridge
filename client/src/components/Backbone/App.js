@@ -6,6 +6,8 @@ import RecipeDetails from "../FeedMe/RecipeDetails";
 import styled from "styled-components";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import Profile from "../Profile/Profile";
+import FavRecipes from "../FavRecipes/FavRecipes";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
                 <Route path="/" element={<Homepage />} />
                 <Route path="/FeedMe" element={<FeedMe />} />
                 <Route path="/recipe-details" element={<RecipeDetails />} />
+                <Route path="/favrecipes" element={<FavRecipes />} />
+                <Route path="/profile" element={<Profile />} />
               </Routes>
         </ Content>
         </Container>

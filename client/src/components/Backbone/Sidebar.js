@@ -8,8 +8,8 @@ const Sidebar = () => {
         <Div>
             <StyledLink to={"/"}> Home </StyledLink>
             <StyledLink to={"/FeedMe"}> Feed Me</StyledLink>
-            <StyledLink> Fav Recipes </StyledLink>
-            <StyledLink> Profile </StyledLink>
+            <StyledLink to={"/favrecipes"}> Fav Recipes </StyledLink>
+            <StyledLink to={"/profile"}> Profile </StyledLink>
         </Div>
 
     )
