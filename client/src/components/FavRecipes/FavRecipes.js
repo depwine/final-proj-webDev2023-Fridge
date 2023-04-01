@@ -3,12 +3,38 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useContext } from "react";
 import { UserContext } from "../Backbone/UserContext";
 import DisplayFavRecipes from "./DisplayFavRecipes";
+import { useEffect } from "react";
 
 
 const FavRecipes = () => {
 
     const { user } = useAuth0();
-    const { favRecipes } = useContext(UserContext);
+    const { favRecipes, setFavRecipes } = useContext(UserContext);
+
+    if (user) {
+        console.log(user)
+    }
+
+    // useEffect(() => {
+        
+    //     const lookupUrl =""
+
+    //     if (user) {
+
+    //                 /// NO URL SET
+    //         fetch (lookupUrl)
+    //         .then((res) => res.json())
+    //         .then ((data) => {
+    //             console.log(data)
+    //             // setFavRecipes(data)
+    //         })
+    //         .catch((err) => {
+    //             console.log(err)
+    //             setFavRecipes()
+    //         })
+    //     }
+
+    // }, [user])
 
     return (
         <Wrapper>
@@ -19,7 +45,7 @@ const FavRecipes = () => {
                 : (
                     <>
                         User : {user.name}                        
-
+                        {/* UserId : {user.} */}
                         {
                             ! favRecipes
                             ? <div>Add some recipes!</div>

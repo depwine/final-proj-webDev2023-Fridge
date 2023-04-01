@@ -22,7 +22,7 @@ const Recipe = ({ recipes }) => {
         
         return (
 
-          <Div key={recipe.id} onClick={() => {            handleClick(recipe)          }}>
+          <Div key={recipe._id} onClick={() => {            handleClick(recipe)          }}>
 
                 <span>Recipe :  {recipe.title} </span>
                 <Img src={recipe.image}/>

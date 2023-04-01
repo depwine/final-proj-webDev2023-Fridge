@@ -7,6 +7,8 @@ const cors = require("cors");
 
 const { getAllIngredients } = require("./handlers/getAllIngredients")
 const { getRecipes } = require ("./handlers/getRecipes")
+const { postFavRecipes} = require ("./handlers/postFavRecipes")
+const { deleteFavRecipes } = require ("./handlers/deleteFavRecipes")
 
 const port = 4000;
 
@@ -43,6 +45,9 @@ express()
 
     .get("/api/ingredients", getAllIngredients)
     .get("/api/recipes", getRecipes)
+
+    .post("/api/favrecipes", postFavRecipes)
+    .delete("/api/favrecipes", deleteFavRecipes)
 
 
 
