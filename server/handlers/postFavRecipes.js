@@ -38,7 +38,8 @@ const postFavRecipes = async (req,res) => {
         "_id" : _id,
         "userId" : body.userId,
         "recipeId" : body.recipeId,
-        "recipeName" : body.recipeName
+        "recipeName" : body.recipeName,
+        "recipeImage" : body.recipeImage
     };
 
     try{

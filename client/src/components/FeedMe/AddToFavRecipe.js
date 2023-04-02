@@ -1,23 +1,25 @@
 import styled from "styled-components"
 import { useState } from "react"
+import { useContext } from "react"
+import { UserContext } from "../Backbone/UserContext"
 
 const AddToFavRecipe = ({ user, recipeInfo }) => {
 
     const [err, setErr] = useState()
 
-    if (recipeInfo) {
-        console.log(recipeInfo)
-    }
+    const { setFavRecipes } = useContext(UserContext);
+
 
     const handleAddToFav = () => {
 
-        // Expected body from insomnia:
+        // Expected body from back-end:
         /*
             {
-                "userId" : "google-oauth2|104384327425244104524", 
-                "userName" : "Glib Lakeev",
-                "recipeId" : "73420",
+                "userId" : "google-oauth2|xxxxx", 
+                "userName" : "Name Lastname",
+                "recipeId" : "xxxxx",
                 "recipeName" : "Apple Or Peach Strudel"
+                "recipeImage:" : "url"
             }
         */
 
@@ -28,26 +30,25 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
             "userId" : user.sub,
             "userName" : userNameConcat,
             "recipeId" : recipeInfo.id,
-            "recipeName" :  recipeInfo.title
+            "recipeName" :  recipeInfo.title,
+            "recipeImage" : recipeInfo.image
         }
 
         console.log(postBody)
 
         // send
-
         fetch("http://localhost:4000/api/favrecipes",
         {
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-
             method: "POST",
             body: JSON.stringify(postBody)
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
+                console.log(data.dat)
 
                 if (data.status === 200) {
                     setErr("Recipe added to your Favourites!")
@@ -58,21 +59,17 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
                 }
 
                 if (data.status === 401) {
-
                     setErr("This recipe is already in your favourites!")
 
                     setTimeout(() => {
                         setErr(null)
                     }, 1000)
-
-
                 }
             })
             .catch((err) => {
                 setErr(err)
                 console.log(err)
             })
-
     }
 
 

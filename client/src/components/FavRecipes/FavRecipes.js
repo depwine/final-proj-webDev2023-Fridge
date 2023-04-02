@@ -9,32 +9,28 @@ import { useEffect } from "react";
 const FavRecipes = () => {
 
     const { user } = useAuth0();
-    const { favRecipes, setFavRecipes } = useContext(UserContext);
+    const { favRecipes, setFavRecipes, postFlag} = useContext(UserContext);
 
-    if (user) {
-        console.log(user)
-    }
+    useEffect(() => {  
 
-    // useEffect(() => {
-        
-    //     const lookupUrl =""
+        if (user) {
 
-    //     if (user) {
+            const concatUserName = `${user.given_name} ${user.family_name}`
 
-    //                 /// NO URL SET
-    //         fetch (lookupUrl)
-    //         .then((res) => res.json())
-    //         .then ((data) => {
-    //             console.log(data)
-    //             // setFavRecipes(data)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //             setFavRecipes()
-    //         })
-    //     }
+            /// get fav recipes
+            fetch (`http://localhost:4000/api/favrecipes?userId=${user.sub}&userName=${concatUserName}`)
+                .then((res) => res.json())
+                .then ((data) => {
+                console.log(data)
+                setFavRecipes(data.data)
+                })
+                .catch((err) => {
+                console.log(err)
+                setFavRecipes()
+                })  
+        }
 
-    // }, [user])
+    }, [postFlag])
 
     return (
         <Wrapper>
@@ -49,7 +45,12 @@ const FavRecipes = () => {
                         {
                             ! favRecipes
                             ? <div>Add some recipes!</div>
-                            : <DisplayFavRecipes />
+                            : ( 
+                                <>
+                                    <div><Button> Show Recipes </Button></div>
+                                    <DisplayFavRecipes favRecipes={favRecipes}/>
+                                </>
+                               )
 
                         }
                     </>
@@ -66,5 +67,8 @@ export default FavRecipes
 const Wrapper = styled.div`
   height: 100%;
   width: 91.35vw;
+`;
+
+const Button = styled.button`
 `;
 

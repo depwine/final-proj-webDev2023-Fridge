@@ -15,9 +15,9 @@ export const UserProvider = ({ children }) => {
   const [favRecipes, setFavRecipes] = useState();
   const [recipes, setRecipes] = useState();
 
-
     // USER INFO / LOGINS STATES 
   const [loggedUser, setLoggedUser] = useState();
+  const [postFlag, setPostFlag] = useState()
 
   // fetch all ingredients
   // assign to context so that user has an auto-complete
@@ -41,6 +41,9 @@ export const UserProvider = ({ children }) => {
       value={{
         loggedUser,
         setLoggedUser,
+
+        postFlag, 
+        setPostFlag,
 
         favRecipes,
         setFavRecipes,

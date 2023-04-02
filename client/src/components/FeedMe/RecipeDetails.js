@@ -1,21 +1,14 @@
 import { useLocation } from "react-router-dom"
 import styled from "styled-components";
-import { useContext } from "react";
-import { UserContext } from "../Backbone/UserContext";
 import { useAuth0 } from "@auth0/auth0-react";
 import AddToFavRecipe from "./AddToFavRecipe";
 
 const RecipeDetails = () => {
 
-    const { setOneIngredient, setIngredientSearchQuery } = useContext(UserContext);
-    const { user, isAuthenticated } = useAuth0();
+    const { user } = useAuth0();
 
     const rawData = useLocation();
     const recipeInfo = rawData.state.data
-
-    console.log(recipeInfo)
-
-    
 
     return (
         <>
@@ -39,9 +32,10 @@ const RecipeDetails = () => {
                     )
                 })
             }
-            { user && (
-                <AddToFavRecipe recipeInfo ={recipeInfo} user={user}/>
-            )
+            { 
+            ! user 
+            ? <span>Log in to save this recipe!</span>
+            : ( <AddToFavRecipe recipeInfo ={recipeInfo} user={user}/> )
              }        
         </Div>
 

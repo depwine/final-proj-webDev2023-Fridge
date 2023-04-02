@@ -6,7 +6,7 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 const Search = () => {
 
-  const[value, setValue] = useState("")
+  const [value, setValue] = useState("")
 
   // THIS FUNCTIONALITY IS BASED ON REACT - SEARCH - AUTOCOMPLET
      // ALL CODE WAS FROM THE PROVIDED NPM
