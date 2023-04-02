@@ -10,6 +10,7 @@ const { getRecipes } = require ("./handlers/getRecipes")
 const { postFavRecipes} = require ("./handlers/postFavRecipes")
 const { deleteFavRecipes } = require ("./handlers/deleteFavRecipes")
 const { getFavRecipes } = require ("./handlers/getFavRecipes")
+const { getOneRecipe } = require ("./handlers/getOneRecipe")
 
 const port = 4000;
 
@@ -46,6 +47,7 @@ express()
 
     .get("/api/ingredients", getAllIngredients)
     .get("/api/recipes", getRecipes)
+    .get("/api/recipe/:recipe", getOneRecipe)
     
     .get("/api/favrecipes", getFavRecipes)
     .post("/api/favrecipes", postFavRecipes)

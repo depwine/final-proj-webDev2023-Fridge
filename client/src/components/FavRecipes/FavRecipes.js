@@ -44,10 +44,19 @@ const FavRecipes = () => {
                         {/* UserId : {user.} */}
                         {
                             ! favRecipes
-                            ? <div>Add some recipes!</div>
+                            ? (
+                                <>
+                                    <div>Add some recipes!</div>
+                                    <div><Button onClick ={() => {
+                                        console.log(favRecipes)
+                                    }}> Test show Recipes </Button></div>
+                                </>
+                            )
                             : ( 
                                 <>
-                                    <div><Button> Show Recipes </Button></div>
+                                    <div><Button onClick={() => {
+                                     console.log(favRecipes)
+                                    }}> Show Recipes </Button></div>
                                     <DisplayFavRecipes favRecipes={favRecipes}/>
                                 </>
                                )

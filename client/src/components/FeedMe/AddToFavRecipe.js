@@ -7,7 +7,7 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
 
     const [err, setErr] = useState()
 
-    const { setFavRecipes } = useContext(UserContext);
+    const { setPostFlag } = useContext(UserContext);
 
 
     const handleAddToFav = () => {
@@ -22,6 +22,7 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
                 "recipeImage:" : "url"
             }
         */
+       
 
         const userNameConcat = `${user.given_name} ${user.family_name}`
 
@@ -48,7 +49,8 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data.dat)
+                console.log(data.data)
+                setPostFlag(data.data)
 
                 if (data.status === 200) {
                     setErr("Recipe added to your Favourites!")
@@ -76,7 +78,11 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
 
     return (
         <>
-            <Button onClick = {() => {handleAddToFav()}} >Add To Favourite Recipes</Button>
+            {
+                !user
+                ? null 
+                :<Button onClick = {() => {handleAddToFav()}} >Add To Favourite Recipes</Button>
+            }
             {
                 err && 
                 (
