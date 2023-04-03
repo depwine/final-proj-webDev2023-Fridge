@@ -2,18 +2,26 @@ import UsedIngredients from "../FeedMe/UsedIngredients";
 import styled from "styled-components";
 import { useNavigate} from "react-router-dom";
 
-const Recipe = ({ recipes }) => {
+const Recipe = ({ recipes, usedIngredients}) => {
+
+  console.log(recipes)
+  console.log(usedIngredients)
 
  const nav = useNavigate()
 
         // on click of a recipe, go here and initialize this state: 
   const handleClick = (recipe) => {
-    nav("/recipe-details", {state : {data: recipe.recipeId}})
+
+    console.log(recipe)
+    nav("/recipe-details", {state : {data: recipe}})
 
   }
 
   return (
     <>
+          {
+          // map through recipe, make a summary
+        }
 
       {recipes.map((recipe) => {
         
@@ -25,19 +33,26 @@ const Recipe = ({ recipes }) => {
                   <Img src={recipe.image}/>
                   <div></div>
 
-                  {
-                    recipe.usedIngredients && 
+          {
+                          ! usedIngredients
+                          ? null 
+                          : 
+                          (     
+                            <>
+                              <div>Used Ingredients + Quantities: </div>
+                              <UsedIngredients usedIngredients={usedIngredients[recipes.indexOf(recipe)]} />       
+                            </>   
+                          )
+          }        
 
-                    (
-                      <>
-                        <div>Used Ingredients + Quantities: </div>
-                        <UsedIngredients usedIngredients={recipe.usedIngredients} />
-                      </>
-                    )                
-                  }
+                  
           </Div>
         );
       })}
+
+      {
+        // if you're coming here from Feed Me, also map through used ingredients
+      }
 
     </>
   );

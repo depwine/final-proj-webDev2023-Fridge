@@ -1,10 +1,12 @@
 const UsedIngredients = ({ usedIngredients }) => {
+
+  console.log(usedIngredients.usedIngredients)
   
   return (
     <>
-      {usedIngredients.map((ing) => {
+      {usedIngredients.usedIngredients.map((ing) => {
         return (
-          <span key={ing._id}>
+          <span key={ing.id}>
             <span>Name : {ing.name}</span>
             <div></div>
             <span>

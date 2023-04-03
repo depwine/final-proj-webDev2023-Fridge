@@ -10,9 +10,11 @@ const RecipeDetails = () => {
     const { user } = useAuth0();
 
     const rawData = useLocation();
+    console.log(rawData.state)
     const recipeInfo = rawData.state.data
 
     console.log(recipeInfo)
+    console.log(recipeInfo.cuisines)
 
     let random = Math.random()
 
@@ -22,9 +24,21 @@ const RecipeDetails = () => {
                 <Div>
                     
                     <H1>Summary:</H1>
-                    <h2> {recipeInfo.cuisines.map((cuisine) => {
-                        return (`${cuisine} `)
-                    })} ({recipeInfo.dishTypes})</h2>
+
+                    {
+                     ! recipeInfo.cuisines 
+                        ? null
+                        : (
+                            <h2> 
+                                {recipeInfo.cuisines.map((cuisine) => {
+                                return (`${cuisine} `)
+                            })} 
+                            ({recipeInfo.dishTypes.map((dish) => {
+                                return (`${dish} `)
+                            })})
+                            </h2>)    
+                    }
+
 
                     <h1>Instructions:</h1>
                     <h3>Ready In : {recipeInfo.readyInMinutes} Minutes</h3>

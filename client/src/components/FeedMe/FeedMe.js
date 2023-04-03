@@ -12,12 +12,42 @@ const FeedMe = () => {
   const [ingError, setIngError] = useState();
   const [allValuesFilled, setAllValuesFilled] = useState(true);
   const [isDuplicate, setIsDuplicate] = useState (false)  
+  const [usedIngredients, setUsedIngredients] = useState()
   
   /// ---------------------------------------------FETCH RECIPE------------------------------------------ ///
 
   // search for recipes once 3 or more items have proper values
   // (name, unit, quantity)
 
+  const getDetailsForEachFetchesRecipe = (data) => {
+
+    const idArray = data.map((recipe) => {
+      return recipe.id
+    })
+
+    console.log("ID ARRAY", idArray)
+
+
+    let url = `https://api.spoonacular.com/recipes/informationBulk`
+    let API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
+    let searchQuery = `ids=${idArray}`
+
+     let searchConcact = `${url}?apiKey=${API.apiKey}&${searchQuery}`
+
+     console.log(searchConcact)
+
+     fetch (`${searchConcact}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        setRecipes(data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+
+  }
 
                   // BELOW THIS IS THE SPOON FETCH
 
@@ -41,7 +71,12 @@ const FeedMe = () => {
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
-            setRecipes(data)
+
+              // assign this to a state in order to populate Recipe component's "used ingredients" field
+              setUsedIngredients(data)
+
+              // call another fetch in order to set the recipe details
+            getDetailsForEachFetchesRecipe(data)
         })
         .catch((err) => {
             console.log(err)
@@ -211,7 +246,7 @@ const FeedMe = () => {
       {
         ! recipes
         ? <span></span>
-        : <Recipe recipes={ recipes }/>
+        : <Recipe recipes={ recipes } usedIngredients = {usedIngredients}/>
       }
       </Right>
 </Wrapper>
