@@ -24,10 +24,10 @@ const getOneRecipe = async (req, res) => {
     try {
 
         //
-        client.connect()
+        await client.connect()
 
         // 
-        const db = await client.db("Fridge")
+        const db = client.db("Fridge")
         console.log("connected")
 
         const results = await db.collection("recipes").findOne(queryParams)

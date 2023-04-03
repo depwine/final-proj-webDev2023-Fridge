@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 const UserProfile = ({  user  }) => {
 
-    console.log(user)
 
     return (
     <>

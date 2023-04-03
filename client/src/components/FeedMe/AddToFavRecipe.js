@@ -49,7 +49,7 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data.data)
+                console.log(data)                
                 setPostFlag(data.data)
 
                 if (data.status === 200) {

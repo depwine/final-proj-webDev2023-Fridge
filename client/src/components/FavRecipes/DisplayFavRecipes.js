@@ -57,11 +57,7 @@ const DisplayFavRecipes = ({favRecipes}) => {
                 let fetchedRecipe = data.data
 
                 nav("/recipe-details", {state : {"data": fetchedRecipe}})
-
             })
-
-
-
     }
 
     return (<>
@@ -73,7 +69,7 @@ const DisplayFavRecipes = ({favRecipes}) => {
             favRecipes.map((recipe) => {
                 return (
                     <>
-                        <div key = {recipe.recipeId}>
+                        <div key = {recipe._id}>
                             <span>{recipe.recipeName}</span>
                             <img src = {recipe.recipeImage}/>
                             <Button onClick = {() => {handleRecipeDetails(recipe)}}>Recipe Details</Button>

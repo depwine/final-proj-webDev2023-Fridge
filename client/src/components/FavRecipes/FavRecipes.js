@@ -9,28 +9,8 @@ import { useEffect } from "react";
 const FavRecipes = () => {
 
     const { user } = useAuth0();
-    const { favRecipes, setFavRecipes, postFlag} = useContext(UserContext);
+    const { favRecipes } = useContext(UserContext);
 
-    useEffect(() => {  
-
-        if (user) {
-
-            const concatUserName = `${user.given_name} ${user.family_name}`
-
-            /// get fav recipes
-            fetch (`http://localhost:4000/api/favrecipes?userId=${user.sub}&userName=${concatUserName}`)
-                .then((res) => res.json())
-                .then ((data) => {
-                console.log(data)
-                setFavRecipes(data.data)
-                })
-                .catch((err) => {
-                console.log(err)
-                setFavRecipes()
-                })  
-        }
-
-    }, [postFlag])
 
     return (
         <Wrapper>
@@ -47,16 +27,12 @@ const FavRecipes = () => {
                             ? (
                                 <>
                                     <div>Add some recipes!</div>
-                                    <div><Button onClick ={() => {
-                                        console.log(favRecipes)
-                                    }}> Test show Recipes </Button></div>
-                                </>
+                                    {/* <div><Button onClick ={() => { console.log(favRecipes) }}> Test show Recipes </Button></div>                               */}
+                                 </>
                             )
                             : ( 
                                 <>
-                                    <div><Button onClick={() => {
-                                     console.log(favRecipes)
-                                    }}> Show Recipes </Button></div>
+                                    {/* <div><Button onClick={() => {  console.log(favRecipes)  }}> Show Recipes </Button></div> */}
                                     <DisplayFavRecipes favRecipes={favRecipes}/>
                                 </>
                                )

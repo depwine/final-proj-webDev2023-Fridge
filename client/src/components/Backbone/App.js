@@ -17,7 +17,7 @@ function App() {
           // set margin and padding to zero across site
         }
 
-      <style jsx global> {
+      <style jsx="true" global="true"> {
       ` 
         body {
           margin: 0px; padding: 0px;

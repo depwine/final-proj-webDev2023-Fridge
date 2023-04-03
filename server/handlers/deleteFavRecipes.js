@@ -15,18 +15,30 @@ const client = new MongoClient(MONGO_URI, options)
 const deleteFavRecipes = async (req,res) => {
 
     const body = req.body;
-    console.log(req.body)
 
+        // if recipe ID is null, fail
+      if (body.recipeId === null) {
+          console.log("recipe id field empty, failed.")
+
+          return res
+                    .status(400)
+                    .json({
+                        status: 400,
+                        message: "recipe id field empty, failed."
+                    })
+      }
+  
 
     const queryParams = {"recipeId": body.recipeId}
+
 
     try{
 
       // 
-      client.connect()
+      await client.connect()
 
       //
-      const db = await client.db("Fridge")
+      const db =  client.db("Fridge")
       console.log("connected")
 
       // test 

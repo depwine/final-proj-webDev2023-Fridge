@@ -44,10 +44,10 @@ const postFavRecipes = async (req,res) => {
 
     try{
         //conn 
-        client.connect();
+        await client.connect();
 
         //db
-        const db = await client.db("Fridge")
+        const db = client.db("Fridge")
         console.log("connected")
 
         // ----------------------- validate that item isnt already in favourites ------------------------------
@@ -72,10 +72,7 @@ const postFavRecipes = async (req,res) => {
                 })
 
         }
-
-
-
-    
+   
 
         // do the thing
         const results = await db.collection(collection).insertOne(queryBody)
