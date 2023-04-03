@@ -20,24 +20,27 @@ function App() {
       <style jsx="true" global="true"> {
       ` 
         body {
-          margin: 0px; padding: 0px;
+          margin: 0px; 
+          padding: 0px;
           height: 100%;
         } 
       `
       } </style>
 
       <Container>
-        <Header />
+        {/* <Header /> */}
 
         <Content >
           <Sidebar />
-            <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/FeedMe" element={<FeedMe />} />
-                <Route path="/recipe-details" element={<RecipeDetails />} />
-                <Route path="/favrecipes" element={<FavRecipes />} />
-                <Route path="/profile" element={<Profile />} />
-              </Routes>
+          <NonSidebar>
+              <Routes>
+                  <Route path="/" element={<Homepage />} />
+                  <Route path="/FeedMe" element={<FeedMe />} />
+                  <Route path="/recipe-details" element={<RecipeDetails />} />
+                  <Route path="/favrecipes" element={<FavRecipes />} />
+                  <Route path="/profile" element={<Profile />} />
+                </Routes>
+          </NonSidebar>
         </ Content>
         </Container>
     </BrowserRouter>
@@ -49,9 +52,10 @@ export default App;
 
 const Container = styled.div`
   /* background-color: red; */
+  position: absolute;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 98vh;
   width: 100vw;
 `;
 
@@ -60,6 +64,10 @@ const Content = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
+`;
+
+const NonSidebar = styled.div`
+  margin-left: 165px;
 `;
 
 

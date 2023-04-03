@@ -9,6 +9,13 @@ const Profile = () => {
 
   return (
     <Wrapper>
+
+      <User>
+        {
+            isAuthenticated && (<UserProfile user={user} />)
+        }
+      </User>
+
       <Buttons>
         {
             ! isAuthenticated 
@@ -17,23 +24,27 @@ const Profile = () => {
         }
       </Buttons>
 
-      <User>
-        {
-            isAuthenticated && (<UserProfile user={user} />)
-        }
-      </User>
     </Wrapper>
   );
 };
 
 export default Profile;
 
-const User = styled.div``;
+const User = styled.div`
+  margin: 20px;
+`;
 
 const Wrapper = styled.div`
   width: 91.35vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
 `;
 
-const Button = styled.button``;
+const Buttons = styled.div`
+  display: flex;
 
-const Buttons = styled.div``;
+`;

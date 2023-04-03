@@ -20,21 +20,19 @@ const FavRecipes = () => {
                 ? <div>Log in to use this section </div>
                 : (
                     <>
-                        User : {user.name}                        
-                        {/* UserId : {user.} */}
+                        <h1>Favourite Recipes</h1>                     
                         {
                             ! favRecipes || favRecipes.length < 1
                             ? (
                                 <>
                                     <div>Add some recipes!</div>
-                                    {/* <div><Button onClick ={() => { console.log(favRecipes) }}> Test show Recipes </Button></div>                               */}
                                  </>
                             )
                             : ( 
-                                <>
-                                    {/* <div><Button onClick={() => {  console.log(favRecipes)  }}> Show Recipes </Button></div> */}
+                                <RecipeWrap>
+
                                     <DisplayFavRecipes favRecipes={favRecipes}/>
-                                </>
+                                </RecipeWrap>
                                )
                         }
                     </>
@@ -48,9 +46,23 @@ const FavRecipes = () => {
 
 export default FavRecipes
 
+const RecipeWrap = styled.div`
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+`;
+
 const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
   height: 100%;
   width: 91.35vw;
+
+
+
 `;
 
 const Button = styled.button`

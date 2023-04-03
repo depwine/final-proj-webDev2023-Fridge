@@ -69,7 +69,6 @@ const Homepage = () => {
                     fetch ("http://localhost:4000/api/randomrecipes")
                       .then((res) => res.json())
                       .then((data) => {
-                        console.log(data)
                         setTrendingRecipes(data.data)
                       })
                       .catch((err) => {
@@ -98,6 +97,10 @@ const Homepage = () => {
 export default Homepage;
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   height: 100%;
   width: 91.35vw;
 `;
@@ -105,7 +108,7 @@ const Wrapper = styled.div`
 const RecipeWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
   row-gap: 20px;
   column-gap: 20px;
 `;

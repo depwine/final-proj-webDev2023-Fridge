@@ -86,28 +86,72 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
 
 
     return (
-        <>
-            {
-                !user
-                ? null 
-                :<Button onClick = {() => {handleAddToFav()}} >Add To Favourite Recipes</Button>
-            }
-            {
-                err && 
-                (
-                    <Err>{err}</Err>
-                ) 
-                
-            }
-        </>
+        <Wrapper>
+            <ErrDiv>
+                {
+                    !err
+                    ? null
+                    : 
+                    (
+                        <Err>{err}</Err>
+                    ) 
+                    
+                }
+            </ErrDiv>
+            <ButtonDiv>
+                    {
+                        !user
+                        ? null 
+                        :<Button onClick = {() => {handleAddToFav()}} >Add To Favourite Recipes</Button>
+                    }
+            </ButtonDiv>
+
+
+        </Wrapper>
     )
 
 }
 
 export default AddToFavRecipe
 
-const Button = styled.button`
+const ErrDiv = styled.div`
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: right;
+    margin: 0 20px 0 0;
+`;
 
+const ButtonDiv = styled.div`
+
+`;
+
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    align-content: center;
+    justify-content: center;
+`;
+
+const Button = styled.button`
+    font-weight: bold;
+    border-radius: 15px;
+    border: none;
+    margin: 20px 0 0 0;
+
+    background-color: #ffbbd1;
+    color: white;
+    padding: 10px;
+    box-shadow: 2px 2px 2px lavender;
+
+    &:hover{
+
+        cursor: pointer;
+        background-color: #b8607c;
+        color: white;
+
+    }
 `;
 
 const Err = styled.span`

@@ -10,37 +10,25 @@ const RecipeDetails = () => {
     const { user } = useAuth0();
 
     const rawData = useLocation();
-    console.log(rawData.state)
     const recipeInfo = rawData.state.data
-
-    console.log(recipeInfo)
-    console.log(recipeInfo.cuisines)
 
     let random = Math.random()
 
     return (
-        <>
+        
         <Wrapper>
+
                 <Div>
-                    
-                    <H1>Summary:</H1>
-
-                    {
-                     ! recipeInfo.cuisines 
-                        ? null
-                        : (
-                            <h2> 
-                                {recipeInfo.cuisines.map((cuisine) => {
-                                return (`${cuisine} `)
-                            })} 
-                            ({recipeInfo.dishTypes.map((dish) => {
-                                return (`${dish} `)
-                            })})
-                            </h2>)    
-                    }
+                    <Header>
+                        <H1>Instructions:</H1>
+                        { 
+                        ! user 
+                        ? <span>Log in to save this recipe!</span>
+                        : ( <AddToFavRecipe recipeInfo ={recipeInfo} user={user}/> )
+                        }  
+                    </Header>
 
 
-                    <h1>Instructions:</h1>
                     <h3>Ready In : {recipeInfo.readyInMinutes} Minutes</h3>
                     <h3>Servings : {recipeInfo.servings}</h3>
                     <h3>Weight Watcher Score : {recipeInfo.weightWatcherSmartPoints}</h3>
@@ -49,35 +37,61 @@ const RecipeDetails = () => {
                             // display step by step instructions : 
                         }
 
-                    <RecipeInst>{recipeInfo.analyzedInstructions[0].steps.map((inst) => {
+                    <div>
+                        {recipeInfo.analyzedInstructions[0].steps.map((inst) => {
 
-                        return (
-                            <div key= {random}>
-                                <div>Step: {inst.number} Step</div>
-                                {/* <div><RecipeIngredients inst = {inst}/></div>
-                                <div><RecipeEquipment inst = {inst}/></div> */}
-                                {/* <span>Length: {inst.length.number} {inst.length.unit}</span> */}
-                                {/* <span>{inst.step}</span> */}
+                            return (
+                                <RecipeStep key= {recipeInfo.analyzedInstructions[0].steps.indexOf(inst) +  random}>
+                                    <Step>Step #{inst.number} </Step>
 
-                            </div>
-                        )
+                                    { // if ingredients exist, show
+                                        inst.ingredients.length > 0 
+                                        ? <div><RecipeIngredients inst = {inst}/></div>
+                                        : null
+                                    }
+                                    {   //if equipment exists, show
+                                        inst.equipment.length > 0 
+                                        ? <div><RecipeEquipment inst = {inst}/></div>
+                                        : null
+                                    }
 
-                    })}</RecipeInst>
+                                    {/* <span>Length: {inst.length.number} {inst.length.unit}</span> */}
+                                    <span>{inst.step}</span>
 
+                                </RecipeStep>
+                            )
 
+                        })}
+                    </div>
 
-
-
-
-                    { 
-                    ! user 
-                    ? <span>Log in to save this recipe!</span>
-                    : ( <AddToFavRecipe recipeInfo ={recipeInfo} user={user}/> )
-                    }   
+ 
                 </Div>
 
                 <RightDiv>
                     <H1>  {recipeInfo.title}  </H1>
+
+                    {
+                     ! recipeInfo.cuisines 
+                        ? null
+                        : (
+                            <Cuisines> 
+                                {recipeInfo.cuisines.map((cuisine) => {
+                                return (
+                                    <span key = {cuisine + random}>
+                                         {`${cuisine}`}
+                                    </span>)
+                            })} 
+                            ({recipeInfo.dishTypes.map((dish) => {
+                                return (
+                                        <span key = {dish + random}>
+                                             {`${dish}`}
+                                        </span>
+
+                                    )
+                            })})
+                            </Cuisines>)    
+                    }
+
                     <Img src = {recipeInfo.image} />
                     <IngTitle>Ingredients: </IngTitle>
                     {
@@ -117,28 +131,60 @@ const RecipeDetails = () => {
                 </RightDiv>
 
         </Wrapper>
-        </>
+    
     )
 
 }
 
 export default RecipeDetails
 
+const Header = styled.span`
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const Cuisines = styled.span`
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    font-size: 19px;
+    margin: 0 0 20px 0;
+`;
+
+const Step = styled.div`
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0 0px 5px 0;
+`;
+
+const RecipeStep = styled.div`
+    display:flex ;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+    padding: 20px;
+    width: 850px;
+    background-color: #fff2f6;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px lightpink;
+    row-gap: 10px;
+
+`;
+
 const RightDiv = styled.div`
 
     margin: 0 0 0 20px;
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 45%;
+    align-items: center;
+    overflow-y: scroll;
 
 `;
 
-const RecipeInst = styled.div`
-
-
-`;
 
 const IngDiv = styled.div`
+    width: 700px;
     display: flex;
     flex: row;
     flex-wrap: wrap;
@@ -149,6 +195,7 @@ const IngDiv = styled.div`
 const Wrapper = styled.div`
     display: flex;
      /* border: 1px solid blue; */
+     justify-content: space-between;
     height: 100%;
     width: 91.35vw;
 `;
@@ -177,7 +224,7 @@ const Ing = styled.div`
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
-    width: 600px;
+    width: 300px;
     margin: 0 0 5px 0;
     padding: 2px;
     border: 1px solid grey;
@@ -197,14 +244,13 @@ const Div = styled.div`
     justify-content: start;
     align-items: start;
     margin: 0 0 0 20px;
-    width: 35%;
+    width: 55%;
+    overflow-y: scroll;
 `;
 
-const Button = styled.button`
-`;
 
 const Img = styled.img`
-    width: 600px;
+    width: 400px;
     align-self: center;
 
 `;

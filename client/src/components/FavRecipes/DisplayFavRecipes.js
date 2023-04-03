@@ -114,29 +114,29 @@ const DisplayFavRecipes = ({ favRecipes }) => {
       {!favRecipes ? (
         <span> Loading ... </span>
       ) : (
+
         favRecipes.map((recipe) => {
+
           return (
-            <div key={recipe._id}>
-              <span>{recipe.recipeName}</span>
-              <img src={recipe.recipeImage} />
-              <Button
-                onClick={() => {
-                  handleRecipeDetails(recipe);
-                }}
-              >
-                Recipe Details
-              </Button>
-              <span>?</span>
-              <Button
-                onClick={() => {
-                  handleRemoveFromFavs(recipe);
-                }}
-              >
-                Remove From Favourites
-              </Button>
-            </div>
+
+            <Div key={recipe._id} onClick = { () => {
+              handleRecipeDetails(recipe)
+            }}>
+              <Img src={recipe.recipeImage} />
+              <Name>{recipe.recipeName}</Name>
+
+                 <Button
+                    onClick={() => {
+                      handleRemoveFromFavs(recipe);
+                    }}
+                  >
+                    Remove From Favourites
+                  </Button>
+            </Div>
+
           );
         })
+
       )}
     </>
   );
@@ -144,4 +144,43 @@ const DisplayFavRecipes = ({ favRecipes }) => {
 
 export default DisplayFavRecipes;
 
-const Button = styled.button``;
+const Name = styled.div`
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+`;
+
+const Button = styled.button`
+
+  border: none;
+  color: white;
+  background-color: #912247;
+
+  &:hover{
+    cursor: pointer;
+    background-color: #6e1533;
+  }
+`;
+
+const Div = styled.div`
+width: 800px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+background-color: #cc4774;
+color: white;
+
+
+&:hover{
+  cursor: pointer;
+  outline: 2px solid lightpink
+}
+    
+`;
+
+const Img = styled.img`
+  width: 150px;
+`;

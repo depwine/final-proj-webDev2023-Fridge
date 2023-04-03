@@ -1,37 +1,38 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 
-const Login = () => {
-  
-  const { loginWithRedirect } = useAuth0();
+const SidebarLogout = () => {
+
+    const {  logout } = useAuth0();
+
 
   return (
     <>
       <Button
         onClick={() => {
-          loginWithRedirect();
+          logout();
         }}
       >
-        Log in
+        Log out
       </Button>
     </>
   );
 };
 
-export default Login;
+export default SidebarLogout;
 
 const Button = styled.button`
-  font-size: 15px;
   border: none;
-  color: black;
-  background-color: white;
-  font-size: 50px;
+  background-color: #912247;
+  color: white;
+  font-size: 15px;
 
   &:hover{
     cursor: pointer;
-    color: black;
+    color: white;
     text-decoration: underline;
 
   }
 
 `;
+

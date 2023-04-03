@@ -4,15 +4,11 @@ import { useNavigate} from "react-router-dom";
 
 const Recipe = ({ recipes, usedIngredients}) => {
 
-  console.log(recipes)
-  console.log(usedIngredients)
-
  const nav = useNavigate()
 
         // on click of a recipe, go here and initialize this state: 
   const handleClick = (recipe) => {
 
-    console.log(recipe)
     nav("/recipe-details", {state : {data: recipe}})
 
   }
@@ -68,23 +64,24 @@ const Div = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    border: 2px solid grey;
-    background-color: #f8f8f8;
-    border-radius: 15px;
+    background-color: #fff0f5;   
+     border-radius: 15px;
     width: 250px;
-    height: 360px;
+    height: 340px;
     padding: 5px;
     margin: 5px 0 5px 0;
     box-shadow: 2px 2px 2px lightgrey;
 
     &:hover { 
       cursor: pointer; 
-      outline: 5px solid red;
+      outline: 2px solid #912247;
+      box-shadow: 4px 4px 4px lightgray;
+
     }
     
 `;
 
 const Img = styled.img`
-    width: 200px;
+    width: 250px;
 `;
 
