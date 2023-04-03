@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { UserContext } from "../Backbone/UserContext";
 import { useContext, useState} from "react";
-import Recipe from "../FeedMe/Recipe";
+import Recipe from "../RecipeDetails/Recipe";
 
 const Homepage = () => {
 
@@ -88,7 +88,7 @@ const Homepage = () => {
           {
             ! trendingRecipes
             ? <span> Loading ... </span>
-            : (<RecipeWrapper><Recipe recipes={ trendingRecipes }/></RecipeWrapper>)
+            : (<RecipeWrapper> <Recipe recipes={ trendingRecipes }/> </RecipeWrapper>)
           }
       </Wrapper>
 

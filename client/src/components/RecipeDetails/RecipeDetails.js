@@ -1,7 +1,9 @@
 import { useLocation } from "react-router-dom"
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
-import AddToFavRecipe from "./AddToFavRecipe";
+import AddToFavRecipe from "../FeedMe/AddToFavRecipe";
+import RecipeEquipment from "./RecipeEquipment";
+import RecipeIngredients from "./RecipeIngredients";
 
 const RecipeDetails = () => {
 
@@ -12,33 +14,7 @@ const RecipeDetails = () => {
 
     console.log(recipeInfo)
 
-    let parsedInstructions = null;
-
-
-
-        /// do a lookup of the recipe id to populate fields
-            // current recipe info is awful at best
-
-    if (recipeInfo.instructions) {
-
-
-        const parseInstructions = (str) => {
-            if ((str===null) || (str===''))
-                return false;
-            else
-                str = str.toString();
-                
-            // Regular expression to identify HTML tags in
-            // the input string. Replacing the identified
-            // HTML tag with a null string.
-            return str.replace( /(<([^>]+)>)/ig, '');
-    } 
-
-     parsedInstructions = parseInstructions(recipeInfo.instructions)
-
-    }
-
-
+    let random = Math.random()
 
     return (
         <>
@@ -55,7 +31,29 @@ const RecipeDetails = () => {
                     <h3>Servings : {recipeInfo.servings}</h3>
                     <h3>Weight Watcher Score : {recipeInfo.weightWatcherSmartPoints}</h3>
 
-                    <RecipeInst>{parsedInstructions}</RecipeInst>
+                        {
+                            // display step by step instructions : 
+                        }
+
+                    <RecipeInst>{recipeInfo.analyzedInstructions[0].steps.map((inst) => {
+
+                        return (
+                            <div key= {random}>
+                                <div>Step: {inst.number} Step</div>
+                                {/* <div><RecipeIngredients inst = {inst}/></div>
+                                <div><RecipeEquipment inst = {inst}/></div> */}
+                                {/* <span>Length: {inst.length.number} {inst.length.unit}</span> */}
+                                {/* <span>{inst.step}</span> */}
+
+                            </div>
+                        )
+
+                    })}</RecipeInst>
+
+
+
+
+
 
                     { 
                     ! user 

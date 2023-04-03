@@ -14,11 +14,10 @@ const client = new MongoClient(MONGO_URI, options)
 
 const getOneRecipe = async (req, res) => {
 
-    const body = req.params
-    console.log(body)
+    const body = req.params.recipe
 
     const queryParams = {
-
+        id: Number(body)
     }
 
     try {
@@ -39,7 +38,7 @@ const getOneRecipe = async (req, res) => {
                 .status(200)
                 .json({
                     status: 200,
-                    message: `successfully retrieved recipe info`,
+                    message: `successfully retrieved recipe info for ${req.params.recipe}`,
                     data: results
                 })
         } 

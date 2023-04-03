@@ -73,14 +73,40 @@ const DisplayFavRecipes = ({ favRecipes }) => {
   };
 
   const handleRecipeDetails = (recipe) => {
-    fetch(`http://localhost:4000/api/recipe/${recipe.recipeId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        let fetchedRecipe = data.data;
 
-        nav("/recipe-details", { state: { data: fetchedRecipe } });
-      });
+                            // get mock recipe for testing
+
+                      // fetch(`http://localhost:4000/api/recipe/${recipe.recipeId}`)
+                      //   .then((res) => res.json())
+                      //   .then((data) => {
+                      //     console.log(data);
+                      //     let fetchedRecipe = data.data;
+
+                      //     nav("/recipe-details", { state: { data: fetchedRecipe } });
+                      //   })
+                      //   .catch((err) => {
+                      //     console.log(err)
+                      //   })
+
+      //fetch actual recipe by ID from API
+
+      const recipeId = recipe.recipeId
+      const url = `https://api.spoonacular.com/recipes/${recipeId}/information`
+      const API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
+  
+      const searchConcact = `${url}?apiKey=${API.apiKey}`  
+
+      fetch(searchConcact)
+        .then((res) => res.json())
+        .then((data) => {
+          const fetchedRecipe = data;
+            // bounce to recipe details, send fetchedRecipe to that component for displaying.
+          nav("/recipe-details", { state: { data: fetchedRecipe } });
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+
   };
 
   return (

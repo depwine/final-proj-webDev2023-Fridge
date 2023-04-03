@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FeedMe from "../FeedMe/FeedMe";
 import Homepage from "../Homepage/Homepage";
-import RecipeDetails from "../FeedMe/RecipeDetails";
+import RecipeDetails from "../RecipeDetails/RecipeDetails";
 import styled from "styled-components";
 import Header from "./Header";
 import Sidebar from "./Sidebar";

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useContext, useState } from "react";
 import { UserContext } from "../Backbone/UserContext";
 import IngredientContainer from "../FeedMe/IngredientContainer";
-import Recipe from "./Recipe";
+import Recipe from "../RecipeDetails/Recipe";
 
 const FeedMe = () => {
   // oneIngredient, setOneIngredient

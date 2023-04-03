@@ -1,9 +1,6 @@
-import UsedIngredients from "./UsedIngredients";
+import UsedIngredients from "../FeedMe/UsedIngredients";
 import styled from "styled-components";
 import { useNavigate} from "react-router-dom";
-import { useState } from "react";
-
-
 
 const Recipe = ({ recipes }) => {
 
@@ -11,7 +8,7 @@ const Recipe = ({ recipes }) => {
 
         // on click of a recipe, go here and initialize this state: 
   const handleClick = (recipe) => {
-    nav("/recipe-details", {state : {data: recipe}})
+    nav("/recipe-details", {state : {data: recipe.recipeId}})
 
   }
 
