@@ -24,17 +24,21 @@ const Recipe = ({ recipes }) => {
 
           <Div key={recipe._id} onClick={() => {            handleClick(recipe)          }}>
 
-                <span>Recipe :  {recipe.title} </span>
-                <Img src={recipe.image}/>
-                <div></div>
-                <div></div>
-                <span>Recipe :  {recipe.title} </span>
+                  <h3>{recipe.title} </h3>
+                  <Img src={recipe.image}/>
+                  <div></div>
 
-                <div>Used Ingredients + Quantities: </div>
-                <UsedIngredients usedIngredients={recipe.usedIngredients} />
+                  {
+                    recipe.usedIngredients && 
 
+                    (
+                      <>
+                        <div>Used Ingredients + Quantities: </div>
+                        <UsedIngredients usedIngredients={recipe.usedIngredients} />
+                      </>
+                    )                
+                  }
           </Div>
-
         );
       })}
 

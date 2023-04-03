@@ -54,11 +54,10 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
 
                    // add to fave recipes state
                     console.log(favRecipes)
-                    let recipeToAdd = data.data
 
                     setFavRecipes((prev) => [                       
                         ...prev,
-                        ...recipeToAdd
+                        postBody
                     ])           
 
 

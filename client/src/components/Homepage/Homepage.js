@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { UserContext } from "../Backbone/UserContext";
-import { useContext } from "react";
+import { useContext, useState} from "react";
 import Recipe from "../FeedMe/Recipe";
 
 const Homepage = () => {
 
   const { user } = useAuth0();
-  const { setFavRecipes, recipes, setRecipes} = useContext(UserContext);
+  const { setFavRecipes, recipes, setRecipes, favRecipes} = useContext(UserContext);
+  const [ trendingRecipes, setTrendingRecipes ] = useState()
 
   // get a few random recipes as trending
 
@@ -38,7 +39,7 @@ const Homepage = () => {
         
     }
 
-  }, [])
+  }, [user])
 
 
       // fetch spoon API to populate 5 trending recipes
@@ -65,19 +66,30 @@ const Homepage = () => {
 
                     //mock data fetch
 
+                    fetch ("http://localhost:4000/api/randomrecipes")
+                      .then((res) => res.json())
+                      .then((data) => {
+                        console.log(data)
+                        setTrendingRecipes(data.data)
+                      })
+                      .catch((err) => {
+                        console.log(err)
+                      })
+
+
   }, [])
 
 
   return (
 
       <Wrapper>
-        Trending Recipes:
-                  {
-        ! recipes
-        ? <span></span>
-        : <span>Recipes </span>
-        //<Recipe recipes={ recipes }/>
-      }
+        <h1>Trending Recipes:</h1>
+
+          {
+            ! trendingRecipes
+            ? <span> Loading ... </span>
+            : (<RecipeWrapper><Recipe recipes={ trendingRecipes }/></RecipeWrapper>)
+          }
       </Wrapper>
 
   );
@@ -90,7 +102,13 @@ const Wrapper = styled.div`
   width: 91.35vw;
 `;
 
-
+const RecipeWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  row-gap: 20px;
+  column-gap: 20px;
+`;
 
 const Button = styled.button`
 `;

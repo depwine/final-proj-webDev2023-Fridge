@@ -10,36 +10,101 @@ const RecipeDetails = () => {
     const rawData = useLocation();
     const recipeInfo = rawData.state.data
 
+    console.log(recipeInfo)
+
+    let parsedInstructions = null;
+
+
+
+        /// do a lookup of the recipe id to populate fields
+            // current recipe info is awful at best
+
+    if (recipeInfo.instructions) {
+
+
+        const parseInstructions = (str) => {
+            if ((str===null) || (str===''))
+                return false;
+            else
+                str = str.toString();
+                
+            // Regular expression to identify HTML tags in
+            // the input string. Replacing the identified
+            // HTML tag with a null string.
+            return str.replace( /(<([^>]+)>)/ig, '');
+    } 
+
+     parsedInstructions = parseInstructions(recipeInfo.instructions)
+
+    }
+
+
+
     return (
         <>
         <Wrapper>
-        <Div>
-            <h1>  {recipeInfo.title}  </h1>
-            <Img src = {recipeInfo.image} />
-            <IngTitle>Ingredients: </IngTitle>
-            {
-                recipeInfo.missedIngredients.map((ing) => {
-                    return (
-                        <Ing key = {ing.id}>
-                            <Bold>{ing.original}</Bold>
+                <Div>
+                    
+                    <H1>Summary:</H1>
+                    <h2> {recipeInfo.cuisines.map((cuisine) => {
+                        return (`${cuisine} `)
+                    })} ({recipeInfo.dishTypes})</h2>
 
-                            <div>{ing.amount} {ing.unit} {ing.extendedName}</div>
-                            <Aisle>Aisle: {ing.aisle}</Aisle>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </Ing>
-                    )
-                })
-            }
-            { 
-            ! user 
-            ? <span>Log in to save this recipe!</span>
-            : ( <AddToFavRecipe recipeInfo ={recipeInfo} user={user}/> )
-             }        
-        </Div>
+                    <h1>Instructions:</h1>
+                    <h3>Ready In : {recipeInfo.readyInMinutes} Minutes</h3>
+                    <h3>Servings : {recipeInfo.servings}</h3>
+                    <h3>Weight Watcher Score : {recipeInfo.weightWatcherSmartPoints}</h3>
 
-            </Wrapper>
+                    <RecipeInst>{parsedInstructions}</RecipeInst>
+
+                    { 
+                    ! user 
+                    ? <span>Log in to save this recipe!</span>
+                    : ( <AddToFavRecipe recipeInfo ={recipeInfo} user={user}/> )
+                    }   
+                </Div>
+
+                <RightDiv>
+                    <H1>  {recipeInfo.title}  </H1>
+                    <Img src = {recipeInfo.image} />
+                    <IngTitle>Ingredients: </IngTitle>
+                    {
+                        ! recipeInfo.missedIngredients
+                        ?                 
+                        (   <IngDiv>      
+                            {
+                                recipeInfo.extendedIngredients.map((ing) => {
+                                    return (
+                                        <Ing key = {ing.id}>
+                                            <Bold>{ing.original}</Bold>
+                                            <div>{parseFloat(ing.amount.toFixed(2))} {ing.unit} {ing.nameClean}</div>
+                                            <Aisle>Aisle: {ing.aisle}</Aisle>
+                                        </Ing>
+                                    )
+                                })
+                            }               
+
+                            </IngDiv>      
+                        )
+                        :             
+                        (           
+                            
+                                recipeInfo.missedIngredients.map((ing) => {
+                                    return (
+                                        <Ing key = {ing.id}>
+                                            <Bold>{ing.original}</Bold>    
+                                            <div>{ing.amount} {ing.unit} {ing.extendedName}</div>
+                                            <Aisle>Aisle: {ing.aisle}</Aisle>
+                                        </Ing>
+                                    )
+                                })
+                            
+                        )
+                    }
+     
+                </RightDiv>
+
+        </Wrapper>
         </>
     )
 
@@ -47,7 +112,30 @@ const RecipeDetails = () => {
 
 export default RecipeDetails
 
+const RightDiv = styled.div`
+
+    margin: 0 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+
+`;
+
+const RecipeInst = styled.div`
+
+
+`;
+
+const IngDiv = styled.div`
+    display: flex;
+    flex: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+`;
+
 const Wrapper = styled.div`
+    display: flex;
      /* border: 1px solid blue; */
     height: 100%;
     width: 91.35vw;
@@ -57,11 +145,12 @@ const Aisle = styled.span`
     font-style: italic;
 `;
 
-
 const IngTitle = styled.div`
-    margin: 0 0 10px 0;
+    margin: 10px 0 10px 0;
     font-weight: bold;
     font-size: 20px;
+    text-align: center;
+
 `;
 
 const Bold = styled.span`
@@ -82,21 +171,28 @@ const Ing = styled.div`
     border: 1px solid grey;
 `;
 
-const H1 = styled.div`
-    color:black,  
-
+const H1 = styled.h1`
+    color:black;
+    font-size: 40px;
+    margin: 10px 0 10px 0;
+    font-weight: bold;
+    text-align: center;
 `;
 
 const Div = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
+    align-items: start;
+    margin: 0 0 0 20px;
+    width: 35%;
 `;
 
-const Button = styled.button``;
+const Button = styled.button`
+`;
 
 const Img = styled.img`
-    width: 650px;
+    width: 600px;
+    align-self: center;
 
 `;

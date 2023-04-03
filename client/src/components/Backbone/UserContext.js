@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
   const [oneIngredient, setOneIngredient] = useState();
 
       // RECIPE STATES 
-  const [favRecipes, setFavRecipes] = useState();
+  const [favRecipes, setFavRecipes] = useState([]);
   const [recipes, setRecipes] = useState();
 
     // USER INFO / LOGINS STATES 

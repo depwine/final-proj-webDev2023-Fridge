@@ -4,7 +4,7 @@ const UsedIngredients = ({ usedIngredients }) => {
     <>
       {usedIngredients.map((ing) => {
         return (
-          <span key={ing.id}>
+          <span key={ing._id}>
             <span>Name : {ing.name}</span>
             <div></div>
             <span>

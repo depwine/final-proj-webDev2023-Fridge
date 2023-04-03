@@ -28,9 +28,9 @@ const getRandomRecipes = async (req,res) => {
 
     if (results) {
         res
-            .status(400)
+            .status(200)
             .json({
-                status: 400,
+                status: 200,
                 message: "random recipe lookup successful",
                 data: results
             })
