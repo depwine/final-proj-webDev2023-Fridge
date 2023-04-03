@@ -1,20 +1,20 @@
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../Backbone/UserContext";
 import DisplayFavRecipes from "./DisplayFavRecipes";
-import { useEffect } from "react";
-
 
 const FavRecipes = () => {
 
     const { user } = useAuth0();
     const { favRecipes } = useContext(UserContext);
 
+    useEffect(() => {
+
+    }, [favRecipes])
 
     return (
         <Wrapper>
-
             {
                 ! user
                 ? <div>Log in to use this section </div>
@@ -23,7 +23,7 @@ const FavRecipes = () => {
                         User : {user.name}                        
                         {/* UserId : {user.} */}
                         {
-                            ! favRecipes
+                            ! favRecipes || favRecipes.length < 1
                             ? (
                                 <>
                                     <div>Add some recipes!</div>
@@ -36,7 +36,6 @@ const FavRecipes = () => {
                                     <DisplayFavRecipes favRecipes={favRecipes}/>
                                 </>
                                )
-
                         }
                     </>
                 )

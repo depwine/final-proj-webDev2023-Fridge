@@ -7,7 +7,7 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
 
     const [err, setErr] = useState()
 
-    const { setPostFlag } = useContext(UserContext);
+    const { favRecipes, setFavRecipes } = useContext(UserContext);
 
 
     const handleAddToFav = () => {
@@ -49,8 +49,18 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)                
-                setPostFlag(data.data)
+                console.log(data)    
+
+
+                   // add to fave recipes state
+                    console.log(favRecipes)
+                    let recipeToAdd = data.data
+
+                    setFavRecipes((prev) => [                       
+                        ...prev,
+                        ...recipeToAdd
+                    ])           
+
 
                 if (data.status === 200) {
                     setErr("Recipe added to your Favourites!")

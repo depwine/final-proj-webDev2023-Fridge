@@ -21,58 +21,58 @@ const FeedMe = () => {
 
                   // BELOW THIS IS THE SPOON FETCH
 
-  // const fetchRecipe = () => {
+  const fetchRecipe = () => {
 
-  //   let ingredientNames = ingredientSearchQuery.map((e) => {
-  //       return e.name
-  //   })
+    let ingredientNames = ingredientSearchQuery.map((e) => {
+        return e.name
+    })
 
-  //   let url = "https://api.spoonacular.com/recipes/findByIngredients"
-  //   let API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
-  //   let query = ingredientNames
-  //   let number = 2;
+    let url = "https://api.spoonacular.com/recipes/findByIngredients"
+    let API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
+    let query = ingredientNames
+    let number = 2;
 
-  //   let searchConcact = `${url}?apiKey=${API.apiKey}&ingredients=${query}&number=${number}`
+    let searchConcact = `${url}?apiKey=${API.apiKey}&ingredients=${query}&number=${number}`
 
-  //       //test concact above (works)
-  //   // console.log(searchConcact)
+        //test concact above (works)
+    // console.log(searchConcact)
 
-  //   fetch (`${searchConcact}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //           console.log(data)
-  //           setRecipes(data)
-  //       })
-  //       .catch((err) => {
-  //           console.log(err)
-  //       })
+    fetch (`${searchConcact}`)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            setRecipes(data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 
             
-  // }
+  }
 
                               // BELOW THIS IS THE MOCK FETCH ////
 
-  const fetchRecipe = () => {
+  // const fetchRecipe = () => {
 
-    setRecipes(null)
+  //   setRecipes(null)
 
-    // set previous recipe to blank
+  //   // set previous recipe to blank
 
 
-      //test concact above (works)
-  // console.log(searchConcact)
+  //     //test concact above (works)
+  // // console.log(searchConcact)
 
-  fetch (`http://localhost:4000/api/recipes`)
-      .then((res) => res.json())
-      .then((data) => {
-          console.log(data)
-          setRecipes(data.data)
-      })
-      .catch((err) => {
-          console.log(err)
-      })
+  // fetch (`http://localhost:4000/api/recipes`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //         console.log(data)
+  //         setRecipes(data.data)
+  //     })
+  //     .catch((err) => {
+  //         console.log(err)
+  //     })
 
-  }
+  // }
 
 
   /// ---------------------------------------------HANDLE SEARCH---------------------------------- ///
@@ -202,7 +202,7 @@ const FeedMe = () => {
       </SearchResultsDiv>
 
       {
-      !ingError 
+      ! ingError 
       ? <div>{null}</div> 
       : <Error>{ingError}</Error>
       }

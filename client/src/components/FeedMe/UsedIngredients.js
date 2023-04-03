@@ -1,4 +1,5 @@
 const UsedIngredients = ({ usedIngredients }) => {
+  
   return (
     <>
       {usedIngredients.map((ing) => {

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../Backbone/UserContext";
 import styled from "styled-components";
 
@@ -6,7 +6,6 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 const Search = () => {
 
-  const [value, setValue] = useState("")
 
   // THIS FUNCTIONALITY IS BASED ON REACT - SEARCH - AUTOCOMPLET
      // ALL CODE WAS FROM THE PROVIDED NPM
@@ -50,8 +49,6 @@ const Search = () => {
     tempArr.push(itemWithAmount)
     setIngredientSearchQuery([...ingredientSearchQuery, tempArr[0]])
 
-
-    setValue("")
   }
 
 

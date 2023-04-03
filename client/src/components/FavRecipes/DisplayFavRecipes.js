@@ -1,91 +1,121 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import { useContext } from "react";
 import { UserContext } from "../Backbone/UserContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
+const DisplayFavRecipes = ({ favRecipes }) => {
+  const { setFavRecipes } = useContext(UserContext);
+  const { user } = useAuth0();
 
-const DisplayFavRecipes = ({favRecipes}) => {
+  const nav = useNavigate();
 
-    const { setPostFlag } = useContext(UserContext);
-    const nav = useNavigate()
+  // remove from DB
+  const deleteFetch = (bodyParams) => {
+    fetch("http://localhost:4000/api/favrecipes", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "DELETE",
+      body: JSON.stringify(bodyParams),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, "deleting from favourites!");
+        console.log("deleted!");
+        // new fetch, re-set state to new favourites
+        reFetchFavs();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    const handleRemoveFromFavs = (recipe) => {
+  const reFetchFavs = () => {
+    // fetch new data
+    if (user) {
+      const concatUserName = `${user.given_name} ${user.family_name}`;
 
-                    // body : 
-                        /*
+      // re-fetch new Favs (post delete)
+      fetch(
+        `http://localhost:4000/api/favrecipes?userId=${user.sub}&userName=${concatUserName}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Fav recipes for user re-fetch: ", data.data);
+
+          setFavRecipes(data.data);
+        })
+
+        .catch((err) => {
+          console.log(err);
+          setFavRecipes();
+        });
+    }
+  };
+
+  const handleRemoveFromFavs = (recipe) => {
+    // body :
+    /*
                             {
                                 "recipeId" : "xxxx",
                                 "recipeName" : "xxx"
                             }
                         */
 
-        const bodyParams = {
-            "recipeId" : recipe.recipeId,
-            "recipeName" :  recipe.recipeName
-        }
+    const bodyParams = {
+      recipeId: recipe.recipeId,
+      recipeName: recipe.recipeName,
+    };
+    // delete
+    deleteFetch(bodyParams);
+  };
 
-        console.log(bodyParams)
+  const handleRecipeDetails = (recipe) => {
+    fetch(`http://localhost:4000/api/recipe/${recipe.recipeId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        let fetchedRecipe = data.data;
 
-        fetch ("http://localhost:4000/api/favrecipes", {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              },
-              method: "DELETE",
-              body: JSON.stringify(bodyParams)
-            })
-            .then((res) => res.json())
-            .then((data) => {
+        nav("/recipe-details", { state: { data: fetchedRecipe } });
+      });
+  };
 
-             // //refresh state
-                setPostFlag(recipe.recipeId)
+  return (
+    <>
+      {!favRecipes ? (
+        <span> Loading ... </span>
+      ) : (
+        favRecipes.map((recipe) => {
+          return (
+            <div key={recipe._id}>
+              <span>{recipe.recipeName}</span>
+              <img src={recipe.recipeImage} />
+              <Button
+                onClick={() => {
+                  handleRecipeDetails(recipe);
+                }}
+              >
+                Recipe Details
+              </Button>
+              <span>?</span>
+              <Button
+                onClick={() => {
+                  handleRemoveFromFavs(recipe);
+                }}
+              >
+                Remove From Favourites
+              </Button>
+            </div>
+          );
+        })
+      )}
+    </>
+  );
+};
 
-                console.log(data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })  
-    }
-
-    const handleRecipeDetails = (recipe) => {
-
-        fetch (`http://localhost:4000/api/recipe/${recipe.recipeId}`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                let fetchedRecipe = data.data
-
-                nav("/recipe-details", {state : {"data": fetchedRecipe}})
-            })
-    }
-
-    return (<>
-
-        {
-            ! favRecipes
-            ? <span> Loading ... </span>
-            : 
-            favRecipes.map((recipe) => {
-                return (
-                    <>
-                        <div key = {recipe._id}>
-                            <span>{recipe.recipeName}</span>
-                            <img src = {recipe.recipeImage}/>
-                            <Button onClick = {() => {handleRecipeDetails(recipe)}}>Recipe Details</Button>
-                            <span>?</span>
-                            <Button onClick = {() => {handleRemoveFromFavs(recipe)}}>Remove From Favourites</Button>
-                        </div>
-                    </>
-                )
-            })
-        }
-        
-    </>)
-
-
-}
-
-export default DisplayFavRecipes
+export default DisplayFavRecipes;
 
 const Button = styled.button``;

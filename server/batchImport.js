@@ -1,5 +1,6 @@
 const ingredients = require("./data/name-id-ingredient.json")
 const recipes = require ("./data/mockRecipeResponse.json")
+const randomRecipes = require("./data/ten-random-recipes.json")
 
 
 const { MongoClient } = require("mongodb");
@@ -78,11 +79,44 @@ const batchMockRecipes = async (req, res) => {
 
 }
 
+const batchMockRandomRecipes = async (req, res) => {
+
+  try{
+
+    //client
+    await client.connect()
+
+    // connect to the database
+    const db = client.db("Fridge");
+    console.log("connected!");
+    
+    //write
+    const results = await db.collection("random-recipes").insertMany(randomRecipes)
+
+    //check 
+    if (results) {
+        console.log("successfully batch inserted Random 10 recipes to DB")
+    }
+
+
+  } catch (err){
+    //err
+      console.log(err, "failure to write batch to server")
+  }
+
+  //disc
+  client.close()
+  console.log("disconnected!")
+
+}
+
   // *-----------------RUN EACH OF THESE FUNCTIONS 1 AT A TIME, COMMENTING THE OTHERS OURS ------------------*/
   // otherwise, mongo batch write error gets triggered //
 
     // batchImportIngredients()
 
-    batchMockRecipes()
+    // batchMockRecipes()
+
+    batchMockRandomRecipes()
 
 

@@ -11,6 +11,7 @@ const { postFavRecipes} = require ("./handlers/postFavRecipes")
 const { deleteFavRecipes } = require ("./handlers/deleteFavRecipes")
 const { getFavRecipes } = require ("./handlers/getFavRecipes")
 const { getOneRecipe } = require ("./handlers/getOneRecipe")
+const { getRandomRecipes} = require ("./handlers/getRandomRecipes")
 
 const port = 4000;
 
@@ -50,7 +51,7 @@ express()
     .get("/api/recipe/:recipe", getOneRecipe)
     
     .get("/api/favrecipes", getFavRecipes)
-
+    .get("/api/randomrecipes", getRandomRecipes)
     
     .post("/api/favrecipes", postFavRecipes)
     .delete("/api/favrecipes", deleteFavRecipes)
