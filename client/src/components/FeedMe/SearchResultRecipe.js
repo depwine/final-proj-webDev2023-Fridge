@@ -1,41 +1,47 @@
+import UsedIngredients from "../FeedMe/UsedIngredients";
 import styled from "styled-components";
 import { useNavigate} from "react-router-dom";
 
-const Recipe = ({ recipes, usedIngredients}) => {
+const SearchResultRecipe = ({ recipes, usedIngredients}) => {
 
- const nav = useNavigate()
+const nav = useNavigate()
 
         // on click of a recipe, go here and initialize this state: 
-  const handleClick = (recipe) => {
+    const handleClick = (recipe) => {
 
     nav("/recipe-details", {state : {data: recipe}})
 
-  }
+    }
 
-  return (
+    return (
     <>
-          {
+        {
           // map through recipe, make a summary
         }
 
-      {recipes.map((recipe) => {
+    {recipes.map((recipe) => {
         
         return (
 
-          <Div key={recipe._id} onClick={() => {            handleClick(recipe)          }}>                              
-            <Img src={recipe.image}/>
-            <Text>
+        <Div key={recipe._id} onClick={() => {            handleClick(recipe)          }}>
+                <Img src={recipe.image}/>
+                
+                <Text>
                     <h3>{recipe.title} </h3>
-            </Text>
-          </Div>
+                    <div>Ingredients From Your Search: </div>
+                    <UsedIngredients usedIngredients={usedIngredients[recipes.indexOf(recipe)]} />       
+                </Text>
+
+        </Div>
         );
-      })}
+    })}
+
 
     </>
-  );
+    );
 };
 
-export default Recipe;
+export default SearchResultRecipe;
 
 const Text = styled.div`
     display: flex;
@@ -68,7 +74,6 @@ const Div = styled.div`
 `;
 
 const Img = styled.img`
-    width: 150px;
-    
+    width: 150px;    
 `;
 

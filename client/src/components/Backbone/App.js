@@ -8,24 +8,17 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Profile from "../Profile/Profile";
 import FavRecipes from "../FavRecipes/FavRecipes";
+import { createGlobalStyle } from "styled-components";
 
 function App() {
   return (
     <BrowserRouter>
+      <GlobalStyle/>
 
         {
           // set margin and padding to zero across site
         }
 
-      <style jsx="true" global="true"> {
-      ` 
-        body {
-          margin: 0px; 
-          padding: 0px;
-          height: 100%;
-        } 
-      `
-      } </style>
 
       <Container>
         {/* <Header /> */}
@@ -49,10 +42,20 @@ function App() {
 
 export default App;
 
+const GlobalStyle = createGlobalStyle`
+
+    body{
+      margin: 0px; 
+      padding: 0px;
+      height: 100%;
+      font-family: 'Inter', sans-serif; 
+      background-color: #f7f7f7;
+   }
+
+`;
 
 const Container = styled.div`
   /* background-color: red; */
-  position: absolute;
   display: flex;
   flex-direction: column;
   height: 98vh;
@@ -63,7 +66,7 @@ const Content = styled.div`
   /* background-color: blue; */
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: c;
 `;
 
 const NonSidebar = styled.div`

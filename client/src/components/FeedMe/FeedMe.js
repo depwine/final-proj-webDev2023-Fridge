@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useContext, useState } from "react";
 import { UserContext } from "../Backbone/UserContext";
 import IngredientContainer from "../FeedMe/IngredientContainer";
-import Recipe from "../RecipeDetails/Recipe";
+import SearchResultRecipe from "./SearchResultRecipe";
 
 const FeedMe = () => {
   // oneIngredient, setOneIngredient
@@ -246,7 +246,7 @@ const FeedMe = () => {
       {
         ! recipes
         ? <span></span>
-        : <Recipe recipes={ recipes } usedIngredients = {usedIngredients}/>
+        : <SearchResultRecipe recipes = { recipes } usedIngredients = {usedIngredients} />
       }
       </Right>
 </Wrapper>
@@ -281,8 +281,7 @@ const Left = styled.div`
 
 const Right = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   column-gap: 10px;
   justify-content: flex-start;
   align-content: flex-start;
@@ -290,6 +289,7 @@ const Right = styled.div`
   /* outline: 2px solid green; */
   width: 50%;
   height: 100.7%;
+  padding: 20px 0 0 0;
   `;
 
 const SearchDiv = styled.div`
@@ -323,7 +323,7 @@ const Button = styled.button`
   margin: 0 0 0 10px;
   border-radius: 15px;
   width: 150px;
-  background-color: grey;
+  background-color: #912247;
   color: white;
   border: none;
   font-size: 18px;
@@ -332,7 +332,8 @@ const Button = styled.button`
 
   &:hover{
     cursor: pointer;
-    background-color: darkgray;
+				background-color: #b8607c;
+				color: white;	
   }
 `;
 

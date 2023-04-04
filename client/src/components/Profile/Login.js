@@ -21,17 +21,22 @@ const Login = () => {
 export default Login;
 
 const Button = styled.button`
-  font-size: 15px;
+
   border: none;
   color: black;
-  background-color: white;
   font-size: 50px;
+  background-color: #912247;;
+  border-radius: 15px;
+  width: 200px;
+  height: 70px;
+  color: white;
 
   &:hover{
     cursor: pointer;
-    color: black;
-    text-decoration: underline;
+				background-color: #b8607c;
+				color: white;		
 
   }
 
 `;
+

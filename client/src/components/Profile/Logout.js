@@ -22,16 +22,21 @@ const Logout = () => {
 export default Logout;
 
 const Button = styled.button`
+
   border: none;
   color: black;
-  background-color: white;
   font-size: 15px;
+  background-color: #912247;;
+  border-radius: 15px;
+  width: 90px;
+  height: 30px;
+  color: white;
   margin: 50px 0 0 0;
 
   &:hover{
     cursor: pointer;
-    color: black;
-    text-decoration: underline;
+				background-color: #b8607c;
+				color: white;		
 
   }
 

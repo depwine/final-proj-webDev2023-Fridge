@@ -139,50 +139,50 @@ const ItemSummary = styled.div`
   margin: 0 -20px 0 0;
   align-items: center;
   justify-content: center;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   font-weight: bold;
   text-transform: capitalize;
 `;
 
 const Div = styled.div`
 
-
+background-color: #ffffff;
   border-radius: 15px;
   display: flex;
   flex-direction: row;
   height: 50px;
   width: 770px;
-  border: 1px solid grey;
-  box-shadow: 3px 3px 3px lightgrey;
-  font-size: 18px;
+  outline: 2px solid white;
+  box-shadow: 0px 0px 5px lightgrey;
+  font-size: 15px;
   margin: 5px 0 15px 0;
   justify-content: left;
   align-items: center;
 
   &:hover{
-    box-shadow: 3px 3px 3px grey;
+    box-shadow: 0px 0px 5px grey;
   }
   
 `;
 
 const Remove = styled.button`
-  height: 51px;
+  height: 50px;
   border-radius: 15px;
   border: none;
-  background-color: #c4c4c4;
-  color: white;
+  background-color: #912247;
+  	color: white;
   font-size: 15px;
 
   &:hover{
     cursor: pointer;
-
-    background-color: darkgray;
+    background-color: #b8607c;
+    color: white;	
   }
 
 `
 
 const Label = styled.label`
-  font-size: 18px;
+  font-size: 15px;
 `;
 
 const Level = styled.span``;
@@ -196,7 +196,6 @@ const ItemName = styled.span`
 
 const Units = styled.div`
   display: flex;
-
   flex-direction: column;
   row-gap: 3px;
   justify-content: center;
@@ -229,7 +228,7 @@ const Item = styled.div`
   text-align: center;
   row-gap: 20px;
   width: 150px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   border-radius: 15px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -243,7 +242,7 @@ const Button = styled.button`
   margin: 0 -21px 0px 10px;
   border-radius: 15px;
   width: 65px;
-  background-color: grey;
+  background-color: #912247;	
   color: white;
   border: none;
   font-size: 15px;
@@ -251,8 +250,8 @@ const Button = styled.button`
 
   &:hover{
     cursor: pointer;
-    background-color: darkgray;
-    color: white;
+				background-color: #b8607c;
+				color: white;	
   }
 
 

@@ -49,7 +49,6 @@ export default FavRecipes
 const RecipeWrap = styled.div`
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
 `;
 
 const Wrapper = styled.div`

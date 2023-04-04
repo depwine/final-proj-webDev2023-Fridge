@@ -49,7 +49,7 @@ const Homepage = () => {
                 
                     // let url = "https://api.spoonacular.com/recipes/random"
                     // let API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
-                    // let number = 10;
+                    // let number = 12;
                 
                     // let searchConcact = `${url}?apiKey=${API.apiKey}&number=${number}`                
                 
@@ -58,7 +58,7 @@ const Homepage = () => {
                     //     .then((data) => {
                     //         console.log(data)
                     //         console.log("successful lookup of random recipes")
-                    //         setRecipes(data)
+                    //         setTrendingRecipes(data.recipes)
                     //     })
                     //     .catch((err) => {
                     //         console.log(err)

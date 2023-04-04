@@ -9,20 +9,25 @@ const Profile = () => {
 
   return (
     <Wrapper>
+      
+      {
+            isAuthenticated 
+            ? 
+            (
+            <>
+              <User>
+                <UserProfile user={user} />
+              </User>
+                <Logout />
+            </> 
+            )
+            : (
+              <Center>
+                   <Login/>
+              </Center>
 
-      <User>
-        {
-            isAuthenticated && (<UserProfile user={user} />)
-        }
-      </User>
-
-      <Buttons>
-        {
-            ! isAuthenticated 
-            ? <Login /> 
-            : <Logout />
-        }
-      </Buttons>
+            )
+      }
 
     </Wrapper>
   );
@@ -34,17 +39,19 @@ const User = styled.div`
   margin: 20px;
 `;
 
+const Center= styled.div`
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-self: center;
+`;
+
 const Wrapper = styled.div`
   width: 91.35vw;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   align-content: center;
-`;
-
-const Buttons = styled.div`
-  display: flex;
-
 `;

@@ -154,6 +154,8 @@ const Name = styled.div`
 
 const Button = styled.button`
 
+  height: 100px;
+
   border: none;
   color: white;
   background-color: #912247;
@@ -164,23 +166,39 @@ const Button = styled.button`
   }
 `;
 
+
+const Text = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0 10px 0 0;
+`;
+
 const Div = styled.div`
-width: 800px;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
 
-background-color: #cc4774;
-color: white;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;   
+    width: 800px;
+    height: 100px;
+    padding: 5px;
+    margin: 5px 0 5px 0;
+    box-shadow: 0px 0px 5px lightgrey;
 
-
-&:hover{
-  cursor: pointer;
-  outline: 2px solid lightpink
-}
+    &:hover { 
+        cursor: pointer; 
+        outline: 2px solid #912247;
+        box-shadow: 4px 4px 4px lightgray;
+    }
     
 `;
 
 const Img = styled.img`
-  width: 150px;
+    width: 150px;
+    
 `;
+

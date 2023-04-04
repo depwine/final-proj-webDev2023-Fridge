@@ -14,7 +14,7 @@ const IngredientContainer = () => {
           ? (<NoSearch> Search for your first ingredient ... </NoSearch>) 
           : (
             <>
-              Selected Ingredient(s): (Search to add more!)
+              <SearchText>Selected Ingredient(s): (Search to add more!)</SearchText>
 
               {ingredientSearchQuery.map((ingredient) => {
                 return (
@@ -40,6 +40,9 @@ const Div = styled.div`
 `;
 
 const NoSearch = styled.div`
-  font-size: 30px;
+  font-size: 20px;
   margin: 20px;
+`;
+
+const SearchText = styled.span`
 `;
