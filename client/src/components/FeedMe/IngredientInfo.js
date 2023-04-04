@@ -173,8 +173,8 @@ const ErrDiv = styled.div`
   display: flex;
   font-style : italic;
   font-size: 14px;
-  margin: 0 0 0 28px;
-  width: 351px;
+  margin: 0 220px 0 10px;
+  width: 150px;
 `;
 
 const Wrapper = styled.div`

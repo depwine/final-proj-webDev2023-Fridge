@@ -60,7 +60,7 @@ const FeedMe = () => {
     let url = "https://api.spoonacular.com/recipes/findByIngredients"
     let API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
     let query = ingredientNames
-    let number = 2;
+    let number = 6;
 
     let searchConcact = `${url}?apiKey=${API.apiKey}&ingredients=${query}&number=${number}`
 
@@ -190,7 +190,7 @@ const FeedMe = () => {
             } else {
                 console.log("value issue");
                 setIngError(
-                "There is an issue with your fields, please set POSITIVE (>1) quantity and unit for each ingredient!"
+                "Please `Add` Each ingredient!"
                 );
             }
     }
@@ -266,31 +266,27 @@ const Error = styled.div`
 
 const Wrapper = styled.div`
   position: fixed;
-    top: 80px;
+  top: 80px;
   display: flex;
   flex-direction: row;
-  width: 91.35vw;
-  height: 88.45vh;
+  overflow-y: auto;
 `;
 
 const Left = styled.div`
   /* outline: 2px solid red; */
-  width: 50%;
-  height: 100%;
-  height: 100.7%;
-
+  width: 40%;
 `;
 
 const Right = styled.div`
+  width: 700px;
+  margin: 0 0 0 150px;
   display: flex;
   flex-direction: column;
   column-gap: 10px;
-  justify-content: flex-start;
+  justify-content: end;
   align-content: flex-start;
   align-items: center;
-  width: 50%;
-  height: 100.7%;
-  padding: 15px 0 0 0;
+  padding: 15px 0 0 0px;
   `;
 
 const SearchDiv = styled.div`

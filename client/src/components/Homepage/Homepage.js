@@ -104,7 +104,7 @@ const Wrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 98%;
-  width: 91.35vw;
+
 `;
 
 const RecipeWrapper = styled.div`

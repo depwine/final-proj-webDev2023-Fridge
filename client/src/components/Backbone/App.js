@@ -4,6 +4,7 @@ import FeedMe from "../FeedMe/FeedMe";
 import Homepage from "../Homepage/Homepage";
 import RecipeDetails from "../RecipeDetails/RecipeDetails";
 import styled from "styled-components";
+import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Profile from "../Profile/Profile";
 import FavRecipes from "../FavRecipes/FavRecipes";
@@ -57,19 +58,17 @@ const Container = styled.div`
   /* background-color: red; */
   display: flex;
   flex-direction: column;
-  height: 97vh;
-  width: 100vw;
+  height: 97.91vh;
+  width: 99.99vw;
 `;
 
 const Content = styled.div`
-  /* background-color: blue; */
+  /* background-color: #54545a; */
   height: 100%;
   display: flex;
-  flex-direction: c;
 `;
 
 const NonSidebar = styled.div`
-  margin-left: 165px;
 `;
 
 
