@@ -119,20 +119,23 @@ const DisplayFavRecipes = ({ favRecipes }) => {
 
           return (
 
-            <Div key={recipe._id} onClick = { () => {
+            <Wrapper key={recipe._id} >
+
+              <Div onClick = { () => {
               handleRecipeDetails(recipe)
             }}>
               <Img src={recipe.recipeImage} />
               <Name>{recipe.recipeName}</Name>
+              </Div>
 
                  <Button
                     onClick={() => {
                       handleRemoveFromFavs(recipe);
                     }}
                   >
-                    Remove From Favourites
+                    Delete
                   </Button>
-            </Div>
+            </Wrapper>
 
           );
         })
@@ -152,10 +155,17 @@ const Name = styled.div`
 
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Button = styled.button`
 
-  height: 100px;
-
+  height: 110px;
+  border-radius: 15px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
   border: none;
   color: white;
   background-color: #912247;
@@ -163,15 +173,9 @@ const Button = styled.button`
   &:hover{
     cursor: pointer;
     background-color: #6e1533;
+    outline: 2px solid #6e1533;
+
   }
-`;
-
-
-const Text = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 0 10px 0 0;
 `;
 
 const Div = styled.div`
@@ -183,7 +187,7 @@ const Div = styled.div`
     justify-content: space-between;
     align-items: center;
     background-color: #ffffff;   
-    width: 800px;
+    width: 700px;
     height: 100px;
     padding: 5px;
     margin: 5px 0 5px 0;

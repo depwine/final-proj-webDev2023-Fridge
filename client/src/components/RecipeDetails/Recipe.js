@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { useNavigate} from "react-router-dom";
+import { FaClock } from "react-icons/fa";
 
-const Recipe = ({ recipes, usedIngredients}) => {
+
+const Recipe = ({ recipes }) => {
 
  const nav = useNavigate()
 
@@ -11,6 +13,8 @@ const Recipe = ({ recipes, usedIngredients}) => {
     nav("/recipe-details", {state : {data: recipe}})
 
   }
+
+  console.log(recipes)
 
   return (
     <>
@@ -25,7 +29,8 @@ const Recipe = ({ recipes, usedIngredients}) => {
           <Div key={recipe._id} onClick={() => {            handleClick(recipe)          }}>                              
             <Img src={recipe.image}/>
             <Text>
-                    <h3>{recipe.title} </h3>
+                    <RecTile>{recipe.title} </RecTile>
+                    <Time>{recipe.readyInMinutes}  <FaClock style ={{fontSize: "20px"}}/> </Time>
             </Text>
           </Div>
         );
@@ -36,6 +41,19 @@ const Recipe = ({ recipes, usedIngredients}) => {
 };
 
 export default Recipe;
+
+const RecTile = styled.span`
+  font-size: 15px;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+`;
+
+const Time = styled.span`
+  display: flex;
+  align-items: flex-end;
+  column-gap: 5px;
+  font-size: 15px;
+`;
 
 const Text = styled.div`
     display: flex;

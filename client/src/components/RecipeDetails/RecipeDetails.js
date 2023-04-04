@@ -77,6 +77,8 @@ const RightDiv = styled.div`
 
 
 const Wrapper = styled.div`
+  position: fixed;
+    top: 80px;
     display: flex;
      /* border: 1px solid blue; */
      justify-content: space-between;
@@ -100,6 +102,7 @@ const Div = styled.div`
     align-items: start;
     margin: 0 0 0 20px;
     width: 55%;
+    height: 91%;
     overflow-y: scroll;
 `;
 

@@ -17,7 +17,7 @@ const FavRecipes = () => {
         <Wrapper>
             {
                 ! user
-                ? <div>Log in to use this section </div>
+                ? <h1>Log in to use this section </h1>
                 : (
                     <>
                         <h1>Favourite Recipes</h1>                     
@@ -52,7 +52,7 @@ const RecipeWrap = styled.div`
 `;
 
 const Wrapper = styled.div`
-  position: fixed;
+    position: fixed;
     top: 80px;
     display: flex;
     flex-direction: column;

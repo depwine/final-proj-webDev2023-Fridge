@@ -1,17 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import SidebarLogin from "./SidebarLogin";
-import SidebarLogout from "./SidebarLogout";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate} from "react-router-dom";
-
-
 
 const Sidebar = () => {
 
     const nav = useNavigate()
-
-
     const { user, isAuthenticated } = useAuth0();
 
     return (
@@ -19,7 +13,7 @@ const Sidebar = () => {
         <Div>
                        
             <Logo onClick={()=> {nav("/")}}>
-                <span>FeedMe</span>
+                <Title>FeedMe</Title>
             </Logo>
             <ButtonDiv>
                 <StyledLink to={"/"}> HOME </StyledLink>
@@ -31,7 +25,7 @@ const Sidebar = () => {
             <Log>
                 {
                     ! isAuthenticated 
-                    ? <SidebarLogin /> 
+                    ? null
                     : 
                     (
                     <SidebarFooter>
@@ -50,17 +44,23 @@ const Sidebar = () => {
 
 export default Sidebar
 
+const Title = styled.div`
+    height: 90px;
+    display: flex;
+    align-items: center;
+`;
+
 const Logo = styled.div`
     color: white;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    align-content: center;
     margin: 0 0 0 20px;
     height: 80px;
     font-size: 65px;
     
     &:hover{
         cursor: pointer;
-         color: #d1d1d1;
     }
 `;
 
@@ -83,7 +83,6 @@ const SidebarFooter = styled.span`
 const Img = styled.img`
     width: 50px;
     border-radius: 50%;
-    margin: 0 0 5px 0;
 
     &:hover{
         cursor: pointer;
@@ -95,7 +94,8 @@ const Log = styled.div`
     display: flex;
     flex-direction: row;
     text-align: center;
-    margin: 0 0 20px 0;
+    
+    margin: 0 0 5px 0;
 `;
 
 const Div = styled.div`
@@ -103,6 +103,7 @@ const Div = styled.div`
     font-size: 40px;
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
     justify-content: space-between;
     height: auto;
     width: 100%;
@@ -122,10 +123,11 @@ const StyledLink = styled(Link)`
     font-size: 25px;
     text-decoration: none;
     color: white;
+    height: 20px;
 
     &:hover{
         cursor: pointer;
-         color: #d1d1d1
+        outline: 2px solid white;
     }
 
 `;

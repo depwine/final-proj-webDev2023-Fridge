@@ -288,10 +288,9 @@ const Right = styled.div`
   justify-content: flex-start;
   align-content: flex-start;
   align-items: center;
-  /* outline: 2px solid green; */
   width: 50%;
   height: 100.7%;
-  padding: 20px 0 0 0;
+  padding: 15px 0 0 0;
   `;
 
 const SearchDiv = styled.div`
@@ -316,8 +315,8 @@ const LookForThree = styled.span`
 `;
 
 const Div = styled.div`
-  font-size: 30px;
-  margin: 20px;
+  font-size: 25px;
+  margin: 0 0 10px 0;
 `;
 
 const Button = styled.button`
