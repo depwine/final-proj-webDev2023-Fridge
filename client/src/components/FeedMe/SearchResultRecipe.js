@@ -1,6 +1,8 @@
 import UsedIngredients from "../FeedMe/UsedIngredients";
 import styled from "styled-components";
 import { useNavigate} from "react-router-dom";
+import { FaClock } from "react-icons/fa";
+
 
 const SearchResultRecipe = ({ recipes, usedIngredients}) => {
 
@@ -26,12 +28,20 @@ const nav = useNavigate()
         <Div key={recipe._id} onClick={() => {            handleClick(recipe)          }}>
                 <Img src={recipe.image}/>
                 
+            <RightDiv>
+
+            <Time>
+                <TimeText>
+                    {recipe.readyInMinutes}
+                </TimeText> 
+                <FaClock style ={{fontSize: "20px"}}/> 
+            </Time>
                 <Text>
                     <h3>{recipe.title} </h3>
                     <div>Ingredients From Your Search: </div>
                     <UsedIngredients usedIngredients={usedIngredients[recipes.indexOf(recipe)]} />       
                 </Text>
-
+            </RightDiv>
         </Div>
         );
     })}
@@ -42,6 +52,24 @@ const nav = useNavigate()
 };
 
 export default SearchResultRecipe;
+
+const TimeText = styled.span`
+    margin: 0 0 2px 0;
+`;
+
+const RightDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 630px;
+`;
+
+const Time = styled.div`
+    display: flex;
+    align-items: flex-end;
+    column-gap: 5px;
+
+`;
 
 const Text = styled.div`
     display: flex;
@@ -56,8 +84,8 @@ const Div = styled.div`
     flex-direction: row;
 
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     background-color: #ffffff;   
     width: 800px;
     height: 100px;

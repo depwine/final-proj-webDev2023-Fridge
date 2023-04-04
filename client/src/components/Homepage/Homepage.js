@@ -97,7 +97,8 @@ const Homepage = () => {
 export default Homepage;
 
 const Wrapper = styled.div`
-  position: fixed;  top: 80px;
+  position: fixed;
+    top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

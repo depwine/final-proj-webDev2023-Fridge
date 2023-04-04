@@ -138,9 +138,9 @@ const Button = styled.button`
     font-weight: bold;
     border-radius: 15px;
     border: none;
-    margin: 20px 0 0 0;
+    margin: 0 0 0 0;
 
-    background-color: #ffbbd1;
+    background-color: #6e1533;;
     color: white;
     padding: 10px;
     box-shadow: 2px 2px 2px lavender;

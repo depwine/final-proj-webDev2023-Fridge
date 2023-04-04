@@ -30,7 +30,6 @@ const FavRecipes = () => {
                             )
                             : ( 
                                 <RecipeWrap>
-
                                     <DisplayFavRecipes favRecipes={favRecipes}/>
                                 </RecipeWrap>
                                )

@@ -26,7 +26,7 @@ const RecipeInstructions = ({recipeInfo}) => {
                     }
 
                     {/* <span>Length: {inst.length.number} {inst.length.unit}</span> */}
-                    <span>{inst.step}</span>
+                    <InstText>{inst.step}</InstText>
 
                 </RecipeStep>
             )
@@ -39,15 +39,19 @@ const RecipeInstructions = ({recipeInfo}) => {
 
 export default RecipeInstructions
 
+const InstText = styled.span`
+    font-size: 15px;
+`;
+
 const RecipeStep = styled.div`
     display:flex ;
     flex-direction: column;
     margin: 0 0 20px 0;
     padding: 20px;
     width: 850px;
-    background-color: #fff2f6;
+    background-color: white;
     border-radius: 15px;
-    box-shadow: 2px 2px 5px lightpink;
+    box-shadow: 0px 0px 5px lightgrey;
     row-gap: 10px;
 
 `;

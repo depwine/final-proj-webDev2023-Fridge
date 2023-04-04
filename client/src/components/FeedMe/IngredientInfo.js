@@ -11,6 +11,8 @@ const IngredientInfo = ({ingredient}) => {
     const [quantity, setQuantity] = useState(0)
     const [showAmount, setShowAmount] = useState (0)
 
+    const [err, setErr] = useState("")
+
   const handleRemoveOneItem = (ingredient) => {
 
     // if there's only 1 search item, do this:
@@ -59,76 +61,131 @@ const IngredientInfo = ({ingredient}) => {
     //stop reload
     e.preventDefault()
 
+    console.log(Object.values(quantity)[0])
+    console.log(ingredient.unit_type)
+
+    // validate
+                    // if quantity is <1 or null OR
+                      // if unit type isnt set
+      if (!ingredient.unit_type || Object.values(quantity)[0] === null || Object.values(quantity)[0] < 0.0001){
+
+
+
+        setErr("Please Select a Quantity and Unit Type before adding")
+
+        setTimeout(() => {
+          setErr("")
+
+        }, 1500)
+
+      } else {        
+
+        setErr("Ingredient added to search!")
+
+        setTimeout(() => {
+          setErr("")
+
+        }, 1500)
+        
             // set the new ingredient object w/ correct amount
-        let quantArr = Object.values(quantity)[0]
+            let quantArr = Object.values(quantity)[0]
 
-        console.log(quantArr)
-        ingredient = {
-            ...ingredient,
-            amount : quantArr
-        }
-            // update display # at the bottom of the Component
-        setShowAmount(Object.values(quantity))
+            console.log(quantArr)
+            ingredient = {
+                ...ingredient,
+                amount : quantArr
+            }
+                // update display # at the bottom of the Component
+            setShowAmount(Object.values(quantity))
+        
+                    // change the unit type to whatever is selected in dropdown
+        let placeholderArr = ingredientSearchQuery;
+        
+            // need to find the proper search index
+            const searchIndex = ingredientSearchQuery.map(e => e.name).indexOf(ingredient.name);
     
-                // change the unit type to whatever is selected in dropdown
-    let placeholderArr = ingredientSearchQuery;
+        placeholderArr[searchIndex].amount = quantArr
     
-        // need to find the proper search index
-        const searchIndex = ingredientSearchQuery.map(e => e.name).indexOf(ingredient.name);
+        setIngredientSearchQuery(placeholderArr);
+    
+        // ******** this forces a re-render (because the above tempArr isnt seen as a valid state change): ****************
+        setIngredientSearchQuery([...ingredientSearchQuery]);
 
-    placeholderArr[searchIndex].amount = quantArr
-
-    setIngredientSearchQuery(placeholderArr);
-
-    // ******** this forces a re-render (because the above tempArr isnt seen as a valid state change): ****************
-    setIngredientSearchQuery([...ingredientSearchQuery]);
-
+      }
   };
 
   return (
-    <>
+    <Wrapper>
+
+
       <Div key={ingredient._id + ingredient.name}>
 
-        <Item> 
-          <span>Item:</span> 
-          <ItemName>{ingredient.name}</ItemName> 
-        </Item>
+          <Item> 
+            <span>Item:</span> 
+            <ItemName>{ingredient.name}</ItemName> 
+          </Item>
 
-        <Form onSubmit={handleRefresh}>
-          <Level>
+          <Form onSubmit={handleRefresh}>
+            <Level>
 
-            <Label htmlFor="Quantity">Quantity : </Label>
-            <Input
-              type="number"
-              id="quantity"
-              onChange={(e) => handleChange(e.target.id, e.target.value)}
-            />        
-
-          </Level>
-
+              <Label htmlFor="Quantity">Quantity : </Label>
+              <Input
+                type="number"
+                id="quantity"
+                onChange={(e) => handleChange(e.target.id, e.target.value)}
+              />        
+            </Level>
 
 
 
-        <Units>
-          <span>Units :</span>
-          <Dropdown ingredient={ingredient} />{" "}
-        </Units>
 
-        <ItemSummary> 
-          <span>{ingredient.name}</span>
-          <span>{showAmount} ({ingredient.unit_type})</span>
-        </ItemSummary>
+          <Units>
+            <span>Units :</span>
+            <Dropdown ingredient={ingredient} />{" "}
+          </Units>
 
-        <Remove onClick={() => {handleRemoveOneItem(ingredient)}}>  Remove Item </Remove>
-        <Button type="submit" value="Refresh">Update</Button>
-        </Form>
+          <ItemSummary> 
+            <span>{ingredient.name}</span>
+            <span>{showAmount} ({ingredient.unit_type})</span>
+          </ItemSummary>
+
+          <Remove onClick={() => {handleRemoveOneItem(ingredient)}}>  Remove </Remove>
+          <Button type="submit" value="Refresh">Add</Button>
+          </Form>
+
       </Div>
-    </>
+
+      
+      <ErrDiv>
+          {err}
+      </ErrDiv>
+
+
+      </Wrapper>
+
   );
 
 };
 
 export default IngredientInfo;
+
+const ErrDiv = styled.div`
+  display: flex;
+  font-style : italic;
+  font-size: 14px;
+  margin: 0 0 0 28px;
+  width: 351px;
+`;
+
+const Wrapper = styled.div`
+  height: 60px;
+  margin: 0 0 0 230px;
+  width: 1300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+`;
 
 const ItemSummary = styled.div`
   display: flex;
@@ -136,8 +193,8 @@ const ItemSummary = styled.div`
   row-gap: 3px;
   width: 150px;
   height: 50px;
-  margin: 0 -20px 0 0;
-  align-items: center;
+  margin: 0 10px 0 0;
+  align-items: flex-end;
   justify-content: center;
   background-color: #ffffff;
   font-weight: bold;
@@ -155,8 +212,8 @@ background-color: #ffffff;
   outline: 2px solid white;
   box-shadow: 0px 0px 5px lightgrey;
   font-size: 15px;
-  margin: 5px 0 15px 0;
-  justify-content: left;
+  margin: 5px 0px 0px 0;
+  justify-content: space-between;
   align-items: center;
 
   &:hover{
@@ -167,7 +224,6 @@ background-color: #ffffff;
 
 const Remove = styled.button`
   height: 50px;
-  border-radius: 15px;
   border: none;
   background-color: #912247;
   	color: white;
@@ -182,10 +238,16 @@ const Remove = styled.button`
 `
 
 const Label = styled.label`
+
   font-size: 15px;
 `;
 
-const Level = styled.span``;
+const Level = styled.span`
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+
+`;
 
 const ItemName = styled.span`
   font-weight: bold;
@@ -201,13 +263,12 @@ const Units = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 0 10px 0 10px;
+  margin: 0 20px 0 40px;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: row;
-  margin: 0 20px 0 41px;
   align-items: center;
   justify-content: center;
 `;
@@ -224,23 +285,28 @@ const Input = styled.input`
 const Item = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   row-gap: 20px;
   width: 150px;
-  background-color: #ffffff;
+  background-color: #912247;
+  color: white;
   border-radius: 15px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   height: 50px;
-  padding: 0px 0 0 10px;
+  padding: 0px 10px 0 10px;
 
 
 `;
 
 const Button = styled.button`
-  margin: 0 -21px 0px 10px;
+  position: relative;
+  margin: 0 0 0px 10px;
   border-radius: 15px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
   width: 65px;
   background-color: #912247;	
   color: white;
@@ -249,7 +315,7 @@ const Button = styled.button`
   height: 50px;
 
   &:hover{
-    cursor: pointer;
+        cursor: pointer;
 				background-color: #b8607c;
 				color: white;	
   }

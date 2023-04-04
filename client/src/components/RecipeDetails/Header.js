@@ -10,11 +10,16 @@ const Header = ({recipeInfo}) => {
 
     return (
         <>
-            <H1>Instructions:</H1>
                 { 
                 ! user 
                 ? <span>Log in to save this recipe!</span>
-                : ( <AddToFavRecipe recipeInfo ={recipeInfo} user={user}/> )
+                : (
+                    <Wrapper>
+                        <H1>Instructions:</H1> 
+                    </Wrapper>
+
+                
+                )
                 }
         </>
     )
@@ -25,8 +30,14 @@ export default Header
 
 const H1 = styled.h1`
     color:black;
-    font-size: 40px;
+    font-size: 30px;
     margin: 10px 0 10px 0;
     font-weight: bold;
     text-align: center;
+`;
+
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
 `;

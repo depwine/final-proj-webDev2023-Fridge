@@ -6,6 +6,7 @@ import Header from "./Header";
 import RecipeInstructions from "./RecipeInstructions";
 import Cuisines from "./Cuisines";
 import RecipeDetailedIngredients from "./RecipeDetailedIngredients";
+import AddToFavRecipe from "../FeedMe/AddToFavRecipe";
 
 const RecipeDetails = () => {
 
@@ -24,9 +25,15 @@ const RecipeDetails = () => {
                     <Header recipeInfo = {recipeInfo}/>
 
                     <span>
-                        <h3>Ready In : {recipeInfo.readyInMinutes} Minutes</h3>
-                        <h3>Servings : {recipeInfo.servings}</h3>
-                        <h3>Weight Watcher Score : {recipeInfo.weightWatcherSmartPoints}</h3>
+                        <H3>Ready In : {recipeInfo.readyInMinutes} Minutes</H3>
+                        <H3>Servings : {recipeInfo.servings}</H3>
+                        
+                        <WeightAdd>
+                            <Weight>Weight Watcher Score : {recipeInfo.weightWatcherSmartPoints}</Weight>                         
+                            <AddToFavRecipe recipeInfo ={recipeInfo} user={user}/> 
+                        </WeightAdd>
+
+
                     </span>
 
                         {
@@ -37,14 +44,11 @@ const RecipeDetails = () => {
 
                 <RightDiv>
                     <H1>  {recipeInfo.title}  </H1>
-
                     <Cuisines recipeInfo = {recipeInfo}/>
-
                     <Img src = {recipeInfo.image} />
-                    <IngTitle>Ingredients: </IngTitle>
 
+                    <h3>Ingredients: </h3>
                     <RecipeDetailedIngredients recipeInfo = {recipeInfo}/>
-
                 </RightDiv>
 
         </Wrapper>
@@ -55,44 +59,62 @@ const RecipeDetails = () => {
 
 export default RecipeDetails
 
+const WeightAdd = styled.span`
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0 0 20px 0;
+    width: 890px;
+`;
+
 const H1 = styled.h1`
     color:black;
-    font-size: 40px;
+    font-size: 30px;
     margin: 10px 0 10px 0;
     font-weight: bold;
     text-align: center;
 `;
 
-const RightDiv = styled.div`
+const H3 = styled.div`
+    display: flex;
+    margin: 0 0 10px 0;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+`;
 
+const Weight = styled.div`
+    display: flex;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+`;
+
+
+const RightDiv = styled.div`
     margin: 0 0 0 20px;
     display: flex;
     flex-direction: column;
-    width: 45%;
+    width: 55%;
     align-items: center;
-    overflow-y: scroll;
-
 `;
 
 
 
 const Wrapper = styled.div`
-  position: fixed;
+    position: fixed;
     top: 80px;
     display: flex;
      /* border: 1px solid blue; */
      justify-content: space-between;
-    height: 100%;
+    height: 91%;
     width: 91.35vw;
+    overflow-y: scroll;
 `;
 
 
-const IngTitle = styled.div`
-    margin: 10px 0 10px 0;
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-`;
 
 
 const Div = styled.div`
@@ -103,7 +125,6 @@ const Div = styled.div`
     margin: 0 0 0 20px;
     width: 55%;
     height: 91%;
-    overflow-y: scroll;
 `;
 
 

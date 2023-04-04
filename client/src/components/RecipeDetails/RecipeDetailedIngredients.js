@@ -14,7 +14,6 @@ const RecipeDetailedIngredients = ({recipeInfo}) => {
                                     return (
                                         <Ing key = {ing.id}>
                                             <Bold>{ing.original}</Bold>
-                                            <div>{parseFloat(ing.amount.toFixed(2))} {ing.unit} {ing.nameClean}</div>
                                             <Aisle>Aisle: {ing.aisle}</Aisle>
                                         </Ing>
                                     )
@@ -30,7 +29,6 @@ const RecipeDetailedIngredients = ({recipeInfo}) => {
                                     return (
                                         <Ing key = {ing.id}>
                                             <Bold>{ing.original}</Bold>    
-                                            <div>{ing.amount} {ing.unit} {ing.extendedName}</div>
                                             <Aisle>Aisle: {ing.aisle}</Aisle>
                                         </Ing>
                                     )
@@ -48,7 +46,7 @@ const RecipeDetailedIngredients = ({recipeInfo}) => {
 export default RecipeDetailedIngredients
 
 const IngDiv = styled.div`
-    width: 700px;
+    width: 770px;
     display: flex;
     flex: row;
     flex-wrap: wrap;
@@ -60,18 +58,24 @@ const Bold = styled.span`
     font-weight: bold;
     text-align: center;
     padding: 0 0 5px 0;
+    
 `;
 
 const Ing = styled.div`
     display: flex;
+    font-size: 14px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
-    width: 300px;
+    width: 350px;
     margin: 0 0 5px 0;
     padding: 2px;
-    border: 1px solid grey;
+    background-color: white;
+    box-shadow: 0px 0px 5px lightgrey;
+    row-gap: 5px;
+    padding: 5px
+
 `;
 
 const Aisle = styled.span`
