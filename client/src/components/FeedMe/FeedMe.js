@@ -265,6 +265,8 @@ const Error = styled.div`
 `;
 
 const Wrapper = styled.div`
+  position: fixed;
+    top: 80px;
   display: flex;
   flex-direction: row;
   width: 91.35vw;

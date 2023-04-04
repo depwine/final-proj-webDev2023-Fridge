@@ -49,7 +49,7 @@ const Homepage = () => {
                 
                     // let url = "https://api.spoonacular.com/recipes/random"
                     // let API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
-                    // let number = 12;
+                    // let number = 10;
                 
                     // let searchConcact = `${url}?apiKey=${API.apiKey}&number=${number}`                
                 
@@ -97,11 +97,12 @@ const Homepage = () => {
 export default Homepage;
 
 const Wrapper = styled.div`
+  position: fixed;  top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100%;
+  height: 98%;
   width: 91.35vw;
 `;
 

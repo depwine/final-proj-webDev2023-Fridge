@@ -22,10 +22,10 @@ const Sidebar = () => {
                 <span>FeedMe</span>
             </Logo>
             <ButtonDiv>
-                <StyledLink to={"/"}> Home </StyledLink>
-                <StyledLink to={"/FeedMe"}> Feed Me</StyledLink>
-                <StyledLink to={"/favrecipes"}> Fav Recipes </StyledLink>
-                <StyledLink to={"/profile"}> Profile </StyledLink>
+                <StyledLink to={"/"}> HOME </StyledLink>
+                <StyledLink to={"/FeedMe"}> SEARCH </StyledLink>
+                <StyledLink to={"/favrecipes"}> SAVED RECIPES </StyledLink>
+                <StyledLink to={"/profile"}> PROFILE </StyledLink>
             </ButtonDiv>
 
             <Log>
@@ -55,7 +55,8 @@ const Logo = styled.div`
     display: flex;
     align-items: flex-end;
     margin: 0 0 0 20px;
-    height: 100px;
+    height: 80px;
+    font-size: 65px;
     
     &:hover{
         cursor: pointer;
@@ -71,7 +72,7 @@ const ButtonDiv = styled.div`
 `;
 
 const SidebarFooter = styled.span`
-    height: 100px;
+    height: 80px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -105,7 +106,7 @@ const Div = styled.div`
     justify-content: space-between;
     height: auto;
     width: 100%;
-    height: 100px;
+    height: 80px;
     background-color: #6e1533;
     box-shadow: 5px 0px 10px grey;
     padding: 0 10px 0 0;

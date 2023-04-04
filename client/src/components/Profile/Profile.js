@@ -47,6 +47,8 @@ const Center= styled.div`
 `;
 
 const Wrapper = styled.div`
+  position: fixed;
+      top: 80px;
   width: 91.35vw;
   height: 100%;
   display: flex;

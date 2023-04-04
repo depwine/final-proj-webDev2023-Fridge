@@ -52,6 +52,8 @@ const RecipeWrap = styled.div`
 `;
 
 const Wrapper = styled.div`
+  position: fixed;
+    top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
