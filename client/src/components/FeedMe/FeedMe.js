@@ -267,23 +267,29 @@ const Error = styled.div`
 const Wrapper = styled.div`
   position: fixed;
   top: 80px;
+  width: 99%;
+  height: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const Left = styled.div`
   /* outline: 2px solid red; */
-  width: 40%;
+  width: 50%;
+  height: 100%;
 `;
 
 const Right = styled.div`
-  width: 700px;
-  margin: 0 0 0 150px;
+  /* outline: 2px solid green; */
+  width: 820px;
+  margin: 0 0 0 120px;
   display: flex;
   flex-direction: column;
   column-gap: 10px;
-  justify-content: end;
+  justify-content: start;
   align-content: flex-start;
   align-items: center;
   padding: 15px 0 0 0px;

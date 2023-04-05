@@ -15,6 +15,9 @@ const nav = useNavigate()
 
     }
 
+
+    
+
     return (
     <>
         {
@@ -22,6 +25,16 @@ const nav = useNavigate()
         }
 
     {recipes.map((recipe) => {
+
+            // trim title string
+    var maxLength = 50;
+
+    let result = recipe.title
+
+    if (recipe.title.length > maxLength) {
+        result = recipe.title.substring(0, maxLength) + '...';
+    }
+
         
         return (
 
@@ -37,7 +50,7 @@ const nav = useNavigate()
                 <FaClock style ={{fontSize: "20px"}}/> 
             </Time>
                 <Text>
-                    <h3>{recipe.title} </h3>
+                    <h3>{result} </h3>
                     <div>Ingredients From Your Search: </div>
                     <UsedIngredients usedIngredients={usedIngredients[recipes.indexOf(recipe)]} />       
                 </Text>
@@ -62,12 +75,15 @@ const RightDiv = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 630px;
+    height: 100px;
+
 `;
 
 const Time = styled.div`
     display: flex;
     align-items: flex-end;
     column-gap: 5px;
+    margin: 0 0 10px 0;
 
 `;
 
@@ -89,7 +105,6 @@ const Div = styled.div`
     background-color: #ffffff;   
     width: 800px;
     height: 100px;
-    padding: 5px;
     margin: 5px 0 5px 0;
     box-shadow: 0px 0px 5px lightgrey;
 
@@ -102,6 +117,7 @@ const Div = styled.div`
 `;
 
 const Img = styled.img`
-    width: 150px;    
+    height: 100px;
+    width: auto;    
 `;
 

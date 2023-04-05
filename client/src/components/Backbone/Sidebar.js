@@ -48,6 +48,7 @@ const Title = styled.div`
     height: 90px;
     display: flex;
     align-items: center;
+    color: #6e1533;
 `;
 
 const Logo = styled.div`
@@ -86,7 +87,7 @@ const Img = styled.img`
 
     &:hover{
         cursor: pointer;
-        outline: 4px solid white;
+        outline: 4px solid #6e1533;
     }
 `;
 
@@ -105,10 +106,11 @@ const Div = styled.div`
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
+    border-bottom: 5px solid #6e1533;
     height: auto;
     width: 100%;
     height: 80px;
-    background-color: #6e1533;
+    background-color: white;
     box-shadow: 5px 0px 10px grey;
     padding: 0 10px 0 0;
 
@@ -122,12 +124,13 @@ const StyledLink = styled(Link)`
     padding: 10px 10px 0px 5px;
     font-size: 25px;
     text-decoration: none;
-    color: white;
+    color: #6e1533;
     height: 20px;
 
     &:hover{
         cursor: pointer;
-        outline: 2px solid white;
+        background-color: #6e1533;
+        color: white;
     }
 
 `;
