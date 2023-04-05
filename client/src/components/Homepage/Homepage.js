@@ -86,7 +86,7 @@ const Homepage = () => {
 
           {
             ! trendingRecipes
-            ? <span> Loading ... </span>
+            ? <RecipeWrapper> Loading ... </RecipeWrapper>
             : (<RecipeWrapper> <Recipe recipes={ trendingRecipes }/> </RecipeWrapper>)
           }
       </Wrapper>
@@ -98,12 +98,13 @@ export default Homepage;
 
 const Wrapper = styled.div`
   position: fixed;
-    top: 80px;
+  top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   height: 98%;
+  width: 100%;
 
 `;
 

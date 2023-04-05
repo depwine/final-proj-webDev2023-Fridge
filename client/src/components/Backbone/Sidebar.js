@@ -94,8 +94,7 @@ const Img = styled.img`
 const Log = styled.div`
     display: flex;
     flex-direction: row;
-    text-align: center;
-    
+    text-align: center;    
     margin: 0 0 5px 0;
 `;
 
@@ -106,12 +105,12 @@ const Div = styled.div`
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
-    border-bottom: 5px solid #6e1533;
+    border-bottom: 1px solid #6e1533;
     height: auto;
     width: 100%;
     height: 80px;
     background-color: white;
-    box-shadow: 5px 0px 10px grey;
+    box-shadow: 5px 0px 10px #6e153365;
     padding: 0 10px 0 0;
 
 `;
