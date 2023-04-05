@@ -16,8 +16,10 @@ const UserProfile = ({  user  }) => {
 export default UserProfile
 
 const Img = styled.img`
-
-    width: 300px;
+    border-radius: 50%;
+    width: 200px;
+    border: 2px solid #6e1533;
+    box-shadow: 0px 0px 20px #6e15336c;
 
 `;
 
