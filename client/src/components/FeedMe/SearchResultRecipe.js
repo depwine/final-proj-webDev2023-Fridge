@@ -6,6 +6,8 @@ import { FaClock } from "react-icons/fa";
 
 const SearchResultRecipe = ({ recipes, usedIngredients}) => {
 
+    console.log(recipes)
+
 const nav = useNavigate()
 
         // on click of a recipe, go here and initialize this state: 
@@ -24,40 +26,52 @@ const nav = useNavigate()
           // map through recipe, make a summary
         }
 
-    {recipes.map((recipe) => {
+        {  // check if recipes exists (used for navigating back to FeedMe after going through it
+            // to get to RecipeDetails )
+        ! recipes
+        ? null
+        : (
+            
+            recipes.map((recipe) => {
 
-            // trim title string
-    var maxLength = 50;
+                        // trim title string
+                var maxLength = 50;
+            
+                let result = recipe.title
+            
+                if (recipe.title.length > maxLength) {
+                    result = recipe.title.substring(0, maxLength) + '...';
+                }
+            
+                    
+                    return (
+                        
+            
+                    <Div key={recipe._id} onClick={() => {            handleClick(recipe)          }}>
+                            <Img src={recipe.image}/>
+                            
+                        <RightDiv>
+            
+                        <Time>
+                            <TimeText>
+                                {recipe.readyInMinutes}
+                            </TimeText> 
+                            <FaClock style ={{fontSize: "20px"}}/> 
+                        </Time>
+                            <Text>
+                                <h3>{result} </h3>
+                                <div>Ingredients From Your Search: </div>
+                                <UsedIngredients usedIngredients={usedIngredients[recipes.indexOf(recipe)]} />       
+                            </Text>
+                        </RightDiv>
+                    </Div>
+                    );
+                })
 
-    let result = recipe.title
+        )
+        }
 
-    if (recipe.title.length > maxLength) {
-        result = recipe.title.substring(0, maxLength) + '...';
-    }
 
-        
-        return (
-
-        <Div key={recipe._id} onClick={() => {            handleClick(recipe)          }}>
-                <Img src={recipe.image}/>
-                
-            <RightDiv>
-
-            <Time>
-                <TimeText>
-                    {recipe.readyInMinutes}
-                </TimeText> 
-                <FaClock style ={{fontSize: "20px"}}/> 
-            </Time>
-                <Text>
-                    <h3>{result} </h3>
-                    <div>Ingredients From Your Search: </div>
-                    <UsedIngredients usedIngredients={usedIngredients[recipes.indexOf(recipe)]} />       
-                </Text>
-            </RightDiv>
-        </Div>
-        );
-    })}
 
 
     </>

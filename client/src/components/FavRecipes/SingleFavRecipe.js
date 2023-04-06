@@ -169,7 +169,7 @@ const Name = styled.div`
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  width: 900px;
+  width: 800px;
   margin: 0 -100px 0 0;
 `;
 
@@ -182,11 +182,12 @@ const Button = styled.button`
   border: none;
   color: white;
   background-color: #912247;
+  transition: 0.1s ease-in-out;
 
   &:hover{
     cursor: pointer;
     background-color: #6e1533;
-    outline: 2px solid #6e1533;
+    border: 5px solid #6e1533;
 
   }
 `;

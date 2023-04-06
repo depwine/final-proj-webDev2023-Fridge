@@ -51,18 +51,15 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
             .then((data) => {
                 console.log(data)    
 
-
-                   // add to fave recipes state
-                    console.log(favRecipes)
-
-                    setFavRecipes((prev) => [                       
-                        ...prev,
-                        postBody
-                    ])           
-
-
                 if (data.status === 200) {
                     setErr("Recipe added to your Favourites!")
+
+                console.log(favRecipes)
+
+                setFavRecipes((prev) => [                       
+                    ...prev,
+                    postBody
+                ])      
 
                     setTimeout(() => {
                         setErr(null)
@@ -116,6 +113,8 @@ export default AddToFavRecipe
 
 const ErrDiv = styled.div`
     display: flex;
+    font-style: italic;
+    color: #6e1533;
     align-content: center;
     align-items: center;
     justify-content: right;

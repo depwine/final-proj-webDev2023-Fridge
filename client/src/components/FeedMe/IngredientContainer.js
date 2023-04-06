@@ -18,10 +18,7 @@ const IngredientContainer = () => {
 
               {ingredientSearchQuery.map((ingredient) => {
                 return (
-                <IngredientInfo
-                map={ingredient._id + 11110}
-                ingredient={ingredient}
-                />
+                <IngredientInfo     key={ingredient.name}           map={ingredient._id + 11110}                ingredient={ingredient}                />
                 );
               })}
             </>
@@ -45,4 +42,5 @@ const NoSearch = styled.div`
 `;
 
 const SearchText = styled.span`
+color: #6e1533
 `;

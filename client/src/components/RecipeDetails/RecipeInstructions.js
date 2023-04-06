@@ -60,4 +60,5 @@ const Step = styled.div`
     font-weight: bold;
     font-size: 18px;
     margin: 0 0px 5px 0;
+    color: #6e1533;
 `;

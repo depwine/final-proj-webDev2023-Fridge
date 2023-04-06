@@ -46,4 +46,5 @@ const CuisineDiv = styled.span`
     column-gap: 5px;
     font-size: 19px;
     margin: 0 0 20px 0;
+    color: #6e1533;
 `;

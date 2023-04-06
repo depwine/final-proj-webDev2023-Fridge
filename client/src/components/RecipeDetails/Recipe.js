@@ -46,6 +46,7 @@ const RecTile = styled.span`
   font-size: 15px;
   margin: 0 0 5px 0;
   font-weight: bold;
+  color: #6e1533;
 `;
 
 const Time = styled.span`
@@ -73,7 +74,6 @@ const Div = styled.div`
     background-color: #ffffff;   
     width: 800px;
     height: 100px;
-    padding: 5px;
     margin: 5px 0 5px 0;
     box-shadow: 0px 0px 5px lightgrey;
 
@@ -86,7 +86,7 @@ const Div = styled.div`
 `;
 
 const Img = styled.img`
-    width: 150px;
+    height: 100px;
     
 `;
 

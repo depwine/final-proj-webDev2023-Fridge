@@ -47,10 +47,18 @@ export default FavRecipes
 
 const RecipeWrap = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+    flex-direction: row;
+    /* border: 1px solid blue; */
+    justify-content: center;
+    align-items: center;
+
 `;
 
 const Wrapper = styled.div`
+    /* border: 1px solid blue; */
     position: fixed;
     top: 80px;
     display: flex;
@@ -59,7 +67,7 @@ const Wrapper = styled.div`
     align-items: center;
     height: 100%;
     width: 100%;
-
+    overflow-y: scroll;
 
 
 `;

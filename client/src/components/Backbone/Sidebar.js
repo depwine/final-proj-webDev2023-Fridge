@@ -84,6 +84,8 @@ const SidebarFooter = styled.span`
 const Img = styled.img`
     width: 50px;
     border-radius: 50%;
+    transition: 0.1s ease-in-out;
+
 
     &:hover{
         cursor: pointer;
@@ -125,6 +127,8 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     color: #6e1533;
     height: 20px;
+    transition: 0.1s ease-in-out;
+
 
     &:hover{
         cursor: pointer;

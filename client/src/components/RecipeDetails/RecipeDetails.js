@@ -7,15 +7,35 @@ import RecipeInstructions from "./RecipeInstructions";
 import Cuisines from "./Cuisines";
 import RecipeDetailedIngredients from "./RecipeDetailedIngredients";
 import AddToFavRecipe from "../FeedMe/AddToFavRecipe";
+import { useEffect } from "react";
+
+import { useContext } from "react";
+import { UserContext } from "../Backbone/UserContext";
 
 const RecipeDetails = () => {
+
+    const {  setIngredientSearchQuery, setOneIngredient, setRecipes} = useContext(UserContext);
+
+
+    //upon getting here, clear all searches
+
+    const handeClearRecipes = () => {
+        setRecipes(null)
+        setIngredientSearchQuery([])
+        setOneIngredient(null)
+      }  
+
+    useEffect(() => {
+        handeClearRecipes()
+
+
+    }, [])
 
     const { user } = useAuth0();
 
     const rawData = useLocation();
     const recipeInfo = rawData.state.data
 
-    let random = Math.random()
 
     return (
         
@@ -78,7 +98,7 @@ const H1 = styled.h1`
 const H3 = styled.div`
     display: flex;
     margin: 0 0 10px 0;
-    color: black;
+    color: #6e1533;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
@@ -86,7 +106,7 @@ const H3 = styled.div`
 
 const Weight = styled.div`
     display: flex;
-    color: black;
+    color: #6e1533;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
@@ -109,8 +129,8 @@ const Wrapper = styled.div`
     display: flex;
      /* border: 1px solid blue; */
      justify-content: space-between;
+     width: 100%;
     height: 91%;
-    width: 91.35vw;
     overflow-y: scroll;
 `;
 

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { UserContext } from "../Backbone/UserContext";
 import { useContext, useState} from "react";
+import {BiLoader} from "react-icons/bi"
 import Recipe from "../RecipeDetails/Recipe";
 
 const Homepage = () => {
@@ -82,11 +83,11 @@ const Homepage = () => {
   return (
 
       <Wrapper>
-        <h1>Trending Recipes:</h1>
+        <H1>Trending Recipes:</H1>
 
           {
             ! trendingRecipes
-            ? <RecipeWrapper> Loading ... </RecipeWrapper>
+            ? <RecipeWrapper> <LoadingFeedDiv> <BiLoader/> </LoadingFeedDiv> </RecipeWrapper>
             : (<RecipeWrapper> <Recipe recipes={ trendingRecipes }/> </RecipeWrapper>)
           }
       </Wrapper>
@@ -95,6 +96,10 @@ const Homepage = () => {
 }
 
 export default Homepage;
+
+const H1 = styled.h1`
+  /* color: #6e1533 */
+`;
 
 const Wrapper = styled.div`
   position: fixed;
@@ -116,5 +121,22 @@ const RecipeWrapper = styled.div`
   column-gap: 20px;
 `;
 
-const Button = styled.button`
+const LoadingFeedDiv = styled.div`
+margin: 100px 0 0 0;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 800px;
+font-size: 50px;
+font-weight: bold;
+animation: rotation 2s infinite linear;
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 `;

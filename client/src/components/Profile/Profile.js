@@ -48,7 +48,7 @@ const Center= styled.div`
 
 const Wrapper = styled.div`
   position: fixed;
-      top: 80px;
+top: 80px;
   width: 100%;
   height: 100%;
   display: flex;

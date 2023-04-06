@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../Backbone/UserContext";
 import IngredientContainer from "../FeedMe/IngredientContainer";
 import SearchResultRecipe from "./SearchResultRecipe";
+import { useEffect } from "react";
 
 const FeedMe = () => {
   // oneIngredient, setOneIngredient
@@ -13,6 +14,22 @@ const FeedMe = () => {
   const [allValuesFilled, setAllValuesFilled] = useState(true);
   const [isDuplicate, setIsDuplicate] = useState (false)  
   const [usedIngredients, setUsedIngredients] = useState()
+
+
+
+  useEffect(() => {
+
+
+    handeClearRecipes()
+
+    console.log(
+      recipes,
+      oneIngredient,
+      ingredientSearchQuery,
+    )
+
+  }, [])
+
   
   /// ---------------------------------------------FETCH RECIPE------------------------------------------ ///
 
@@ -181,7 +198,7 @@ const FeedMe = () => {
 
                 setTimeout(() => {
                 setIngError("");
-                }, 1000);
+                }, 2000);
 
                 console.log("Searching for recipes!")
                 fetchRecipe()
@@ -197,10 +214,10 @@ const FeedMe = () => {
   };
 
   const handeClearRecipes = () => {
-    setRecipes()
+    setRecipes(null)
     setIngredientSearchQuery([])
-    setOneIngredient()
-    setIngError("")
+    setOneIngredient(null)
+    setIngError(null)
   }  
 
   return (
@@ -262,6 +279,7 @@ const Error = styled.div`
   margin: 20px;
   text-align: center;
   font-style: italic;
+  color: #6e1533;
 `;
 
 const Wrapper = styled.div`
@@ -314,6 +332,7 @@ const SearchResultsDiv = styled.div`
 
 const LookForThree = styled.span`
   padding: 20px;
+  color: #6e1533;
 `;
 
 const Div = styled.div`

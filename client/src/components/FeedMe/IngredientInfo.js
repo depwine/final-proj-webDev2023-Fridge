@@ -175,6 +175,7 @@ const ErrDiv = styled.div`
   font-size: 14px;
   margin: 0 220px 0 10px;
   width: 150px;
+  color: #6e1533;
 `;
 
 const Wrapper = styled.div`
@@ -199,6 +200,7 @@ const ItemSummary = styled.div`
   background-color: #ffffff;
   font-weight: bold;
   text-transform: capitalize;
+  color: #6e1533;
 `;
 
 const Div = styled.div`

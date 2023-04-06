@@ -58,8 +58,8 @@ const Container = styled.div`
   /* background-color: red; */
   display: flex;
   flex-direction: column;
-  height: 97.91vh;
-  width: 99.99vw;
+  height: 97.4vh;
+  width: 100vw;
 `;
 
 const Content = styled.div`
