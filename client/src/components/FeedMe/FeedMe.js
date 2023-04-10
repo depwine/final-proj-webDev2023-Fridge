@@ -351,11 +351,13 @@ const Button = styled.button`
   font-size: 18px;
 
   box-shadow: 3px 3px 3px lightgrey;
+  transition: 0.1s ease-in-out;
 
   &:hover{
     cursor: pointer;
 				background-color: #b8607c;
 				color: white;	
+    
   }
 `;
 

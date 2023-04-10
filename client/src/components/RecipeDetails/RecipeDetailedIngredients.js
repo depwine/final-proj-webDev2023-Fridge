@@ -23,18 +23,7 @@ const RecipeDetailedIngredients = ({recipeInfo}) => {
                             </IngDiv>      
                         )
                         :        null     
-                        // (           
-                            
-                        //         recipeInfo.missedIngredients.map((ing) => {
-                        //             return (
-                        //                 <Ing key = {ing.id}>
-                        //                     <Bold>{ing.original}</Bold>    
-                        //                     <Aisle>Aisle: {ing.aisle}</Aisle>
-                        //                 </Ing>
-                        //             )
-                        //         })
-                            
-                        // )
+
                     }
      
 
@@ -61,6 +50,9 @@ const Bold = styled.span`
     color: #6e1533;
     text-align: center;
     padding: 0 0 5px 0;
+    width: 340px;
+
+
     
 `;
 
@@ -90,4 +82,7 @@ const Ing = styled.div`
 
 const Aisle = styled.span`
     font-style: italic;
+    width: 300px;
+    text-align: center;
+
 `;

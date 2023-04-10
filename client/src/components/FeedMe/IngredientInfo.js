@@ -219,9 +219,10 @@ background-color: #ffffff;
   margin: 5px 0px 0px 0;
   justify-content: space-between;
   align-items: center;
+  transition: 0.1s ease-in-out;
 
   &:hover{
-    box-shadow: 0px 0px 5px grey;
+    box-shadow: 0px 0px 5px black;
   }
   
 `;
@@ -232,6 +233,8 @@ const Remove = styled.button`
   background-color: #912247;
   	color: white;
   font-size: 15px;
+  transition: 0.1s ease-in-out;
+
 
   &:hover{
     cursor: pointer;
@@ -317,6 +320,8 @@ const Button = styled.button`
   border: none;
   font-size: 15px;
   height: 50px;
+  transition: 0.1s ease-in-out;
+
 
   &:hover{
         cursor: pointer;

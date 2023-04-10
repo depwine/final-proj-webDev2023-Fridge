@@ -41,6 +41,9 @@ export default RecipeInstructions
 
 const InstText = styled.span`
     font-size: 15px;
+    width: 850px;
+
+
 `;
 
 const RecipeStep = styled.div`
@@ -56,6 +59,8 @@ const RecipeStep = styled.div`
 
     transition: 0.1s ease-in-out;
 
+    
+
 &:hover{
     width: 860px;
     outline: 2px solid #6e1533;
@@ -68,6 +73,8 @@ const Step = styled.div`
     font-size: 18px;
     margin: 0 0px 5px 0;
     color: #6e1533;
+    width: 850px;
+
 
 
 

@@ -111,7 +111,7 @@ const Div = styled.div`
     height: auto;
     width: 100%;
     height: 80px;
-    background-color: white;
+    background-color: #ffffff;
 
     box-shadow: 5px 0px 10px #6e153365;
     padding: 0 10px 0 0;
@@ -134,6 +134,9 @@ const StyledLink = styled(Link)`
     &:hover{
         cursor: pointer;
         background-color: #6e1533;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        box-shadow: 0px 0px 10px #FFE3ED;
         color: white;
     }
 

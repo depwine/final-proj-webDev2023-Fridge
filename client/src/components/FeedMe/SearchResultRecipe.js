@@ -128,6 +128,7 @@ const Div = styled.div`
         cursor: pointer; 
         outline: 2px solid #912247;
         box-shadow: 4px 4px 4px lightgray;
+        width: 810px;
     }
     
 `;

@@ -30,6 +30,8 @@ const Button = styled.button`
   width: 200px;
   height: 70px;
   color: white;
+  transition: 0.1s ease-in-out;
+
 
   &:hover{
     cursor: pointer;

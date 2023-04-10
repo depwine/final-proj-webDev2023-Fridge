@@ -28,13 +28,17 @@ export default RecipeIngredients
 const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 
 `;
 
 const Div = styled.div`
+
     display: flex;
     column-gap: 5px;
     margin: 0px 0 0 10px;
+    flex-wrap: wrap;
+
 `;
 
 const Title = styled.span`
