@@ -23,7 +23,7 @@ const Header = ({recipeInfo}) => {
 export default Header
 
 const H1 = styled.h1`
-    color:black;
+    color: #3E3C61;
     font-size: 30px;
     margin: 10px 0 10px 0;
     font-weight: bold;

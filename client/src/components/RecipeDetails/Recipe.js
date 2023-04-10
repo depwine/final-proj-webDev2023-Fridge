@@ -23,10 +23,12 @@ const Recipe = ({ recipes }) => {
         }
 
       {recipes.map((recipe) => {
+
+        let random = Math.random() * 10000;
         
         return (
 
-          <Div key={recipe._id} onClick={() => {            handleClick(recipe)          }}>                              
+          <Div key={recipe.id} onClick={() => {            handleClick(recipe)          }}>                              
             <Img src={recipe.image}/>
             <Text>
                     <RecTile>{recipe.title} </RecTile>

@@ -12,7 +12,7 @@ const RecipeIngredients = ({inst}) => {
                     inst.ingredients.map((ing) => {
                         return (
                             <>
-                            <span>{ing.name},</span>
+                            <span key = {ing.id}>{ing.name},</span>
                             </>
                         )
                     })

@@ -98,7 +98,7 @@ const Homepage = () => {
 export default Homepage;
 
 const H1 = styled.h1`
-  /* color: #3E3C61; */
+  color: #3E3C61;
 `;
 
 const Wrapper = styled.div`
@@ -110,6 +110,17 @@ const Wrapper = styled.div`
   align-items: center;
   height: 98%;
   width: 100%;
+
+  background-image: linear-gradient(
+  180deg,
+  hsl(0deg 0% 100%) 0%,
+  hsl(0deg 0% 98%) 17%,
+  hsl(0deg 0% 96%) 33%,
+  hsl(0deg 0% 94%) 50%,
+  hsl(0deg 0% 92%) 67%,
+  hsl(0deg 0% 90%) 83%,
+  hsl(0deg 0% 89%) 100%
+);
 
 `;
 

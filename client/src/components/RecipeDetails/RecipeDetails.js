@@ -88,7 +88,7 @@ const WeightAdd = styled.span`
 `;
 
 const H1 = styled.h1`
-    color:black;
+    color: #3E3C61;
     font-size: 30px;
     margin: 10px 0 10px 0;
     font-weight: bold;
@@ -132,6 +132,17 @@ const Wrapper = styled.div`
      width: 100%;
     height: 91%;
     overflow-y: scroll;
+
+    background-image: linear-gradient(
+  180deg,
+  hsl(0deg 0% 100%) 0%,
+  hsl(0deg 0% 98%) 17%,
+  hsl(0deg 0% 96%) 33%,
+  hsl(0deg 0% 94%) 50%,
+  hsl(0deg 0% 92%) 67%,
+  hsl(0deg 0% 90%) 83%,
+  hsl(0deg 0% 89%) 100%
+);
 `;
 
 
