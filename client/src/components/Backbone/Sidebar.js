@@ -48,7 +48,7 @@ const Title = styled.div`
     height: 90px;
     display: flex;
     align-items: center;
-    color: #6e1533;
+    color: white;
 `;
 
 const Logo = styled.div`
@@ -89,7 +89,7 @@ const Img = styled.img`
 
     &:hover{
         cursor: pointer;
-        outline: 4px solid #6e1533;
+        outline: 4px solid white;
     }
 `;
 
@@ -111,7 +111,21 @@ const Div = styled.div`
     height: auto;
     width: 100%;
     height: 80px;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+
+    background-image: linear-gradient(
+  90deg,
+  hsl(340deg 68% 26%) 0%,
+  hsl(337deg 58% 26%) 11%,
+  hsl(333deg 50% 26%) 22%,
+  hsl(328deg 43% 27%) 33%,
+  hsl(321deg 36% 26%) 44%,
+  hsl(310deg 30% 26%) 56%,
+  hsl(294deg 25% 26%) 67%,
+  hsl(277deg 25% 28%) 78%,
+  hsl(260deg 24% 29%) 89%,
+  hsl(243deg 24% 31%) 100%
+);
 
     box-shadow: 5px 0px 10px #6e153365;
     padding: 0 10px 0 0;
@@ -126,18 +140,19 @@ const StyledLink = styled(Link)`
     padding: 10px 10px 0px 5px;
     font-size: 25px;
     text-decoration: none;
-    color: #6e1533;
+    color: white;
     height: 20px;
     transition: 0.1s ease-in-out;
 
 
     &:hover{
         cursor: pointer;
-        background-color: #6e1533;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
-        box-shadow: 0px 0px 10px #FFE3ED;
-        color: white;
+        box-shadow: 0px 0px 20px white;
+        background-color: white;
+        color: #6e1533
+
     }
 
 `;

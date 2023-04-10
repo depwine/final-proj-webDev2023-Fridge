@@ -144,7 +144,7 @@ const Button = styled.button`
     border: none;
     margin: 0 0 0 0;
 
-    background-color: #6e1533;;
+    background-color: #3E3C61;;
     color: white;
     padding: 10px;
     box-shadow: 2px 2px 2px lavender;
@@ -152,7 +152,7 @@ const Button = styled.button`
     &:hover{
 
         cursor: pointer;
-        background-color: #b8607c;
+        background-color: #28263b;
         color: white;
 
     }

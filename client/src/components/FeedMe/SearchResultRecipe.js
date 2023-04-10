@@ -47,7 +47,7 @@ const nav = useNavigate()
                     return (
                         
             
-                    <Div key={recipe._id} onClick={() => {            handleClick(recipe)          }}>
+                    <Div key={recipe.id} onClick={() => {            handleClick(recipe)          }}>
                             <Img src={recipe.image}/>
                             
                         <RightDiv>

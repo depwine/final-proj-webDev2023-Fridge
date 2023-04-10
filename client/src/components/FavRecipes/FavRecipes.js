@@ -20,7 +20,7 @@ const FavRecipes = () => {
                 ? <H1Center>Log in to use this section </H1Center>
                 : (
                     <>
-                        <h1>Favourite Recipes</h1>                     
+                        <h1 style={{color: "#3E3C61"}}>Favourite Recipes</h1>                     
                         {
                             ! favRecipes || favRecipes.length < 1
                             ? (
@@ -50,6 +50,7 @@ const H1Center = styled.h1`
     justify-content: center;
     align-items: center;
     height: 80%;
+    color: #3E3C61;
 `  ;
 
 const RecipeWrap = styled.div`
@@ -75,6 +76,17 @@ const Wrapper = styled.div`
     height: 92%;
     width: 100%;
     overflow-y: scroll;
+
+    background-image: linear-gradient(
+  180deg,
+  hsl(0deg 0% 100%) 0%,
+  hsl(0deg 0% 98%) 17%,
+  hsl(0deg 0% 96%) 33%,
+  hsl(0deg 0% 94%) 50%,
+  hsl(0deg 0% 92%) 67%,
+  hsl(0deg 0% 90%) 83%,
+  hsl(0deg 0% 89%) 100%
+);
 
 
 `;

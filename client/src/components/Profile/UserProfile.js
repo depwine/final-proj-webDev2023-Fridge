@@ -6,7 +6,7 @@ const UserProfile = ({  user  }) => {
     return (
     <Wrapper>
             <Img src = {user.picture} alt = {user.name}/>
-            <h2>{user.name}</h2>
+            <h2 style={{color: "#3E3C61"}}>{user.name}</h2>
             <p>{user.email}</p>
     </Wrapper>
 
@@ -18,8 +18,8 @@ export default UserProfile
 const Img = styled.img`
     border-radius: 50%;
     width: 200px;
-    border: 2px solid #6e1533;
-    box-shadow: 0px 0px 20px #6e15336c;
+    border: 2px solid #3E3C61;
+    box-shadow: 0px 0px 20px #3e3c6181;
 
 `;
 
@@ -28,4 +28,6 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    
 `;

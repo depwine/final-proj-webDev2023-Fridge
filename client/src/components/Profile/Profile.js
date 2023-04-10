@@ -44,6 +44,7 @@ const Center= styled.div`
   align-content: center;
   justify-content: center;
   align-self: center;
+  margin: -100px 0 0 0;
 `;
 
 const Wrapper = styled.div`
@@ -56,4 +57,15 @@ top: 80px;
   justify-content: center;
   align-items: center;
   align-content: center;
+
+  background-image: linear-gradient(
+  180deg,
+  hsl(0deg 0% 100%) 0%,
+  hsl(0deg 0% 98%) 17%,
+  hsl(0deg 0% 96%) 33%,
+  hsl(0deg 0% 94%) 50%,
+  hsl(0deg 0% 92%) 67%,
+  hsl(0deg 0% 90%) 83%,
+  hsl(0deg 0% 89%) 100%
+);
 `;

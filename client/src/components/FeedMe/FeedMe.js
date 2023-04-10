@@ -285,13 +285,24 @@ const Error = styled.div`
 const Wrapper = styled.div`
   position: fixed;
   top: 80px;
-  width: 99%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   overflow-y: auto;
   overflow-x: hidden;
+
+  background-image: linear-gradient(
+  180deg,
+  hsl(0deg 0% 100%) 0%,
+  hsl(0deg 0% 98%) 17%,
+  hsl(0deg 0% 96%) 33%,
+  hsl(0deg 0% 94%) 50%,
+  hsl(0deg 0% 92%) 67%,
+  hsl(0deg 0% 90%) 83%,
+  hsl(0deg 0% 89%) 100%
+);
 `;
 
 const Left = styled.div`

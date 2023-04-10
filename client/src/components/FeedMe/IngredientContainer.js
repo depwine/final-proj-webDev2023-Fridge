@@ -18,7 +18,7 @@ const IngredientContainer = () => {
 
               {ingredientSearchQuery.map((ingredient) => {
                 return (
-                <IngredientInfo     key={ingredient.name}           map={ingredient._id + 11110}                ingredient={ingredient}                />
+                <IngredientInfo     key={ingredient._id}                           ingredient={ingredient}                />
                 );
               })}
             </>

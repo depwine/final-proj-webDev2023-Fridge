@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import Recipe from "./Recipe"
 
 const RecipeEquipment = ({inst}) => {
 
@@ -10,7 +11,7 @@ const RecipeEquipment = ({inst}) => {
                 inst.equipment.map((ing) => {
                     return (
                         <>
-                        <span>{ing.name}</span>
+                        <span key = {ing.id+1000}>{ing.name}</span>
                         </>
                     )
                 })

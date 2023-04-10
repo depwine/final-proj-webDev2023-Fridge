@@ -19,7 +19,7 @@ const DisplayFavRecipes = ({ favRecipes }) => {
 
           return (
 
-            <Wrapper key={recipe._id} >
+            <Wrapper key={recipe.id} >
                 <SingleFavRecipe recipe = {recipe}/>
             </Wrapper>
 
