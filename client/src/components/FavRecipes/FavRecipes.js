@@ -17,7 +17,7 @@ const FavRecipes = () => {
         <Wrapper>
             {
                 ! user
-                ? <h1>Log in to use this section </h1>
+                ? <H1Center>Log in to use this section </H1Center>
                 : (
                     <>
                         <h1>Favourite Recipes</h1>                     
@@ -45,14 +45,21 @@ const FavRecipes = () => {
 
 export default FavRecipes
 
+const H1Center = styled.h1`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+`  ;
+
 const RecipeWrap = styled.div`
     display: flex;
-    flex-wrap: wrap;
+    height: 100%;
     row-gap: 20px;
     column-gap: 20px;
-    flex-direction: row;
+    flex-direction: column;
     /* border: 1px solid blue; */
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 
 `;
@@ -65,7 +72,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 100%;
+    height: 92%;
     width: 100%;
     overflow-y: scroll;
 

@@ -86,7 +86,12 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
         <Wrapper>
             <ErrDiv>
                 {
-                    !err
+                    !user
+                    ? <span>Log in to save this recipe!</span>
+                    : null
+                }
+                {
+                    ! err
                     ? null
                     : 
                     (

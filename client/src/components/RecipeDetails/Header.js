@@ -10,17 +10,11 @@ const Header = ({recipeInfo}) => {
 
     return (
         <>
-                { 
-                ! user 
-                ? <span>Log in to save this recipe!</span>
-                : (
+
                     <Wrapper>
                         <H1>Instructions:</H1> 
                     </Wrapper>
 
-                
-                )
-                }
         </>
     )
 

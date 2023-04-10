@@ -52,6 +52,8 @@ const IngDiv = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
 
+    
+
 `;
 
 const Bold = styled.span`
@@ -76,6 +78,13 @@ const Ing = styled.div`
     box-shadow: 0px 0px 5px lightgrey;
     row-gap: 5px;
     padding: 5px;
+    transition: 0.1s ease-in-out;
+
+    &:hover{
+        width: 360px;
+        outline: 2px solid #6e1533;
+
+    }
 
 `;
 

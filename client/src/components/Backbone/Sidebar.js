@@ -112,6 +112,7 @@ const Div = styled.div`
     width: 100%;
     height: 80px;
     background-color: white;
+
     box-shadow: 5px 0px 10px #6e153365;
     padding: 0 10px 0 0;
 

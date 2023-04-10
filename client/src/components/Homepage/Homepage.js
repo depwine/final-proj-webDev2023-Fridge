@@ -48,33 +48,33 @@ const Homepage = () => {
 
                   // BELOW THIS IS THE SPOON FETCH
                 
-                    // let url = "https://api.spoonacular.com/recipes/random"
-                    // let API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
-                    // let number = 10;
+                    let url = "https://api.spoonacular.com/recipes/random"
+                    let API = {        "apiKey": "eb1898ed1b48481180b8c86e7e5ab6f9"    }
+                    let number = 10;
                 
-                    // let searchConcact = `${url}?apiKey=${API.apiKey}&number=${number}`                
+                    let searchConcact = `${url}?apiKey=${API.apiKey}&number=${number}`                
                 
-                    // fetch (`${searchConcact}`)
-                    //     .then((res) => res.json())
-                    //     .then((data) => {
-                    //         console.log(data)
-                    //         console.log("successful lookup of random recipes")
-                    //         setTrendingRecipes(data.recipes)
-                    //     })
-                    //     .catch((err) => {
-                    //         console.log(err)
-                    //     })         
+                    fetch (`${searchConcact}`)
+                        .then((res) => res.json())
+                        .then((data) => {
+                            console.log(data)
+                            console.log("successful lookup of random recipes")
+                            setTrendingRecipes(data.recipes)
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                        })         
 
                     //mock data fetch
 
-                    fetch ("http://localhost:4000/api/randomrecipes")
-                      .then((res) => res.json())
-                      .then((data) => {
-                        setTrendingRecipes(data.data)
-                      })
-                      .catch((err) => {
-                        console.log(err)
-                      })
+                    // fetch ("http://localhost:4000/api/randomrecipes")
+                    //   .then((res) => res.json())
+                    //   .then((data) => {
+                    //     setTrendingRecipes(data.data)
+                    //   })
+                    //   .catch((err) => {
+                    //     console.log(err)
+                    //   })
 
 
   }, [])
@@ -98,7 +98,7 @@ const Homepage = () => {
 export default Homepage;
 
 const H1 = styled.h1`
-  /* color: #6e1533 */
+  /* color: #3E3C61; */
 `;
 
 const Wrapper = styled.div`
@@ -130,6 +130,7 @@ width: 800px;
 font-size: 50px;
 font-weight: bold;
 animation: rotation 2s infinite linear;
+color: #3E3C61;
 
 @keyframes rotation {
   from {

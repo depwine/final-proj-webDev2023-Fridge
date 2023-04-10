@@ -54,6 +54,13 @@ const RecipeStep = styled.div`
     box-shadow: 0px 0px 5px lightgrey;
     row-gap: 10px;
 
+    transition: 0.1s ease-in-out;
+
+&:hover{
+    width: 860px;
+    outline: 2px solid #6e1533;
+}
+
 `;
 
 const Step = styled.div`
@@ -61,4 +68,7 @@ const Step = styled.div`
     font-size: 18px;
     margin: 0 0px 5px 0;
     color: #6e1533;
+
+
+
 `;

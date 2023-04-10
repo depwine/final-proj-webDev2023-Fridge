@@ -76,6 +76,7 @@ const Div = styled.div`
     height: 100px;
     margin: 5px 0 5px 0;
     box-shadow: 0px 0px 5px lightgrey;
+    transition: 0.1s ease-in-out;
 
     &:hover { 
         cursor: pointer; 
@@ -87,6 +88,6 @@ const Div = styled.div`
 
 const Img = styled.img`
     height: 100px;
-    
+
 `;
 

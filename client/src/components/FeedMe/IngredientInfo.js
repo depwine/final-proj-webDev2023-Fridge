@@ -176,6 +176,8 @@ const ErrDiv = styled.div`
   margin: 0 220px 0 10px;
   width: 150px;
   color: #6e1533;
+
+  transition: 0.1s ease-in-out;
 `;
 
 const Wrapper = styled.div`

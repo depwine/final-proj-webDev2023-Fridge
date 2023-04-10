@@ -151,4 +151,11 @@ const Div = styled.div`
 const Img = styled.img`
     width: 400px;
     align-self: center;
+    box-shadow: 0px 0px 15px lightgray;
+
+    transition: 0.1s ease-in-out;
+
+    &:hover{
+        width: 405px;
+    }
 `;
