@@ -35,7 +35,7 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
             "recipeImage" : recipeInfo.image
         }
 
-        console.log(postBody)
+        // console.log(postBody)
 
         // send
         fetch("http://localhost:4000/api/favrecipes",

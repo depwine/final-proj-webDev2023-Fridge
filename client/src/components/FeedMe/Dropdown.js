@@ -20,7 +20,7 @@ const Dropdown = ({ ingredient }) => {
   //set to category onChange
   const handleChange = (e) => {
 
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setValue(e.target.value)
 
 

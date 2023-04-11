@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 const RecipeIngredients = ({inst}) => {
 
-    console.log(inst.ingredients)
 
     return (
         <Wrapper>
@@ -10,10 +9,13 @@ const RecipeIngredients = ({inst}) => {
             <Div>
                 {
                     inst.ingredients.map((ing) => {
+
+                        let random = Math.random()*10000
+
                         return (
-                            <>
-                            <span key = {ing.id}>{ing.name},</span>
-                            </>
+                            
+                            <RecIn key = {1000+ing.id+ing.localizedName+random}>{ing.name},</RecIn>
+                            
                         )
                     })
                 }
@@ -24,6 +26,8 @@ const RecipeIngredients = ({inst}) => {
 }
 
 export default RecipeIngredients
+
+const RecIn = styled.span``;
 
 const Wrapper = styled.div`
     display: flex;

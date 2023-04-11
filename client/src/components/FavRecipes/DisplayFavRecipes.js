@@ -17,9 +17,11 @@ const DisplayFavRecipes = ({ favRecipes }) => {
 
         favRecipes.map((recipe) => {
 
+          let random = Math.random()*10000
+
           return (
 
-            <Wrapper key={recipe.id} >
+            <Wrapper key={"DisplayFavRecipes+"+random+recipe._id} >
                 <SingleFavRecipe recipe = {recipe}/>
             </Wrapper>
 

@@ -22,11 +22,11 @@ const FeedMe = () => {
 
     handeClearRecipes()
 
-    console.log(
-      recipes,
-      oneIngredient,
-      ingredientSearchQuery,
-    )
+    // console.log(
+    //   recipes,
+    //   oneIngredient,
+    //   ingredientSearchQuery,
+    // )
 
   }, [])
 
@@ -42,7 +42,7 @@ const FeedMe = () => {
       return recipe.id
     })
 
-    console.log("ID ARRAY", idArray)
+    // console.log("ID ARRAY", idArray)
 
 
     let url = `https://api.spoonacular.com/recipes/informationBulk`
@@ -51,12 +51,12 @@ const FeedMe = () => {
 
      let searchConcact = `${url}?apiKey=${API.apiKey}&${searchQuery}`
 
-     console.log(searchConcact)
+    //  console.log(searchConcact)
 
      fetch (`${searchConcact}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         setRecipes(data)
       })
       .catch((err) => {
@@ -87,7 +87,7 @@ const FeedMe = () => {
     fetch (`${searchConcact}`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data)
+            // console.log(data)
 
               // assign this to a state in order to populate Recipe component's "used ingredients" field
               setUsedIngredients(data)
@@ -130,7 +130,7 @@ const FeedMe = () => {
   /// ---------------------------------------------HANDLE SEARCH---------------------------------- ///
 
   const handleSearch = () => {
-    console.log(ingredientSearchQuery);
+    // console.log(ingredientSearchQuery);
 
     //check array for duplicates (line 109) -- if yes, set error
     let alreadySeen = {};
@@ -149,7 +149,7 @@ const FeedMe = () => {
                       //check that all values are properly filled
                   if (e.amount < 0.0001 || e.unit_type === null) {
 
-                    console.log(e.amount, e.unit_type)
+                    // console.log(e.amount, e.unit_type)
                   setAllValuesFilled(false);
                   valueFlag = false;
 
@@ -190,7 +190,7 @@ const FeedMe = () => {
 
             // if all above IFs are good AND all values are filled, search 
             if (valueFlag) {
-                console.log("all values filled");
+                // console.log("all values filled");
 
                 // flicker a Searching for a few seconds to clear error but also show
                 //user input on "Search for Recipes"
@@ -200,12 +200,12 @@ const FeedMe = () => {
                 setIngError("");
                 }, 2000);
 
-                console.log("Searching for recipes!")
+                // console.log("Searching for recipes!")
                 fetchRecipe()
 
                 // else, throw error until fixed.
             } else {
-                console.log("value issue");
+                // console.log("value issue");
                 setIngError(
                 "Please `Add` Each ingredient!"
                 );

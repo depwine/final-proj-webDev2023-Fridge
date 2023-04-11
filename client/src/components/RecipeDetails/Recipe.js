@@ -14,8 +14,6 @@ const Recipe = ({ recipes }) => {
 
   }
 
-  console.log(recipes)
-
   return (
     <>
           {

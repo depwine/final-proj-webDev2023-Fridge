@@ -2,6 +2,8 @@ import styled from "styled-components"
 
 const RecipeDetailedIngredients = ({recipeInfo}) => {
 
+
+
     return (
         <>
                     
@@ -11,8 +13,11 @@ const RecipeDetailedIngredients = ({recipeInfo}) => {
                         (   <IngDiv>      
                             {
                                 recipeInfo.extendedIngredients.map((ing) => {
+
+                                    let random = Math.random()*10000
+
                                     return (
-                                        <Ing key = {ing.id}>
+                                        <Ing key = {"DetailedIngredient+"+ing.id+random}>
                                             <Bold>{ing.original}</Bold>
                                             <Aisle>Aisle: {ing.aisle}</Aisle>
                                         </Ing>

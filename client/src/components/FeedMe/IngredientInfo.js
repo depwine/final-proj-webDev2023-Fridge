@@ -61,8 +61,8 @@ const IngredientInfo = ({ingredient}) => {
     //stop reload
     e.preventDefault()
 
-    console.log(Object.values(quantity)[0])
-    console.log(ingredient.unit_type)
+    // console.log(Object.values(quantity)[0])
+    // console.log(ingredient.unit_type)
 
     // validate
                     // if quantity is <1 or null OR
@@ -90,7 +90,7 @@ const IngredientInfo = ({ingredient}) => {
             // set the new ingredient object w/ correct amount
             let quantArr = Object.values(quantity)[0]
 
-            console.log(quantArr)
+            // console.log(quantArr)
             ingredient = {
                 ...ingredient,
                 amount : quantArr

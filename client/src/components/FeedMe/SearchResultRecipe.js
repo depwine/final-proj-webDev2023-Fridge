@@ -6,7 +6,7 @@ import { FaClock } from "react-icons/fa";
 
 const SearchResultRecipe = ({ recipes, usedIngredients}) => {
 
-    console.log(recipes)
+    // console.log(recipes)
 
 const nav = useNavigate()
 

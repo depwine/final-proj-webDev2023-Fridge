@@ -6,9 +6,9 @@ const UsedIngredients = ({ usedIngredients }) => {
 
   const { ingredientSearchQuery } = useContext(UserContext);
 
-  console.log(ingredientSearchQuery)
+  // console.log(ingredientSearchQuery)
 
-  console.log(usedIngredients.usedIngredients)
+  // console.log(usedIngredients.usedIngredients)
   
   return (
     <Wrapper>

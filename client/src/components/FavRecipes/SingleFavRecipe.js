@@ -26,7 +26,7 @@ const SingleFavRecipe = ({recipe}) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "deleting from favourites!");
-        console.log("deleted!");
+        // console.log("deleted!");
         // new fetch, re-set state to new favourites
         reFetchFavs();
       })
@@ -46,7 +46,7 @@ const SingleFavRecipe = ({recipe}) => {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log("Fav recipes for user re-fetch: ", data.data);
+          // console.log("Fav recipes for user re-fetch: ", data.data);
 
           setFavRecipes(data.data);
         })

@@ -29,8 +29,8 @@ const Homepage = () => {
           )
             .then((res) => res.json())
             .then((data) => {
-              console.log("Fav recipes for user fetch: ",data.data);
-              console.log("setting favourites for logged-in user");
+              // console.log("Fav recipes for user fetch: ",data.data);
+              // console.log("setting favourites for logged-in user");
               setFavRecipes(data.data);
             })
             .catch((err) => {
@@ -57,8 +57,8 @@ const Homepage = () => {
                     fetch (`${searchConcact}`)
                         .then((res) => res.json())
                         .then((data) => {
-                            console.log(data)
-                            console.log("successful lookup of random recipes")
+                            // console.log(data)
+                            // console.log("successful lookup of random recipes")
                             setTrendingRecipes(data.recipes)
                         })
                         .catch((err) => {

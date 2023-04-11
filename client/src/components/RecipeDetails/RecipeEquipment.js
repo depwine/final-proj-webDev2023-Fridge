@@ -3,16 +3,20 @@ import Recipe from "./Recipe"
 
 const RecipeEquipment = ({inst}) => {
 
+
     return (
         <Wrapper>
         <Title>Equipment:</Title>
         <Div>
             {
                 inst.equipment.map((ing) => {
+                    
+                    let random = Math.random()*10000
+
                     return (
-                        <>
-                        <span key = {ing.id+1000}>{ing.name}</span>
-                        </>
+                        
+                        <RecEp key = {ing.id+ing.localizedName+random+random}>{ing.name}</RecEp>
+                        
                     )
                 })
             }
@@ -23,6 +27,8 @@ const RecipeEquipment = ({inst}) => {
 }
 
 export default RecipeEquipment
+
+const RecEp = styled.span``;
 
 const Wrapper = styled.div`
     display: flex;
