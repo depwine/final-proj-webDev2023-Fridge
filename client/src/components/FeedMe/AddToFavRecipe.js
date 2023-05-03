@@ -38,7 +38,7 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
         // console.log(postBody)
 
         // send
-        fetch("/api/favrecipes",
+        fetch("https://feed-me.herokuapp.com/api/favrecipes",
         {
             headers: {
               'Accept': 'application/json',

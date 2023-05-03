@@ -25,7 +25,7 @@ const Homepage = () => {
     
           /// get fav recipes
           fetch(
-            `/api/favrecipes?userId=${user.sub}&userName=${concatUserName}`
+            `https://feed-me.herokuapp.com/api/favrecipes?userId=${user.sub}&userName=${concatUserName}`
           )
             .then((res) => res.json())
             .then((data) => {

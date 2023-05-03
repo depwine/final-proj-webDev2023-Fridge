@@ -25,7 +25,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (!ingredientsMaster) {
-      fetch("/api/ingredients")
+      fetch("https://feed-me.herokuapp.com/api/ingredients")
         .then((res) => res.json())
         .then((data) => {
           setIngredientsMaster(data.data);
