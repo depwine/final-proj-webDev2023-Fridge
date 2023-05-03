@@ -31,16 +31,16 @@ express()
 
     //below this is for the cyclic hosting
 
-    .use(express.static(path.join(__dirname, "../client/build")))
+    // .use(express.static(path.join(__dirname, "../client/build")))
 
-    .get("*", function (_, res) {
-    res.sendFile(
-        path.join(__dirname, "../client/build/index.html"),
-        function (err) {
-        res.status(500).send(err);
-        }
-    );
-    })
+    // .get("*", function (_, res) {
+    // res.sendFile(
+    //     path.join(__dirname, "../client/build/index.html"),
+    //     function (err) {
+    //     res.status(500).send(err);
+    //     }
+    // );
+    // })
 
     //above is for cyclic
 
