@@ -25,7 +25,7 @@ const Homepage = () => {
     
           /// get fav recipes
           fetch(
-            `http://localhost:4000/api/favrecipes?userId=${user.sub}&userName=${concatUserName}`
+            `/api/favrecipes?userId=${user.sub}&userName=${concatUserName}`
           )
             .then((res) => res.json())
             .then((data) => {

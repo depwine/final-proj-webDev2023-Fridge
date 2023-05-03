@@ -38,7 +38,7 @@ const AddToFavRecipe = ({ user, recipeInfo }) => {
         // console.log(postBody)
 
         // send
-        fetch("http://localhost:4000/api/favrecipes",
+        fetch("/api/favrecipes",
         {
             headers: {
               'Accept': 'application/json',

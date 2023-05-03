@@ -25,7 +25,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (!ingredientsMaster) {
-      fetch("http://localhost:4000/api/ingredients")
+      fetch("/api/ingredients")
         .then((res) => res.json())
         .then((data) => {
           setIngredientsMaster(data.data);

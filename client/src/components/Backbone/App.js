@@ -4,7 +4,6 @@ import FeedMe from "../FeedMe/FeedMe";
 import Homepage from "../Homepage/Homepage";
 import RecipeDetails from "../RecipeDetails/RecipeDetails";
 import styled from "styled-components";
-import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Profile from "../Profile/Profile";
 import FavRecipes from "../FavRecipes/FavRecipes";
