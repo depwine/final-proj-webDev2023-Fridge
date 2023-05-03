@@ -31,16 +31,16 @@ express()
 
     //below this is for the cyclic hosting
 
-    .use(express.static(path.join(__dirname, "../client/build")))
+    // .use(express.static(path.join(__dirname, "../client/build")))
 
-    .get("*", function (_, res) {
-    res.sendFile(
-        path.join(__dirname, "../client/build/index.html"),
-        function (err) {
-        res.status(500).send(err);
-        }
-    );
-    })
+    // .get("*", function (_, res) {
+    // res.sendFile(
+    //     path.join(__dirname, "../client/build/index.html"),
+    //     function (err) {
+    //     res.status(500).send(err);
+    //     }
+    // );
+    // })
 
     //above is for cyclic
 
@@ -84,4 +84,4 @@ express()
     })
 
     // Node spins up our server and sets it to listen on port 8888.
-    .listen(port, () => console.log(`Listening on port ${port}`));
+    .listen(process.env.PORT || port, () => console.log(`Listening on port ${port}`));
