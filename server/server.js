@@ -4,6 +4,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const path = require("path");
 
 const { getAllIngredients } = require("./handlers/getAllIngredients")
 const { getRecipes } = require ("./handlers/getRecipes")
@@ -27,6 +28,21 @@ express()
     .use(express.static("public"))
 
     .use(cors())
+
+    //below this is for the cyclic hosting
+
+    .use(express.static(path.join(__dirname, "../client/build")))
+
+    .get("*", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "../client/build/index.html"),
+        function (err) {
+        res.status(500).send(err);
+        }
+    );
+    })
+
+    //above is for cyclic
 
     // Nothing to modify above or below this line
     // --------------------------------
