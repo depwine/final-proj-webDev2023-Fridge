@@ -10,19 +10,19 @@ Features
 o	Login/logout button (whichever is contextually correct)
 
 -	Home page: 
-o	see trending ingredients / finished meals
+see trending ingredients / finished meals
 
 -	Profile page:
-o	Save favourite recipes, save favourite ingredients
-o	Accessed through a top-right profile pic / username on all pages
+Save favourite recipes, save favourite ingredients
+Accessed through a top-right profile pic / username on all pages
 
 -	A “Feed Me” page (core function of site)
-o	Through dropdown with autocomplete, select an ingredient
+Through dropdown with autocomplete, select an ingredient
 	Add quantity (ex, 500g ground beef)
-o	Response 1 : Receive a list of all possible recipes that contain (ex, 500g ground beef) but require additional ingredients
-o	+ADD Button : add additional ingredient(s) and quantity(ies) --  (ex, 100g diced onion)
-o	Suggestion Message: “Add 2-3 more ingredients” (possibly suggest the ingredients with recipe previews)
-o	Once user can satisfy all criteria for at least 1 full recipe, display a preview image, name, thumbnail, etc
+Response 1 : Receive a list of all possible recipes that contain (ex, 500g ground beef) but require additional ingredients
++ADD Button : add additional ingredient(s) and quantity(ies) --  (ex, 100g diced onion)
+Suggestion Message: “Add 2-3 more ingredients” (possibly suggest the ingredients with recipe previews)
+Once user can satisfy all criteria for at least 1 full recipe, display a preview image, name, thumbnail, etc
 
 APIs & Packages Used
 
