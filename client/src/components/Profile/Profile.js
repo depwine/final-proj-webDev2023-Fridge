@@ -7,6 +7,8 @@ import Logout from "./Logout";
 const Profile = () => {
   const { user, isAuthenticated } = useAuth0();
 
+  console.log(user)
+
   return (
     <Wrapper>
       
