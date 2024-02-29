@@ -15,7 +15,7 @@ const SingleFavRecipe = ({recipe}) => {
 
       // remove from DB
   const deleteFetch = (bodyParams) => {
-    fetch("http://localhost:4000/api/favrecipes", {
+    fetch("https://feed-me.herokuapp.com/api/favrecipes", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
